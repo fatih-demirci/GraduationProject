@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  web.apigateway:
+    container_name: c_apigateway
+    image: ${DOCKER_REGISTRY-}webapigateway
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/ApiGateways/WebApiGateways/Web.ApiGateway/Dockerfile
+
+  identityservice.api:
+    container_name: c_identityservice
+    image: ${DOCKER_REGISTRY-}identityserviceapi
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/Services/IdentityService/IdentityService.Api/Dockerfile
+
+  s_consul:
+    container_name: c_consul
+    image: consul

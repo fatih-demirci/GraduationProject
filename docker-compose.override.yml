@@ -1,0 +1,55 @@
+version: '3.4'
+
+services:
+  web.apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7000;
+    ports:
+      - "7000:7000"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_apigateway
+      - net_backendservices 
+
+  identityservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7001
+    ports:
+      - "7001:7001"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_consul 
+    external_links:
+      - s_consul
+
+  s_consul:
+     ports:
+       - 8500:8500
+       - 8600:8600/tcp
+       - 8600:8600/udp
+     networks:
+       - net_apigateway
+       - net_frontend
+       - net_backendservices
+
+networks:
+  net_apigateway:
+    driver: bridge
+    external: true
+  net_frontend:
+    driver: bridge
+    external: true
+  net_backendservices:
+    driver: bridge
+    external: true
+
+

@@ -1,0 +1,2 @@
+Web.ApiGateway		=>	https://localhost:5000;http://localhost:7000;c_apigateway
+Web.IdentityService	=>	https://localhost:5001;http://localhost:7001;c_identityservice
