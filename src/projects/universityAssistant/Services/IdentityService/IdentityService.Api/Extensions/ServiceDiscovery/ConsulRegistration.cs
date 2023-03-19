@@ -38,6 +38,20 @@ namespace IdentityService.Api.Extensions.ServiceDiscovery
                     Tags = new[] { serviceName, serviceId }
                 };
 
+                string env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")!;
+
+                if (env != "Development")
+                {
+                    registration.Checks = new AgentServiceCheck[]{new AgentCheckRegistration()
+                    {
+                        HTTP = $"{uri.Scheme}://{uri.Host}:{uri.Port}{configuration.GetValue<string>("HealthCheck:ApiAddress")}",
+                        Notes = $"Checks {uri.Scheme}://{uri.Host}:{uri.Port}{configuration.GetValue<string>("HealthCheck:ApiAddress")}",
+                        Timeout = TimeSpan.FromSeconds(configuration.GetValue<int>("HealthCheck:Timeout")),
+                        Interval = TimeSpan.FromSeconds(configuration.GetValue<int>("HealthCheck:Interval")),
+                        Method = "GET",
+                    } };
+                }
+
                 logger.LogInformation("Registering with Consul");
                 await consulClient.Agent.ServiceDeregister(registration.ID);
                 await consulClient.Agent.ServiceRegister(registration);

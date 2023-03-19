@@ -1,3 +1,4 @@
+using IdentityService.Api.Extensions.HealthCheck;
 using IdentityService.Api.Extensions.ServiceDiscovery;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +23,12 @@ ConfigureServices(builder.Services, builder.Configuration);
 void ConfigureServices(IServiceCollection services, IConfiguration configuration)
 {
     services.ConfigureConsul(configuration);
+    services.AddHealthChecks();
 }
 
 var app = builder.Build();
+
+app.UseCustomHealtCheck(app.Configuration);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
