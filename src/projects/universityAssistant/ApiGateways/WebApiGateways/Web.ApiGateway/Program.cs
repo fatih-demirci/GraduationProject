@@ -1,6 +1,7 @@
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Configuration.AddJsonFile($"Configurations/appsettings.{env}.json", opti
 builder.Configuration.AddJsonFile($"Configurations/ocelot.json", optional: false);
 builder.Configuration.AddJsonFile($"Configurations/ocelot.{env}.json", optional: true);
 
+builder.Configuration.AddJsonFile($"Configurations/serilog.json", optional: false);
+builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional: true);
+
 builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.AddOcelot(builder.Configuration).AddConsul();
@@ -24,6 +28,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Host.UseSerilog();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 var app = builder.Build();
 

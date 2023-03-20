@@ -38,6 +38,13 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{2FE7DA4D-953E-44CF-AA48-080AA96C1526}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose-files", "docker-compose-files", "{455E13AB-8C77-44CE-8F99-FB33E4852FE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "graylog", "graylog", "{59C6C8E7-933A-4FD6-BE59-B55C762C9D85}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-files\graylog\docker-compose.yml = docker-compose-files\graylog\docker-compose.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +93,7 @@ Global
 		{46885000-E0E9-4D95-9DFB-5EC98AFBE2B6} = {09844188-DCE2-45B8-9351-38918782A34B}
 		{CEC6A60E-4538-470D-983E-9A680C8B9DE7} = {46885000-E0E9-4D95-9DFB-5EC98AFBE2B6}
 		{2FE7DA4D-953E-44CF-AA48-080AA96C1526} = {29D093F9-7757-464D-AFA9-28B4D30276E6}
+		{59C6C8E7-933A-4FD6-BE59-B55C762C9D85} = {455E13AB-8C77-44CE-8F99-FB33E4852FE5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}
