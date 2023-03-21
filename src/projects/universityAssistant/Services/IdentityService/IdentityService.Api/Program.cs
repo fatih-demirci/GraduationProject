@@ -1,5 +1,7 @@
+using Core.Persistence.Extensions;
 using IdentityService.Api.Extensions.HealthCheck;
 using IdentityService.Api.Extensions.ServiceDiscovery;
+using IdentityService.Persistence.Contexts;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -37,6 +39,14 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 }
 
 var app = builder.Build();
+
+await app.MigrateDbContext<IdentityServiceContext>(async (context, services) =>
+{
+    var logger = services.GetService<ILogger<IdentityServiceContextSeed>>();
+    var dbContextSeeder = new IdentityServiceContextSeed();
+
+    await dbContextSeeder.SeedAsync(context, logger);
+});
 
 app.UseCustomHealtCheck(app.Configuration);
 
