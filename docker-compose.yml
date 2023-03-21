@@ -18,3 +18,7 @@ services:
   s_consul:
     container_name: c_consul
     image: consul
+
+  s_sqlserver:
+    container_name: c_sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-latest

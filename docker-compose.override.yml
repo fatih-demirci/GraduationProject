@@ -41,6 +41,19 @@ services:
        - net_frontend
        - net_backendservices
 
+  s_sqlserver:
+    user: root
+    ports:
+      - 1433:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=123a!R.U2
+    volumes:
+      - sqlserver_data:/var/opt/mssql/data
+      - sqlserver_log:/var/opt/mssql/log
+    networks:
+      - net_backendservices
+
 networks:
   net_apigateway:
     driver: bridge
@@ -51,5 +64,9 @@ networks:
   net_backendservices:
     driver: bridge
     external: true
+
+volumes:
+  sqlserver_data:
+  sqlserver_log:
 
 
