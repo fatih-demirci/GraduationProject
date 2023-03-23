@@ -1,6 +1,9 @@
 using Core.Persistence.Extensions;
+using IdentityService.Api.Extensions.Auth;
 using IdentityService.Api.Extensions.HealthCheck;
 using IdentityService.Api.Extensions.ServiceDiscovery;
+using IdentityService.Application;
+using IdentityService.Persistence;
 using IdentityService.Persistence.Contexts;
 using Serilog;
 
@@ -36,7 +39,11 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
 {
     services.ConfigureConsul(configuration);
     services.AddHealthChecks();
+    services.AddPersistenceService(configuration);
+    services.AddApplicationService();
 }
+
+builder.Services.ConfigureAuth(builder.Configuration);
 
 var app = builder.Build();
 
