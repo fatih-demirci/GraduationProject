@@ -1,6 +1,6 @@
-﻿using IdentityService.Application.Features.Auths.Utils.Jwt;
+﻿using Core.Persistence.Repositories;
+using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Application.Services.RefreshTokenServices;
-using IdentityService.Application.Services.Repositories;
 using IdentityService.Application.Services.UserOperationClaimServices;
 using IdentityService.Domain.Entities;
 using System;
@@ -29,9 +29,15 @@ namespace IdentityService.Application.Services.AuthServices
 
         public async Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken)
         {
-            RefreshToken addedRefreshToken = await _refreshTokenService.AddAsync(refreshToken);
-            refreshToken.User = null;
-            return addedRefreshToken;
+            List<RefreshToken> refreshTokens = await _refreshTokenService.GetAllByUserIdNotUsed(refreshToken.UserId);
+
+            foreach (var rt in refreshTokens)
+            {
+                rt.IsCancelled = true;
+            }
+
+            _refreshTokenService.Add(refreshToken);
+            return refreshToken;
         }
 
         public async Task<AccessToken> CreateAccessToken(User user)
@@ -45,6 +51,11 @@ namespace IdentityService.Application.Services.AuthServices
         {
             RefreshToken refreshToken = _tokenHelper.CreateRefreshToken(user, ipAddress);
             return Task.FromResult(refreshToken);
+        }
+
+        public Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
+        {
+            return _refreshTokenService.SaveEntitiesAsync(cancellationToken);
         }
     }
 }

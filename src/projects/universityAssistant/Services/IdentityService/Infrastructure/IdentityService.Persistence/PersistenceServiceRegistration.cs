@@ -23,6 +23,7 @@ namespace IdentityService.Persistence
 
             services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

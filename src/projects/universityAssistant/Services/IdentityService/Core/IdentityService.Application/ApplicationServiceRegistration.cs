@@ -20,11 +20,15 @@ namespace IdentityService.Application
     {
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
+            services.AddMediatR(i => i.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
             services.AddScoped<ITokenHelper, TokenHelper>();
             services.AddScoped<IAuthService, AuthManager>();
             services.AddScoped<IRefreshTokenService, RefreshTokenManager>();
             services.AddScoped<IUserOperationClaimService, UserOperationClaimManager>();
+            services.AddScoped<AuthBusinessRules>();
 
+            services.AddScoped<UserCreatedDomainEventHandler>();
             return services;
         }
     }

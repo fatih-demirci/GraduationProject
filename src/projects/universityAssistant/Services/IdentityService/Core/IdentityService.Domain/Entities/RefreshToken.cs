@@ -16,6 +16,7 @@ namespace IdentityService.Domain.Entities
         public DateTime Created { get; set; }
         public string CreatedByIp { get; set; }
         public bool IsUsed { get; set; }
+        public bool IsCancelled { get; set; }
         public virtual User User { get; set; }
     }
 }

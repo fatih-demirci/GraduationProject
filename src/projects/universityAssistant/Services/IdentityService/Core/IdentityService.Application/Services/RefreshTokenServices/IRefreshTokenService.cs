@@ -1,4 +1,5 @@
-﻿using IdentityService.Domain.Entities;
+﻿using Core.Persistence.Repositories;
+using IdentityService.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,11 @@ using System.Threading.Tasks;
 
 namespace IdentityService.Application.Services.RefreshTokenServices
 {
-    public interface IRefreshTokenService
+    public interface IRefreshTokenService : IUnitOfWork
     {
-        Task<RefreshToken> AddAsync(RefreshToken refreshToken);
+        RefreshToken Add(RefreshToken refreshToken);
+        Task<List<RefreshToken>> GetAllByUserIdNotUsed(long userId);
+        Task<RefreshToken?> GetByTokenAndIpAddressAsync(string token, string ipAddress);
+        RefreshToken Update(RefreshToken refreshToken);
     }
 }

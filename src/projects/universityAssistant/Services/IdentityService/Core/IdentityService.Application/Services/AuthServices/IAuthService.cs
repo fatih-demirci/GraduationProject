@@ -1,4 +1,5 @@
-﻿using IdentityService.Application.Features.Auths.Utils.Jwt;
+﻿using Core.Persistence.Repositories;
+using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IdentityService.Application.Services.AuthServices
 {
-    public interface IAuthService
+    public interface IAuthService : IUnitOfWork
     {
         Task<RefreshToken> AddRefreshToken(RefreshToken refreshToken);
         Task<AccessToken> CreateAccessToken(User user);
