@@ -2,6 +2,7 @@ using Core.Persistence.Extensions;
 using IdentityService.Api.Extensions.Auth;
 using IdentityService.Api.Extensions.HealthCheck;
 using IdentityService.Api.Extensions.ServiceDiscovery;
+using IdentityService.Api.Extensions.Swagger;
 using IdentityService.Application;
 using IdentityService.Persistence;
 using IdentityService.Persistence.Contexts;
@@ -26,7 +27,10 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwagger();
+
+builder.Services.AddHttpContextAccessor();
+
 ConfigureServices(builder.Services, builder.Configuration);
 
 builder.Host.UseSerilog();

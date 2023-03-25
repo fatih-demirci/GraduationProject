@@ -21,6 +21,7 @@ namespace IdentityService.Application
         public static IServiceCollection AddApplicationService(this IServiceCollection services)
         {
             services.AddMediatR(i => i.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ITokenHelper, TokenHelper>();
             services.AddScoped<IAuthService, AuthManager>();
