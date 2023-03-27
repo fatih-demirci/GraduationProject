@@ -1,0 +1,25 @@
+.slider-div {
+  border-radius: 15px;
+}
+.slider-item-div {
+  padding: 15px;
+  text-align: center;
+}
+.slider-item {
+  background: rgba(33, 37, 41, 0.25);
+  padding: 20px;
+  border-radius: 20px;
+  width: 100%;
+
+  text-align: center;
+  transition: 0.5s;
+}
+.slider-item:hover {
+  box-shadow: 7px 7px 25px 6px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 7px 7px 25px 6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 7px 7px 25px 6px rgba(0, 0, 0, 0.75);
+}
+
+.dots{
+    color: red;
+}
