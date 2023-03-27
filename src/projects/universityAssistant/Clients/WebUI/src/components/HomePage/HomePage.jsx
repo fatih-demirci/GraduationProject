@@ -1,10 +1,13 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import Decor from "../common/Decor/Decor";
 import Navbar from "../common/Navbar/Navbar";
 import PopupComponent from "../common/popupBox/PopupComponent";
 import Signin from "../SignIn/Signin";
 import "./HomePage.css";
 const HomePage = () => {
+  const [first, setfirst] = useState("")
+  axios.get("").then(res => console.log(res)).catch(err => console.log(err))
   return (
     <div className="home-page">
       {/* <div className="home-page-h1-div">

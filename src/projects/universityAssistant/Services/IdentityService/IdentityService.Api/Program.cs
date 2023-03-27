@@ -53,7 +53,7 @@ var app = builder.Build();
 
 await app.MigrateDbContext<IdentityServiceContext>(async (context, services) =>
 {
-    var logger = services.GetService<ILogger<IdentityServiceContextSeed>>();
+    var logger = services.GetService<ILogger<IdentityServiceContextSeed>>(); 
     var dbContextSeeder = new IdentityServiceContextSeed();
 
     await dbContextSeeder.SeedAsync(context, logger);

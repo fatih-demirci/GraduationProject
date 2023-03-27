@@ -4,8 +4,16 @@ import "./Signin.css";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import InputField from "../common/InputField/InputField";
+import axios from "axios";
 
 const Signin = () => {
+  console.log(process.env.REACT_APP_API_URL + "/Auth/Login");
+
+  axios.post(process.env.REACT_APP_API_URL + "/Auth/Login",{
+    email:"asd@asd.com",
+    password:"123456"
+  }).then(res => console.log(res)).catch(err => console.log(err))
+  
   return (
     <div className="div">
       {/* <div class="background">
@@ -21,6 +29,7 @@ const Signin = () => {
             type="text"
             placeholder="Kullanıcı adı"
             id="username"
+
           />
         </div>
 
