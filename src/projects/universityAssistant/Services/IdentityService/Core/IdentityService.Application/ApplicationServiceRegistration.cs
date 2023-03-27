@@ -1,13 +1,11 @@
-﻿using Core.Application.Pipelines.Validation;
+﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using IdentityService.Application.Features.Auths.DomainEventHandlers;
-using IdentityService.Application.Features.Auths.Rules;
-using IdentityService.Application.Features.Auths.Utils.Hashing;
-using IdentityService.Application.Features.Auths.Utils.Jwt;
+using IdentityService.Application.Features.Auths.Rules;using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Application.Services.AuthServices;
 using IdentityService.Application.Services.RefreshTokenServices;
 using IdentityService.Application.Services.UserOperationClaimServices;
-using IdentityService.Domain.Events;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -28,6 +26,7 @@ namespace IdentityService.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
 
             services.AddScoped<ITokenHelper, TokenHelper>();
             services.AddScoped<IAuthService, AuthManager>();
