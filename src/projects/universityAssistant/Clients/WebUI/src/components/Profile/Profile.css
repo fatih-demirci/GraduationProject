@@ -1,0 +1,54 @@
+.filter-overlay-profile {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    height: 100%;
+    background: rgba(33, 37, 41, 0.35);
+    
+  }
+  .profile-user-info{
+    color: black;
+   padding: 10px;
+    /* width: 40%; */
+    width: auto;
+    position: absolute;
+  
+    top: 20%;
+    left: 10%;
+    
+    border-radius: 20px;
+  }
+  
+  .profile-user-info-img{
+    background-color: white;
+    padding: 10px;
+    width: 50px;
+    border-radius: 50%;
+  }
+  .profile-username-div{
+    display:table;
+
+
+  }
+  .profile-username{
+    display: table-cell; 
+  vertical-align: middle;
+  }
+  .profile-user-forum-shares{
+    
+    position: absolute;
+  width: 80%;
+    top: 40%;
+    /* left: 50%; */
+    left: 10%;
+   
+    border-radius: 20px;
+
+  }
+  .profile-user-forum-shares-text{
+    text-align: center;
+    padding: 10px;
+  }
+  .carousel-img{
+    width: 200px;
+    height: 200px;
+  }

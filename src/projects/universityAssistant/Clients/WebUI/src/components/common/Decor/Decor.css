@@ -1,0 +1,106 @@
+.deco-blue-circle {
+  z-index: -1;
+  position: absolute;
+  top: 28rem;
+  left: 4rem;
+  display: block;
+  width: 5rem;
+  height: 5rem;
+}
+.deco-green-dia {
+  z-index: -1;
+  position: absolute;
+  top: 6rem;
+  left: 8rem;
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.deco-white-circle-1 {
+  z-index: -2;
+  position: absolute;
+  top: 20rem;
+  left: -15rem;
+  display: block;
+  width: 21rem;
+  height: 23rem;
+}
+.deco-white-circle-2 {
+  z-index: -1;
+  position: absolute;
+  top: 23rem;
+  right: -12rem;
+  display: block;
+  width: 23rem;
+  height: 23rem;
+}
+.deco-yellow-circle {
+  z-index: -1;
+  position: absolute;
+  top: 12rem;
+  right: 5.5rem;
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+@media screen and (max-width: 992px) {
+  .deco-blue-circle {
+    z-index: -1;
+    position: absolute;
+    top: 28rem;
+    left: 5rem;
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    opacity: 0.5;
+    display: none;
+
+  }
+  .deco-green-dia {
+    z-index: -1;
+    position: absolute;
+    top: 5rem;
+    left: 4rem;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    opacity: 0.5;
+    display: none;
+
+  }
+  .deco-white-circle-1 {
+    z-index: -2;
+    position: absolute;
+    top: 20rem;
+    left: -12rem;
+    display: block;
+    width: 21rem;
+    height: 23rem;
+    display: none;
+
+  }
+  .deco-white-circle-2 {
+    z-index: -1;
+    position: absolute;
+    top: 23rem;
+    right: -12rem;
+    display: block;
+    width: 23rem;
+    height: 23rem;
+    display: none;
+
+  }
+  .deco-yellow-circle {
+    z-index: -1;
+    position: absolute;
+    top: 15rem;
+    right: 4.5rem;
+    display: block;
+    width: 3.5rem;
+    height: 3.5rem;
+    opacity: 0.5;
+    display: none;
+
+  }
+}

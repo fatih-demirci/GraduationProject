@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Domain", "src\projects\universityAssistant\Services\IdentityService\Core\IdentityService.Domain\IdentityService.Domain.csproj", "{37EE6564-4F15-43AD-8FF1-131EB53EC152}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{D606E9B3-EE5E-498C-A7F8-2608F6244DDA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Domain", "src\projects\universityAssistant\Services\IdentityService\Core\IdentityService.Domain\IdentityService.Domain.csproj", "{37EE6564-4F15-43AD-8FF1-131EB53EC152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -133,7 +133,6 @@ Global
 		{D2C98560-8544-46C3-8BFB-F600C8185083} = {EA18C5DF-5B67-467D-9512-84B3A90D1DFD}
 		{8DC85047-C1A6-4CCD-87FE-763039A8A27D} = {2BBF1E2A-0D12-4827-8CFA-D36C4317C36C}
 		{37EE6564-4F15-43AD-8FF1-131EB53EC152} = {2BBF1E2A-0D12-4827-8CFA-D36C4317C36C}
-		{D606E9B3-EE5E-498C-A7F8-2608F6244DDA} = {2FE7DA4D-953E-44CF-AA48-080AA96C1526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}
