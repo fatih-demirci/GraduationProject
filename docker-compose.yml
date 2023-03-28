@@ -1,6 +1,12 @@
 version: '3.4'
 
 services:
+  web.ui:
+    container_name: c_webui
+    image: ${DOCKER_REGISTRY-}webui
+    build:
+      dockerfile: "src/projects/universityAssistant/Clients/webui/Dockerfile"
+
   web.apigateway:
     container_name: c_apigateway
     image: ${DOCKER_REGISTRY-}webapigateway

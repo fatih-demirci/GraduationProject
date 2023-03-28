@@ -1,6 +1,14 @@
 version: '3.4'
 
 services:
+  web.ui:
+    environment:
+      - "NODE_ENV=production"
+    ports:
+      - "80:80"
+    networks:
+      - net_apigateway
+
   web.apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
@@ -38,7 +46,6 @@ services:
        - 8600:8600/udp
      networks:
        - net_apigateway
-       - net_frontend
        - net_backendservices
 
   s_sqlserver:
@@ -56,9 +63,6 @@ services:
 
 networks:
   net_apigateway:
-    driver: bridge
-    external: true
-  net_frontend:
     driver: bridge
     external: true
   net_backendservices:

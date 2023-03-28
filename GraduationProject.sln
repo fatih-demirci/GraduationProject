@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService.Domain", "src\projects\universityAssistant\Services\IdentityService\Core\IdentityService.Domain\IdentityService.Domain.csproj", "{37EE6564-4F15-43AD-8FF1-131EB53EC152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService.Domain", "src\projects\universityAssistant\Services\IdentityService\Core\IdentityService.Domain\IdentityService.Domain.csproj", "{37EE6564-4F15-43AD-8FF1-131EB53EC152}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "webui", "src\projects\universityAssistant\Clients\webui\webui.esproj", "{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,6 +107,12 @@ Global
 		{37EE6564-4F15-43AD-8FF1-131EB53EC152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37EE6564-4F15-43AD-8FF1-131EB53EC152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37EE6564-4F15-43AD-8FF1-131EB53EC152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -133,6 +139,7 @@ Global
 		{D2C98560-8544-46C3-8BFB-F600C8185083} = {EA18C5DF-5B67-467D-9512-84B3A90D1DFD}
 		{8DC85047-C1A6-4CCD-87FE-763039A8A27D} = {2BBF1E2A-0D12-4827-8CFA-D36C4317C36C}
 		{37EE6564-4F15-43AD-8FF1-131EB53EC152} = {2BBF1E2A-0D12-4827-8CFA-D36C4317C36C}
+		{E3BFAD72-D7BB-4B6A-91F6-F9C71708C483} = {2FE7DA4D-953E-44CF-AA48-080AA96C1526}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}

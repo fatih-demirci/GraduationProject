@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "Core.CrossCuttingConcerns": {
+    "IdentityService.Persistence": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:55493;http://localhost:55494"
+      "applicationUrl": "https://localhost:60635;http://localhost:60642"
     }
   }
 }
