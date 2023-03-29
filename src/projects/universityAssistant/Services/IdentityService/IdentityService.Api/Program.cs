@@ -1,3 +1,4 @@
+using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Extensions;
 using IdentityService.Api.Extensions.Auth;
 using IdentityService.Api.Extensions.HealthCheck;
@@ -51,9 +52,11 @@ builder.Services.ConfigureAuth(builder.Configuration);
 
 var app = builder.Build();
 
+app.ConfigureCustomExceptionMiddleware();
+
 await app.MigrateDbContext<IdentityServiceContext>(async (context, services) =>
 {
-    var logger = services.GetService<ILogger<IdentityServiceContextSeed>>(); 
+    var logger = services.GetService<ILogger<IdentityServiceContextSeed>>();
     var dbContextSeeder = new IdentityServiceContextSeed();
 
     await dbContextSeeder.SeedAsync(context, logger);
