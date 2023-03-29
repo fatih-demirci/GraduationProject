@@ -15,8 +15,7 @@ namespace IdentityService.Application.Features.Users.Profiles
         public MappingProfiles()
         {
             CreateMap<UserUpdateCommandRequest, User>();
-            CreateMap<User, UserUpdateResponseDto>()
-                .ForMember(x => x.FullName, y => y.MapFrom(z => $"{z.FirstName} {z.LastName}"));
+            CreateMap<User, UserUpdateResponseDto>();
         }
     }
 }

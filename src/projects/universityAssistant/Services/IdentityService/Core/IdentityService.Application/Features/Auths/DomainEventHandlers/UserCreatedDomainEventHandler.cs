@@ -26,6 +26,7 @@ namespace IdentityService.Application.Features.Auths.DomainEventHandlers
         public async Task Handle(UserCreatedDomainEvent notification, CancellationToken cancellationToken)
         {
             await _authBusinessRules.EmailAddressCanNotBeDuplicated(notification.User.Email);
+            await _authBusinessRules.UserNameCanNotBeDuplicated(notification.User.UserName);
 
             HashingHelper.CreatePasswordHash(notification.Password, out byte[] passwordHash, out byte[] passwordSalt);
             notification.User.PasswordHash = passwordHash;

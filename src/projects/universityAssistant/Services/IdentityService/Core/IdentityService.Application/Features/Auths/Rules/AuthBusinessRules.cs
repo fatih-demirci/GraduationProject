@@ -25,6 +25,12 @@ namespace IdentityService.Application.Features.Auths.Rules
             if (user != null) throw new BusinessException("Email address exists");
         }
 
+        public async Task UserNameCanNotBeDuplicated(string userName)
+        {
+            User? user = await _userRepository.GetAsync(u => u.UserName == userName);
+            if (user != null) throw new BusinessException("User name exists");
+        }
+
         public async Task<User> VerifyPassword(string email, string password)
         {
             User? user = await _userRepository.GetAsync(u => u.Email == email) ?? throw new BusinessException("Email address does not exists.");

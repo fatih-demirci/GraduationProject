@@ -76,7 +76,7 @@ namespace IdentityService.Application.Features.Auths.Utils.Jwt
             List<Claim> claims = new();
             claims.AddNameIdentifier(user.Id.ToString());
             claims.AddEmail(user.Email);
-            claims.AddName($"{user.FirstName} {user.LastName}");
+            claims.AddName($"{user.UserName}");
             claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
             return claims;
         }

@@ -12,9 +12,7 @@ namespace IdentityService.Application.Features.Users.Commands.Update
 {
     public class UserUpdateCommandRequest : IRequest<UserUpdateResponseDto>, ISecuredRequest
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
+        public string UserName { get; set; }
         public string[] Roles => new string[] { DbRoles.USER, DbRoles.ADMIN, DbRoles.SUPERADMIN };
     }
 }

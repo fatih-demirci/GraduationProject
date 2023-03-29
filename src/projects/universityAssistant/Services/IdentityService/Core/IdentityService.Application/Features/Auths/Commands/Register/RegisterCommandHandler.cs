@@ -33,8 +33,7 @@ namespace IdentityService.Application.Features.Auths.Commands.Register
             {
                 Email = request.Email,
                 AuthenticatorType = Domain.Enums.AuthenticatorType.None,
-                FirstName = request.FirstName,
-                LastName = request.LastName,
+                UserName = request.UserName,
                 Status = true,
             };
             _userRepository.Add(userToBeAdded);

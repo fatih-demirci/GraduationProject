@@ -11,8 +11,7 @@ namespace IdentityService.Application.Features.Users.Commands.Update
     {
         public UserUpdateCommandRequestValidator()
         {
-            RuleFor(i => i.FirstName).MinimumLength(3);
-            RuleFor(i => i.LastName).MinimumLength(3);
+            RuleFor(i => i.UserName).MinimumLength(5);
         }
     }
 }
