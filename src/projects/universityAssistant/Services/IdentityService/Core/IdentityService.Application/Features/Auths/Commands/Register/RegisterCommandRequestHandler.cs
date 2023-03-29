@@ -14,16 +14,14 @@ using System.Threading.Tasks;
 
 namespace IdentityService.Application.Features.Auths.Commands.Register
 {
-    public class RegisterCommandHandler : IRequestHandler<RegisterCommandRequest, LoginResponseDto>
+    public class RegisterCommandRequestHandler : IRequestHandler<RegisterCommandRequest, LoginResponseDto>
     {
         IUserRepository _userRepository;
-        IAuthService _authService;
         IMediator _mediator;
 
-        public RegisterCommandHandler(IUserRepository userRepository, IAuthService authService, IMediator mediator)
+        public RegisterCommandRequestHandler(IUserRepository userRepository, IAuthService authService, IMediator mediator)
         {
             _userRepository = userRepository;
-            _authService = authService;
             _mediator = mediator;
         }
 
