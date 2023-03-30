@@ -61,6 +61,16 @@ services:
     networks:
       - net_backendservices
 
+  s_rabbitmq:
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    networks:
+      - net_backendservices
+      - net_apigateway
+
 networks:
   net_apigateway:
     driver: bridge
@@ -72,5 +82,6 @@ networks:
 volumes:
   sqlserver_data:
   sqlserver_log:
+  rabbitmq:
 
 

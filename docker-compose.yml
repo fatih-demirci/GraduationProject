@@ -28,3 +28,7 @@ services:
   s_sqlserver:
     container_name: c_sqlserver
     image: mcr.microsoft.com/mssql/server:2022-latest
+
+  s_rabbitmq:
+    container_name: c_rabbitmq
+    image: rabbitmq:3-management
