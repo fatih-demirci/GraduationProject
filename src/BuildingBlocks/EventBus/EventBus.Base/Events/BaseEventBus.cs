@@ -27,12 +27,28 @@ namespace EventBus.Base.Events
         {
             if (EventBusConfig.DeleteEventPrefix)
             {
-                eventName = eventName.TrimStart(EventBusConfig.EventNamePrefix.ToArray());
+                if (eventName.StartsWith(EventBusConfig.EventNamePrefix))
+                {
+                    string tempEventName = "";
+                    for (int i = EventBusConfig.EventNamePrefix.Length; i < eventName.Length; i++)
+                    {
+                        tempEventName += eventName[i];
+                    }
+                    eventName = tempEventName;
+                }
             }
 
             if (EventBusConfig.DeleteEventSuffix)
             {
-                eventName = eventName.TrimEnd(EventBusConfig.EventNameSuffix.ToArray());
+                if (eventName.EndsWith(EventBusConfig.EventNameSuffix))
+                {
+                    string tempEventName = "";
+                    for (int i = 0; i < eventName.Length - EventBusConfig.EventNameSuffix.Length; i++)
+                    {
+                        tempEventName += eventName[i];
+                    }
+                    eventName = tempEventName;
+                }
             }
 
             return eventName;
