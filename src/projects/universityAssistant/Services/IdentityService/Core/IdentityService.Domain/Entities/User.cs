@@ -27,6 +27,7 @@ namespace IdentityService.Domain.Entities
         public string Email { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
+        public bool EmailConfirmed { get; set; }
         public bool Status { get; set; }
         public AuthenticatorType AuthenticatorType { get; set; }
         public ICollection<UserOperationClaim> UserOperationClaims { get; set; }

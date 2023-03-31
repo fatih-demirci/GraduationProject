@@ -8,6 +8,8 @@ using IdentityService.Application;
 using IdentityService.Persistence;
 using IdentityService.Persistence.Contexts;
 using Serilog;
+using IdentityService.Api.Extensions.EventBus;
+using Core.CrossCuttingConcerns;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +48,9 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddHealthChecks();
     services.AddPersistenceService(configuration);
     services.AddApplicationService();
+    services.AddEventBus(configuration);
+    services.AddCrossCuttingConcernServices();
+    services.AddDistributedMemoryCache();
 }
 
 builder.Services.ConfigureAuth(builder.Configuration);

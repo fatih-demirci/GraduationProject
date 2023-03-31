@@ -65,17 +65,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventBus", "EventBus", "{200C08CF-DD7A-4D44-93B5-FDA837555B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.AzureServiceBus", "src\BuildingBlocks\EventBus\EventBus.AzureServiceBus\EventBus.AzureServiceBus.csproj", "{75AE234C-3311-4B8B-B42B-9B5FF8F01E35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.AzureServiceBus", "src\BuildingBlocks\EventBus\EventBus.AzureServiceBus\EventBus.AzureServiceBus.csproj", "{75AE234C-3311-4B8B-B42B-9B5FF8F01E35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Base", "src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{90018046-70B2-45AE-9864-2B891DE2760F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Base", "src\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj", "{90018046-70B2-45AE-9864-2B891DE2760F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.Factory", "src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{B90894FA-B352-4711-B42B-990BD19A3F2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Factory", "src\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj", "{B90894FA-B352-4711-B42B-990BD19A3F2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.RabbitMQ", "src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{24BBB88F-C0D3-48FE-9D55-3164BA945E0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.RabbitMQ", "src\BuildingBlocks\EventBus\EventBus.RabbitMQ\EventBus.RabbitMQ.csproj", "{24BBB88F-C0D3-48FE-9D55-3164BA945E0E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{932295A0-BB06-409B-9FD7-27EAD0C882D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventBus.UnitTest", "tests\EventBus.UnitTest\EventBus.UnitTest.csproj", "{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "tests\EventBus.UnitTest\EventBus.UnitTest.csproj", "{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationService", "NotificationService", "{F09145F0-BF7A-4A77-90DE-C7687585A2B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.Api", "src\projects\universityAssistant\Services\NotificationService\NotificationService.Api\NotificationService.Api.csproj", "{F41773F0-43D0-4179-8422-056C840B4B71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,6 +153,10 @@ Global
 		{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41773F0-43D0-4179-8422-056C840B4B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41773F0-43D0-4179-8422-056C840B4B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41773F0-43D0-4179-8422-056C840B4B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41773F0-43D0-4179-8422-056C840B4B71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -183,6 +191,8 @@ Global
 		{B90894FA-B352-4711-B42B-990BD19A3F2F} = {200C08CF-DD7A-4D44-93B5-FDA837555B66}
 		{24BBB88F-C0D3-48FE-9D55-3164BA945E0E} = {200C08CF-DD7A-4D44-93B5-FDA837555B66}
 		{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C} = {932295A0-BB06-409B-9FD7-27EAD0C882D5}
+		{F09145F0-BF7A-4A77-90DE-C7687585A2B6} = {09844188-DCE2-45B8-9351-38918782A34B}
+		{F41773F0-43D0-4179-8422-056C840B4B71} = {F09145F0-BF7A-4A77-90DE-C7687585A2B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}
