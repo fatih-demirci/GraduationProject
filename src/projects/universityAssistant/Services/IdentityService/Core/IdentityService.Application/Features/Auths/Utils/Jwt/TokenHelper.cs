@@ -78,6 +78,7 @@ namespace IdentityService.Application.Features.Auths.Utils.Jwt
             claims.AddEmail(user.Email);
             claims.AddName($"{user.UserName}");
             claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
+            claims.AddEmailConfirmed(user.EmailConfirmed);
             return claims;
         }
     }

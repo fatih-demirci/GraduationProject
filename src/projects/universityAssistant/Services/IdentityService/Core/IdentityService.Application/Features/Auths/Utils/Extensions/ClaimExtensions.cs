@@ -29,5 +29,10 @@ namespace IdentityService.Application.Features.Auths.Utils.Extensions
         {
             roles.ToList().ForEach(role => claims.Add(new Claim(ClaimTypes.Role, role)));
         }
+
+        public static void AddEmailConfirmed(this ICollection<Claim> claims, bool emailConfirmed)
+        {
+            claims.Add(new Claim("EmailConfirmed", emailConfirmed.ToString()));
+        }
     }
 }

@@ -27,6 +27,9 @@ namespace Core.Application.Pipelines.Authorization
 
             if (roleClaims.IsNullOrEmpty()) throw new AuthenticationException("Claims not found.");
 
+            string? emailConfirmed = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(i => i.Type == "EmailConfirmed")?.Value;
+            if (!bool.Parse(emailConfirmed)) throw new AuthorizationException("Email address is not confirmed");
+
             bool isNotMatchedARoleClaimWithRequestRoles =
                 roleClaims!.FirstOrDefault(roleClaim => request.Roles.Any(role => role == roleClaim)).IsNullOrEmpty();
             if (isNotMatchedARoleClaimWithRequestRoles) throw new AuthorizationException("You are not authorized.");

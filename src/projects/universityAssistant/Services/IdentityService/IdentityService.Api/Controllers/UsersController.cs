@@ -1,4 +1,5 @@
-﻿using IdentityService.Application.Features.Users.Commands.SendEmailConfirmation;
+﻿using IdentityService.Application.Features.Users.Commands.ConfirmEmailAddress;
+using IdentityService.Application.Features.Users.Commands.SendEmailConfirmation;
 using IdentityService.Application.Features.Users.Commands.Update;
 using IdentityService.Application.Features.Users.Dtos;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,13 @@ namespace IdentityService.Api.Controllers
         public async Task<IActionResult> SendEmailConfirmation([FromQuery] SendEmailConfirmationCommandRequest request)
         {
             SendEmailConfirmationResponseDto result = await Mediator.Send(request);
+            return Ok(result);
+        }
+
+        [HttpGet("ConfirmEmailAddressWithKeyOrCode")]
+        public async Task<IActionResult> ConfirmEmailAddressWithKeyOrCode([FromQuery] ConfirmEmailAddressWithKeyOrCodeRequest request)
+        {
+            ConfirmEmailAddressWithKeyOrCodeResponseDto result = await Mediator.Send(request);
             return Ok(result);
         }
     }

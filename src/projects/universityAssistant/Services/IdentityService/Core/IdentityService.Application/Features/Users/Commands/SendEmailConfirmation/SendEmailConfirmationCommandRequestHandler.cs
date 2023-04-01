@@ -1,4 +1,5 @@
 ﻿using Core.CrossCuttingConcerns.Caching;
+using Core.CrossCuttingConcerns.Exceptions;
 using EventBus.Base.Abstraction;
 using IdentityService.Application.Constants;
 using IdentityService.Application.Extensions;
@@ -9,7 +10,6 @@ using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Caching.Distributed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,15 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
         public async Task<SendEmailConfirmationResponseDto> Handle(SendEmailConfirmationCommandRequest request, CancellationToken cancellationToken)
         {
             long userId = _httpContextAccessor.HttpContext.User.GetUserId();
+
+            if (userId == 0) { throw new AuthenticationException("Claims not found"); }
+
             User user = (await _userRepository.GetAsync(i => i.Id == userId))!;
+
+            if (user.EmailConfirmed)
+            {
+                throw new BusinessException("Email address already confirmed");
+            }
 
             string key = EmailAuthenticatorHelper.CreateEmailActivationKey();
             string code = EmailAuthenticatorHelper.CreateEmailActivationCode();

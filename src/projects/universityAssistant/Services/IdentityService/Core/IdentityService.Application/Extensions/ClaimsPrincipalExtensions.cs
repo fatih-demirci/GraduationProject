@@ -24,5 +24,10 @@ namespace IdentityService.Application.Extensions
         {
             return Convert.ToInt64(claimsPrincipal?.Claims(ClaimTypes.NameIdentifier)?.FirstOrDefault());
         }
+
+        public static string? GetEmail(this ClaimsPrincipal claimsPrincipal)
+        {
+            return claimsPrincipal?.Claims(ClaimTypes.Email)?.FirstOrDefault();
+        }
     }
 }

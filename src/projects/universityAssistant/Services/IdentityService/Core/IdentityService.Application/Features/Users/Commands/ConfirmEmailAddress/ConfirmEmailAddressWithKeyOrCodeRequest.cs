@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmation
+namespace IdentityService.Application.Features.Users.Commands.ConfirmEmailAddress
 {
-    public class SendEmailConfirmationCommandRequest : IRequest<SendEmailConfirmationResponseDto>
+    public class ConfirmEmailAddressWithKeyOrCodeRequest : IRequest<ConfirmEmailAddressWithKeyOrCodeResponseDto>
     {
-        public string KeyAddress { get; set; }
+        public string KeyOrCode { get; set; }
     }
 }
