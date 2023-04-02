@@ -2,6 +2,10 @@ using EventBus.Base.Abstraction;
 using NotificationService.Api.Extensions;
 using NotificationService.Api.IntegrationEvents.EventHandlers;
 using NotificationService.Api.IntegrationEvents.Events;
+using NotificationService.Api.Mailing;
+using NotificationService.Api.Mailing.MailDevelopment;
+using NotificationService.Api.Mailing.MailKit;
+using Core.CrossCuttingConcerns.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +25,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IMailService>(i => env == "Development" ? new MailDevelopmentManager() : new MailKitManager(builder.Configuration));
+
 builder.Services.AddEventBus(builder.Configuration);
 
 builder.Services.AddTransient<SendEmailIntegrationEventHandler>();
 
 var app = builder.Build();
+
+app.ConfigureCustomExceptionMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

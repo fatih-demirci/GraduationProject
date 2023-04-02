@@ -10,6 +10,7 @@ using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +25,15 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
         IHttpContextAccessor _httpContextAccessor;
         IUserRepository _userRepository;
         ICacheService _cacheService;
+        IConfiguration _configuration;
 
-        public SendEmailConfirmationCommandRequestHandler(IEventBus eventBus, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, ICacheService cacheService)
+        public SendEmailConfirmationCommandRequestHandler(IEventBus eventBus, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, ICacheService cacheService, IConfiguration configuration)
         {
             _eventBus = eventBus;
             _httpContextAccessor = httpContextAccessor;
             _userRepository = userRepository;
             _cacheService = cacheService;
+            _configuration = configuration;
         }
 
         public async Task<SendEmailConfirmationResponseDto> Handle(SendEmailConfirmationCommandRequest request, CancellationToken cancellationToken)
@@ -49,19 +52,17 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
             string key = EmailAuthenticatorHelper.CreateEmailActivationKey();
             string code = EmailAuthenticatorHelper.CreateEmailActivationCode();
 
+            int emailVerificationExpiration = _configuration.GetValue<int>("CacheOptions:EmailConfirmationExpiration");
+
             SendEmailIntegrationEvent @event = new(user.Email, "Confirm your email", @$"
-            <html>
-                <body>
                     <p>Hello {user.UserName} </p>
                     <p>Please enter the Code : {code}</p>
-                    <p>Or visit the link : {request.KeyAddress}{key}</p>
-                </body>
-            </html>
-            ");
+                    <p>Or visit the link : <a href={request.KeyAddress}{key}>Confirm</a></p>
+                    <p>Valid for {emailVerificationExpiration} minutes : </p>
+            ", "UniversityAssistantUser");
             await _eventBus.Publish(@event);
-
-            await _cacheService.AddAsync(CacheKeys.GetEmailConfirmationKey(@event.Email), key, 1);
-            await _cacheService.AddAsync(CacheKeys.GetEmailConfirmationCode(@event.Email), code, 1);
+            await _cacheService.AddAsync(CacheKeys.GetEmailConfirmationKey(@event.ToEmail), key, emailVerificationExpiration);
+            await _cacheService.AddAsync(CacheKeys.GetEmailConfirmationCode(@event.ToEmail), code, emailVerificationExpiration);
 
             return new SendEmailConfirmationResponseDto() { Message = "Email confirmation mail sended" };
         }
