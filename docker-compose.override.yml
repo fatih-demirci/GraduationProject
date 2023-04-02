@@ -38,6 +38,24 @@ services:
       - s_consul 
     external_links:
       - s_consul
+ 
+  notificationservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7002
+    ports:
+      - "7002:7002"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_backendservices
+      - net_host
+    depends_on:
+      - web.apigateway
+      - s_rabbitmq
+    external_links:
+      - s_rabbitmq 
 
   s_consul:
      ports:
@@ -77,6 +95,9 @@ networks:
     external: true
   net_backendservices:
     driver: bridge
+    external: true
+  net_host:
+    driver: host
     external: true
 
 volumes:

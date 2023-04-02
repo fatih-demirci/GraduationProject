@@ -21,6 +21,13 @@ services:
       context: .
       dockerfile: src/projects/universityAssistant/Services/IdentityService/IdentityService.Api/Dockerfile
 
+  notificationservice.api:
+    container_name: c_notificationservice
+    image: ${DOCKER_REGISTRY-}notificationserviceapi
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/Services/NotificationService/NotificationService.Api/Dockerfile
+
   s_consul:
     container_name: c_consul
     image: consul
