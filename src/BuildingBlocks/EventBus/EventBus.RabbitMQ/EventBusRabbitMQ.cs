@@ -19,6 +19,7 @@ namespace EventBus.RabbitMQ
         private readonly RabbitMQPersistentConnection _persistentConnection;
         private readonly IConnectionFactory? _connectionFactory;
         private readonly IModel? _consumerChannel;
+
         public EventBusRabbitMQ(IServiceProvider serviceProvider, EventBusConfig eventBusConfig) : base(serviceProvider, eventBusConfig)
         {
             if (eventBusConfig.Connection != null)
@@ -165,12 +166,12 @@ namespace EventBus.RabbitMQ
             try
             {
                 await ProcessEvent(eventName, message);
+                _consumerChannel?.BasicAck(e.DeliveryTag, false);
             }
             catch (Exception)
             {
+                throw;
             }
-
-            _consumerChannel?.BasicAck(e.DeliveryTag, false);
         }
     }
 }
