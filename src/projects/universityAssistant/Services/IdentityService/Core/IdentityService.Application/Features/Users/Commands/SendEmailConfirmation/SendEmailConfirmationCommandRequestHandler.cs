@@ -58,7 +58,7 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
                     <p>Hello {user.UserName} </p>
                     <p>Please enter the Code : {code}</p>
                     <p>Or visit the link : <a href={request.KeyAddress}{key}>Confirm</a></p>
-                    <p>Valid for {emailVerificationExpiration} minutes : </p>
+                    <p>Valid for {emailVerificationExpiration} minutes</p>
             ", "UniversityAssistantUser");
             await _eventBus.Publish(@event);
             await _cacheService.AddAsync(CacheKeys.GetEmailConfirmationKey(@event.ToEmail), key, emailVerificationExpiration);
