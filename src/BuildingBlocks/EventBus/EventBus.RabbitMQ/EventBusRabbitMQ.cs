@@ -166,12 +166,12 @@ namespace EventBus.RabbitMQ
             try
             {
                 await ProcessEvent(eventName, message);
-                _consumerChannel?.BasicAck(e.DeliveryTag, false);
             }
             catch (Exception)
             {
-                throw;
+
             }
+            _consumerChannel?.BasicAck(e.DeliveryTag, false);
         }
     }
 }
