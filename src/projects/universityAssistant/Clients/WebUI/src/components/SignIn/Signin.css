@@ -159,11 +159,19 @@ body{
     width: 100%;
     background-color: #ffffff;
     color: #080710;
-    padding: 15px 0;
+    /* padding: 15px 0; */
     font-size: 18px;
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
 }
 .signin-button-div{
   display: flex;
@@ -171,6 +179,15 @@ body{
   justify-content: center;
 }
 .signin-button{
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  font-weight: 600;
+  margin: 0 10px;
+  width: 200px;
+  padding: 10px 0;
+  box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+  transition: 0.4s;
   font-size: 15px;
   
     color: rgb(104, 85, 224);

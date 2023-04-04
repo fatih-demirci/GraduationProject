@@ -8,6 +8,7 @@ import Signup from "./SignUp/Signup";
 import Profile from "./Profile/Profile";
 import Decor from "./common/Decor/Decor";
 import ForumPage from "./ForumPage/ForumPage";
+import UniversityGuide from "./UniversityGuide/UniversityGuide";
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
           <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
           <Route path="/forum" element={<ForumPage/>}></Route>
+          <Route path="/university-guide" element={<UniversityGuide/>}></Route>
         </Routes>
         
 

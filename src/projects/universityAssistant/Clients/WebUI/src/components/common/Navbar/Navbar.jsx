@@ -8,7 +8,7 @@ const Navbar = () => {
       <nav class="navbar navbar-expand-lg fixed-top  navbar-custom container">
         <div class="container-fluid d-flex justify-content-between">
           <a class="navbar-brand" href="/">
-            Navbar
+            Üniversite Asistanı
           </a>
           <button
             class="navbar-toggler"
@@ -31,7 +31,7 @@ const Navbar = () => {
                     <a class="nav-link" href="/forum">Forum</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#gallary">Üniversite Rehber</a>
+                    <a class="nav-link" href="/university-guide">Üniversite Rehber</a>
                 </li>
                
             </ul>
@@ -43,14 +43,14 @@ const Navbar = () => {
                 <li class="nav-item">
                     <a href="/signup" class="nav-link ">Üye Ol</a>
                 </li>
-                <li class="nav-item">
+                {/* <li class="nav-item">
                     <a href="/profile" class="nav-link d-flex ">
                       <img className="navbar-user-png" src="img/userpng.png" alt="" />
                       <div className="ms-2">
                       username123
                       </div>
                     </a>
-                </li>
+                </li> */}
                 
                 
             </ul>

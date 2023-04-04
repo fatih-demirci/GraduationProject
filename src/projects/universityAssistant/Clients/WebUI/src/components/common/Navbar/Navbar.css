@@ -5,7 +5,7 @@
     /* opacity: 0.1; */
 }
 .navbar-custom{
-    z-index: 99999;
+    /* z-index: 99999; */
     background-color: #f7fafd;
 	/* box-shadow: 0 0.0625rem 0.375rem 0 rgba(0, 0, 0, 0.1); */
 	transition: all 0.2s;
