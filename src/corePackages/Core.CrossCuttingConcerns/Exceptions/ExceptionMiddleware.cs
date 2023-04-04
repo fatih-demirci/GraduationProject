@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 
 namespace Core.CrossCuttingConcerns.Exceptions
 {
@@ -51,7 +51,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
             {
                 Status = StatusCodes.Status403Forbidden,
                 Type = "https://example.com/probs/authorization",
-                Title = "Authorization exception",
+                Title = CultureInfo.CurrentCulture.Name == "en-US" ? "Authorization exception" : "Yetkilendirme istisnası",
                 Detail = exception.Message,
                 Instance = ""
             }.ToString());
@@ -65,7 +65,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
             {
                 Status = StatusCodes.Status401Unauthorized,
                 Type = "https://example.com/probs/authorization",
-                Title = "Authentication exception",
+                Title = CultureInfo.CurrentCulture.Name == "en-US" ? "Authentication exception" : "Kimlik doğrulama istisnası",
                 Detail = exception.Message,
                 Instance = ""
             }.ToString());
@@ -94,7 +94,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
             {
                 Status = StatusCodes.Status400BadRequest,
                 Type = "https://example.com/probs/validation",
-                Title = "Validation error(s)",
+                Title = CultureInfo.CurrentCulture.Name == "en-US" ? "Validation error(s)" : "Doğrulama hata(ları)",
                 Detail = "",
                 Instance = "",
                 Errors = errors
@@ -109,7 +109,7 @@ namespace Core.CrossCuttingConcerns.Exceptions
             {
                 Status = StatusCodes.Status500InternalServerError,
                 Type = "https://example.com/probs/internal",
-                Title = "Internal exception",
+                Title = CultureInfo.CurrentCulture.Name == "en-US" ? "Internal exception" : "İç istisna",
                 Detail = exception.Message,
                 Instance = ""
             }.ToString());

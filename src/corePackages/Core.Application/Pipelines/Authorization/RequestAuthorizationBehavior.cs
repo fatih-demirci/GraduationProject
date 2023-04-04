@@ -1,4 +1,5 @@
-﻿using Core.CrossCuttingConcerns.Exceptions;
+﻿using Core.Application.Languages;
+using Core.CrossCuttingConcerns.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
@@ -25,14 +26,14 @@ namespace Core.Application.Pipelines.Authorization
         {
             List<string>? roleClaims = _httpContextAccessor.HttpContext.User.FindAll(ClaimTypes.Role)?.Select(x => x.Value).ToList();
 
-            if (roleClaims.IsNullOrEmpty()) throw new AuthenticationException("Claims not found.");
+            if (roleClaims.IsNullOrEmpty()) throw new AuthenticationException(Messages.ClaimsNotFound);
 
             string? emailConfirmed = _httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(i => i.Type == "EmailConfirmed")?.Value;
-            if (!bool.Parse(emailConfirmed)) throw new AuthorizationException("Email address is not confirmed");
+            if (!bool.Parse(emailConfirmed)) throw new AuthorizationException(Messages.EmailAddressIsNotConfirmed);
 
             bool isNotMatchedARoleClaimWithRequestRoles =
                 roleClaims!.FirstOrDefault(roleClaim => request.Roles.Any(role => role == roleClaim)).IsNullOrEmpty();
-            if (isNotMatchedARoleClaimWithRequestRoles) throw new AuthorizationException("You are not authorized.");
+            if (isNotMatchedARoleClaimWithRequestRoles) throw new AuthorizationException(Messages.YouAreNotAuthorized);
 
             TResponse response = await next();
             return response;

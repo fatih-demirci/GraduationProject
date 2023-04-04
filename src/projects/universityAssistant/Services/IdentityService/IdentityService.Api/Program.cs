@@ -10,6 +10,8 @@ using IdentityService.Persistence.Contexts;
 using Serilog;
 using IdentityService.Api.Extensions.EventBus;
 using Core.CrossCuttingConcerns;
+using IdentityService.Api.Extensions.Localization;
+using IdentityService.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,11 +53,18 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddEventBus(configuration);
     services.AddCrossCuttingConcernServices();
     services.AddDistributedMemoryCache();
+    services.AddControllersWithViews().AddViewLocalization();
+    services.ConfigureLocalization();
+    services.AddScoped<RequestLocalizationCookiesMiddleware>();
 }
 
 builder.Services.ConfigureAuth(builder.Configuration);
 
 var app = builder.Build();
+
+app.UseRequestLocalization();
+
+app.UseRequestLocalizationCookies();
 
 app.ConfigureCustomExceptionMiddleware();
 
