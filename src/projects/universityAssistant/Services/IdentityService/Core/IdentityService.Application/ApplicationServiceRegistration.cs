@@ -2,7 +2,9 @@
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using IdentityService.Application.Features.Auths.DomainEventHandlers;
-using IdentityService.Application.Features.Auths.Rules;using IdentityService.Application.Features.Auths.Utils.Jwt;
+using IdentityService.Application.Features.Auths.Rules;
+using IdentityService.Application.Features.Auths.Utils.Jwt;
+using IdentityService.Application.Features.Users.Rules;
 using IdentityService.Application.Services.AuthServices;
 using IdentityService.Application.Services.RefreshTokenServices;
 using IdentityService.Application.Services.UserOperationClaimServices;
@@ -33,6 +35,7 @@ namespace IdentityService.Application
             services.AddScoped<IRefreshTokenService, RefreshTokenManager>();
             services.AddScoped<IUserOperationClaimService, UserOperationClaimManager>();
             services.AddScoped<AuthBusinessRules>();
+            services.AddScoped<UserBusinessRules>();
 
             services.AddScoped<UserCreatedDomainEventHandler>();
             return services;

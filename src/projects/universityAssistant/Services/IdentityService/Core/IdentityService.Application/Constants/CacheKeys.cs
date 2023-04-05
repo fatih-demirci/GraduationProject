@@ -16,5 +16,9 @@ namespace IdentityService.Application.Constants
         {
             return $"emailconfirmationcodeid:{id}:";
         }
+        public static string GetResetToken(string id)
+        {
+            return $"resettokenid:{id}:";
+        }
     }
 }

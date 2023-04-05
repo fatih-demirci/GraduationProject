@@ -159,10 +159,28 @@
   <data name="InvalidConfirmationKeyOrCode" xml:space="preserve">
     <value>Geçersiz onay kodu</value>
   </data>
+  <data name="InvalidResetToken" xml:space="preserve">
+    <value>Geçersiz anahtar</value>
+  </data>
   <data name="PasswordIncorrect" xml:space="preserve">
     <value>Parola yanlış</value>
   </data>
+  <data name="ResetMyPassword" xml:space="preserve">
+    <value>Parolamı sıfırla</value>
+  </data>
+  <data name="ResetTokenMessage" xml:space="preserve">
+    <value>Parolanızı yenilemek için lütfen bağlantıya gidiniz</value>
+  </data>
+  <data name="ResetTokenSent" xml:space="preserve">
+    <value>Parola yenileme emaili gönderildi</value>
+  </data>
+  <data name="ResetTokenSubject" xml:space="preserve">
+    <value>Parolayı yenile</value>
+  </data>
   <data name="UserNameExists" xml:space="preserve">
     <value>Kullanıcı adı mevcut</value>
+  </data>
+  <data name="UserShouldBeExist" xml:space="preserve">
+    <value>Kullanıcı bulunamadı</value>
   </data>
 </root>

@@ -19,9 +19,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmation
+namespace IdentityService.Application.Features.Users.Queries.SendEmailConfirmation
 {
-    internal class SendEmailConfirmationCommandRequestHandler : IRequestHandler<SendEmailConfirmationCommandRequest, SendEmailConfirmationResponseDto>
+    internal class SendEmailConfirmationQueryRequestHandler : IRequestHandler<SendEmailConfirmationQueryRequest, SendEmailConfirmationResponseDto>
     {
         private readonly IEventBus _eventBus;
         private readonly IHttpContextAccessor _httpContextAccessor;
@@ -30,7 +30,7 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
         private readonly IConfiguration _configuration;
         private readonly IStringLocalizer<Lang> _localizer;
 
-        public SendEmailConfirmationCommandRequestHandler(IEventBus eventBus, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, ICacheService cacheService, IConfiguration configuration, IStringLocalizer<Lang> localizer)
+        public SendEmailConfirmationQueryRequestHandler(IEventBus eventBus, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository, ICacheService cacheService, IConfiguration configuration, IStringLocalizer<Lang> localizer)
         {
             _eventBus = eventBus;
             _httpContextAccessor = httpContextAccessor;
@@ -40,7 +40,7 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
             _localizer = localizer;
         }
 
-        public async Task<SendEmailConfirmationResponseDto> Handle(SendEmailConfirmationCommandRequest request, CancellationToken cancellationToken)
+        public async Task<SendEmailConfirmationResponseDto> Handle(SendEmailConfirmationQueryRequest request, CancellationToken cancellationToken)
         {
             long userId = _httpContextAccessor.HttpContext.User.GetUserId();
 
@@ -61,7 +61,7 @@ namespace IdentityService.Application.Features.Users.Commands.SendEmailConfirmat
             SendEmailIntegrationEvent @event = new(user.Email, _localizer["ConfirmEmailSubject"], @$"
                     <p>{_localizer["ConfirmEmailHello"]} {user.UserName} </p>
                     <p>{_localizer["ConfirmEmailPleaseEnterTheCode"]} : {code}</p>
-                    <p>{_localizer["ConfirmEmailOrVisitTheLink"]} : <a href={request.KeyAddress}{key}>{_localizer["Confirm"]}</a></p>
+                    <p>{_localizer["ConfirmEmailOrVisitTheLink"]} : <a href={_configuration.GetValue<string>("FrontEndOptions:EmailConfirmationAddress")}{key}>{_localizer["Confirm"]}</a></p>
                     <p>{_localizer["ConfirmEmailValidFor"]} {emailVerificationExpiration} {_localizer["ConfirmEmailMinutes"]}</p>
             ", "UniversityAssistantUser");
             await _eventBus.Publish(@event);

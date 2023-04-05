@@ -159,10 +159,28 @@
   <data name="InvalidConfirmationKeyOrCode" xml:space="preserve">
     <value>Invalid confirmation code</value>
   </data>
+  <data name="InvalidResetToken" xml:space="preserve">
+    <value>Invalid reset token</value>
+  </data>
   <data name="PasswordIncorrect" xml:space="preserve">
     <value>Password incorrect</value>
   </data>
+  <data name="ResetMyPassword" xml:space="preserve">
+    <value>Reset my password</value>
+  </data>
+  <data name="ResetTokenMessage" xml:space="preserve">
+    <value>Please visit the link to reset your password</value>
+  </data>
+  <data name="ResetTokenSent" xml:space="preserve">
+    <value>Password reset email sent</value>
+  </data>
+  <data name="ResetTokenSubject" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
   <data name="UserNameExists" xml:space="preserve">
     <value>User name exists</value>
+  </data>
+  <data name="UserShouldBeExist" xml:space="preserve">
+    <value>User not found</value>
   </data>
 </root>
