@@ -1,26 +1,32 @@
 
-import React from "react";
+import React, { useState } from "react";
 import "./Signin.css";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import InputField from "../common/InputField/InputField";
 import axios from "axios";
+import AuthServices from "../../Services/AuthServices";
 
 const Signin = () => {
-  console.log(process.env.REACT_APP_API_URL + "/Auth/Login");
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
 
-  axios.post(process.env.REACT_APP_API_URL + "/Auth/Login",{
-    email:"asd@asd.com",
-    password:"123456"
-  }).then(res => console.log(res)).catch(err => console.log(err))
+  let authServices = new AuthServices();
   
+  function login(e) {
+    e.preventDefault()
+    authServices.Login(username,password)
+    
+  } 
+  console.log(username);
+  console.log(password);
   return (
     <div className="div">
       {/* <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div> */}
-      <form className="signin-form">
+      <form onSubmit={login} className="signin-form">
         <h3>Giriş Yap</h3>
         <div className="signin-form-input-div">
           <FaUser className="signin-fa-user" />
@@ -29,6 +35,8 @@ const Signin = () => {
             type="text"
             placeholder="Kullanıcı adı"
             id="username"
+            value={username}
+            setState={setUsername}
 
           />
         </div>
@@ -40,6 +48,8 @@ const Signin = () => {
             type="password"
             placeholder="Parola"
             id="password"
+            value={password}
+            setState={setPassword}
           />
         </div>
         <div className="signin-button-div mt-4 button">

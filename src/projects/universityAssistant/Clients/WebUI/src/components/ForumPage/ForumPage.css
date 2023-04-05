@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+.forum-page-main-div{
+    margin-top: 140px;
+}
+.roww{
+    /* width: 100%; */
+}
+/* .forum-tag-button-group{
+    width: 20%;
+}
+.forum-question-component{
+    width: 70%;
+} */
+.forum-tag-button-group{
+    display: flex;
+    flex-direction: column;
+}
+.forum-tag-button{
+    margin-top: 5px;
+}
+.forum-question-component{
+    display: flex;
+    position: relative;
+    padding: 5px;
+    transition: all .2s ease-in-out; 
+    -webkit-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    border-radius: 7px;
+}
+
+.forum-question-component:hover{
+    transform: scale(1.02); 
+  }
+.forum-question-component:not(:first-child) {
+    margin-top:15px;
+  }
+
+  .forum-question-component-text{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+
+  }
+  .forum-question-component-user-img{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+  .forum-question-component-tag{
+    width: 130px;
+    font-family: 'Nunito', sans-serif;
+font-weight: bold;
+    position: absolute;
+    font-size: 11px;
+    right: 9%;
+    top: 20%;
+    background-color: rgba(104, 85, 224, 1);
+    color: white;
+    padding: 5px;
+    border-radius: 6px;
+  }
+  .forum-question-component-comment-count{
+    position: absolute;
+    top: 20%;
+    right: 1.7%;
+  }
+  @media screen and (max-width: 992px) {
+    .forum-tag-button-group{
+        /* display: none; */
+    }
+    .forum-question-component{
+        padding: 15px;
+    }
+    .forum-question-component-text{
+        margin: 20px;
+        font-size: 13px
+    }
+    .forum-question-component-tag{
+        left: 18%;
+        top: 62%;
+        font-size: 9.5px;
+        width: 115px;
+        height: 20px;
+
+    }
+    .forum-question-component-comment-count{
+       left: 58%;
+        top: 60%;
+        right: 1.7%;
+      }
+ }

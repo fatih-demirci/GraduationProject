@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import InputField from '../common/InputField/InputField'
 import "../SignIn/Signin.css"
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
 import {AiOutlineMail} from "react-icons/ai"
+import AuthServices from '../../Services/AuthServices';
 const Signup = () => {
+  let authServices = new AuthServices()
+  const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  function register(e) {
+    e.preventDefault()
+    authServices.Register(username,email,password)
+    
+  }
   return (
     <div className="div">
-    {/* <div class="background">
-      <div class="shape"></div>
-      <div class="shape"></div>
-  </div> */}
-    <form className="signin-form">
+    
+    <form onSubmit={register} className="signin-form">
       <h3>Üye Ol</h3>
       <div className="signin-form-input-div">
         <FaUser className="signin-fa-user" />
@@ -20,6 +28,8 @@ const Signup = () => {
           type="text"
           placeholder="Kullanıcı adı"
           id="username"
+          value={username}
+          setState={setUsername}
         />
       </div>
       <div className="signin-form-input-div">
@@ -29,6 +39,9 @@ const Signup = () => {
           type="text"
           placeholder="E-Posta"
           id="email"
+          value={email}
+          setState={setEmail}
+
         />
       </div>
 
@@ -39,6 +52,8 @@ const Signup = () => {
           type="password"
           placeholder="Parola"
           id="password"
+          value={password}
+          setState={setPassword}
         />
       </div>
       <div className="signin-button-div mt-4 button">
