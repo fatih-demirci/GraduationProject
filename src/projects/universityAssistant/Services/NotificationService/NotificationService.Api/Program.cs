@@ -6,6 +6,7 @@ using NotificationService.Api.Mailing;
 using NotificationService.Api.Mailing.MailDevelopment;
 using NotificationService.Api.Mailing.MailKit;
 using Core.CrossCuttingConcerns.Exceptions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile($"Configurations/appsettings.json", optional: false);
 builder.Configuration.AddJsonFile($"Configurations/appsettings.{env}.json", optional: true);
 
+builder.Configuration.AddJsonFile($"Configurations/serilog.json", optional: false);
+builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional: true);
+
 builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
@@ -24,6 +28,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Host.UseSerilog();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 builder.Services.AddSingleton<IMailService>(i => env == "Development" ? new MailDevelopmentManager() : new MailKitManager(builder.Configuration));
 
