@@ -79,7 +79,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.UnitTest", "tests\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NotificationService", "NotificationService", "{F09145F0-BF7A-4A77-90DE-C7687585A2B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.Api", "src\projects\universityAssistant\Services\NotificationService\NotificationService.Api\NotificationService.Api.csproj", "{F41773F0-43D0-4179-8422-056C840B4B71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationService.Api", "src\projects\universityAssistant\Services\NotificationService\NotificationService.Api\NotificationService.Api.csproj", "{F41773F0-43D0-4179-8422-056C840B4B71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StorageService", "StorageService", "{2217B740-3BAC-4D4F-8EDF-670C6ADDB0C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageService.Api", "src\projects\universityAssistant\Services\StorageService\StorageService.Api\StorageService.Api.csproj", "{AA42E46D-90E2-4365-83DE-B993CFC37DC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +161,10 @@ Global
 		{F41773F0-43D0-4179-8422-056C840B4B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F41773F0-43D0-4179-8422-056C840B4B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F41773F0-43D0-4179-8422-056C840B4B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA42E46D-90E2-4365-83DE-B993CFC37DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA42E46D-90E2-4365-83DE-B993CFC37DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA42E46D-90E2-4365-83DE-B993CFC37DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA42E46D-90E2-4365-83DE-B993CFC37DC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -193,6 +201,8 @@ Global
 		{2DE115AE-8B5A-4D13-BF2C-2CCD7BA9421C} = {932295A0-BB06-409B-9FD7-27EAD0C882D5}
 		{F09145F0-BF7A-4A77-90DE-C7687585A2B6} = {09844188-DCE2-45B8-9351-38918782A34B}
 		{F41773F0-43D0-4179-8422-056C840B4B71} = {F09145F0-BF7A-4A77-90DE-C7687585A2B6}
+		{2217B740-3BAC-4D4F-8EDF-670C6ADDB0C3} = {09844188-DCE2-45B8-9351-38918782A34B}
+		{AA42E46D-90E2-4365-83DE-B993CFC37DC6} = {2217B740-3BAC-4D4F-8EDF-670C6ADDB0C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}
