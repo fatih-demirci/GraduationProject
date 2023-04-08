@@ -1,6 +1,7 @@
 ﻿using IdentityService.Application.Features.Users.Commands.ConfirmEmailAddress;
 using IdentityService.Application.Features.Users.Commands.ResetPassword;
 using IdentityService.Application.Features.Users.Commands.Update;
+using IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto;
 using IdentityService.Application.Features.Users.Dtos;
 using IdentityService.Application.Features.Users.Queries.CheckResetToken;
 using IdentityService.Application.Features.Users.Queries.SendEmailConfirmation;
@@ -54,6 +55,13 @@ namespace IdentityService.Api.Controllers
         {
             await Mediator.Send(request);
             return Ok();
+        }
+
+        [HttpPost("UpdateProfilePhoto")]
+        public async Task<IActionResult> UpdateProfilePhoto(UpdateProfilePhotoCommandRequest request)
+        {
+            UpdateProfilePhotoResponseDto result = await Mediator.Send(request);
+            return Ok(result);
         }
     }
 }

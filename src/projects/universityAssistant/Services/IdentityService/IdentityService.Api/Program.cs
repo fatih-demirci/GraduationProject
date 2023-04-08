@@ -55,6 +55,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.AddDistributedMemoryCache();
     services.AddControllersWithViews().AddViewLocalization();
     services.ConfigureLocalization();
+    services.AddHttpContextAccessor();
     services.AddScoped<RequestLocalizationCookiesMiddleware>();
 }
 

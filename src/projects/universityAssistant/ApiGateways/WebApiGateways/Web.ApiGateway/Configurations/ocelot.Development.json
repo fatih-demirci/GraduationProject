@@ -12,9 +12,30 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "IdentityService",
+      "DownstreamPathTemplate": "/api/Users/UpdateProfilePhoto",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/Users/UpdateProfilePhoto",
+      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamScheme": "https",
+      "DelegatingHandlers": [
+        "UpdateProfilePhotoHandler"
+      ]
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "IdentityService",
       "DownstreamPathTemplate": "/api/Users/{everything}",
       "DownstreamScheme": "https",
       "UpstreamPathTemplate": "/Users/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "https"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "StorageService",
+      "DownstreamPathTemplate": "/api/Storages/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/Storages/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "https"
     }

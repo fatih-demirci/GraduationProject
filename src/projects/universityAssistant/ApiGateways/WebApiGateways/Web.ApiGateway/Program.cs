@@ -2,6 +2,7 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Consul;
 using Serilog;
+using Web.ApiGateway.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +21,10 @@ builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional
 
 builder.Configuration.AddEnvironmentVariables();
 
-builder.Services.AddOcelot(builder.Configuration).AddConsul();
+builder.Services.AddOcelot(builder.Configuration)
+    .AddConsul().AddDelegatingHandler<UpdateProfilePhotoHandler>();
 
+ConfigureHttpClient(builder.Services, builder.Configuration);
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -33,7 +36,22 @@ builder.Host.UseSerilog();
 
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
-    .CreateLogger();
+.CreateLogger();
+
+builder.Services.AddTransient<HttpClientDelegatingHandler>();
+
+void ConfigureHttpClient(IServiceCollection services, IConfiguration configuration)
+{
+    services.AddHttpContextAccessor();
+    services.AddHttpClient("Files", c =>
+    {
+        c.BaseAddress = new Uri(configuration["Urls:Files"]!);
+    }).AddHttpMessageHandler<HttpClientDelegatingHandler>();
+
+    services.AddHttpClient("", c =>
+    {
+    }).AddHttpMessageHandler<HttpClientDelegatingHandler>();
+}
 
 var app = builder.Build();
 
