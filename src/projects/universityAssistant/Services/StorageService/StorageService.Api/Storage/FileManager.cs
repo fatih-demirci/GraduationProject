@@ -1,10 +1,10 @@
 ﻿namespace StorageService.Api.Storage
 {
-    public class StorageManager : IStorageService
+    public class FileManager : IFileService
     {
         private readonly IStorage _storage;
 
-        public StorageManager(IStorage storage)
+        public FileManager(IStorage storage)
         {
             _storage = storage;
         }

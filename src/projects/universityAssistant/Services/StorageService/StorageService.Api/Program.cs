@@ -1,5 +1,9 @@
+using EventBus.Base.Abstraction;
+using StorageService.Api.Extensions.EventBus;
 using StorageService.Api.Extensions.HealthCheck;
 using StorageService.Api.Extensions.ServiceDiscovery;
+using StorageService.Api.IntegrationEvents.EventHandlers;
+using StorageService.Api.IntegrationEvents.Events;
 using StorageService.Api.Storage;
 using StorageService.Api.Storage.Server;
 
@@ -22,10 +26,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
+builder.Services.AddEventBus(builder.Configuration);
 
 builder.Services.AddScoped<IStorage, StorageServerManager>();
 builder.Services.AddScoped<IStorageService, StorageManager>();
 builder.Services.AddScoped<IFileService, FileManager>();
+builder.Services.AddTransient<DeleteFileIntegrationEventHandler>();
 
 var app = builder.Build();
 
@@ -46,4 +52,12 @@ app.MapControllers();
 
 app.RegisterWithConsul(builder.Configuration);
 
+await ConfigureEventBusForSubscription(app);
+
 app.Run();
+
+async Task ConfigureEventBusForSubscription(IApplicationBuilder app)
+{
+    var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+    await eventBus.Subscribe<DeleteFileIntegrationEvent, DeleteFileIntegrationEventHandler>();
+}

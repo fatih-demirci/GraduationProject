@@ -8,11 +8,11 @@ namespace StorageService.Api.Controllers
     [ApiController]
     public class FilesController : ControllerBase
     {
-        private readonly IStorageService _storageService;
+        private readonly IFileService _fileService;
 
-        public FilesController(IStorageService storageService)
+        public FilesController(IFileService fileService)
         {
-            _storageService = storageService;
+            _fileService = fileService;
         }
 
         [HttpPost("Upload")]
@@ -24,14 +24,14 @@ namespace StorageService.Api.Controllers
             {
                 storageServiceUploads.Add(new StorageServiceUpload(file, Guid.NewGuid()));
             }
-            List<StorageResult> response = await _storageService.UploadAsync(storageServiceUploads);
+            List<StorageResult> response = await _fileService.UploadAsync(storageServiceUploads);
             return Ok(response);
         }
 
         [HttpGet("Delete")]
         public async Task<IActionResult> Delete(string fileNameForStorage)
         {
-            bool response = await _storageService.DeleteAsync(fileNameForStorage);
+            bool response = await _fileService.DeleteAsync(fileNameForStorage);
             return Ok(response);
         }
     }

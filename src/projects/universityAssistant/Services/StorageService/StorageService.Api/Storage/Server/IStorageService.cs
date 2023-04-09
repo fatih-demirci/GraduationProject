@@ -1,6 +1,6 @@
 ﻿namespace StorageService.Api.Storage.Server
 {
-    public interface IFileService
+    public interface IStorageService
     {
         byte[] GetBytesByFileNameForStorage(string fileNameForStorage);
         string GetFilePathByFileNameForStorage(string fileNameForStorage);

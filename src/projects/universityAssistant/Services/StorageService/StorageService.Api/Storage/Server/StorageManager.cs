@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.StaticFiles;
 
 namespace StorageService.Api.Storage.Server
 {
-    public class FileManager : IFileService
+    public class StorageManager : IStorageService
     {
         private readonly IHostEnvironment _hostEnvironment;
 
-        public FileManager(IHostEnvironment hostEnvironment)
+        public StorageManager(IHostEnvironment hostEnvironment)
         {
             _hostEnvironment = hostEnvironment;
         }

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using StorageService.Api.Storage;
 using StorageService.Api.Storage.Server;
 
 namespace StorageService.Api.Controllers
@@ -9,37 +8,37 @@ namespace StorageService.Api.Controllers
     [ApiController]
     public class StoragesController : ControllerBase
     {
-        private readonly IFileService _fileService;
+        private readonly IStorageService _storageService;
 
-        public StoragesController(IFileService fileService)
+        public StoragesController(IStorageService storageService)
         {
-            _fileService = fileService;
+            _storageService = storageService;
         }
 
         [HttpGet("Image/GetByFileNameForStorage")]
         public IActionResult GetImageByFileNameForStorage(string fileNameForStorage)
         {
-            var buffResult = _fileService.GetBytesByFileNameForStorage(fileNameForStorage);
+            var buffResult = _storageService.GetBytesByFileNameForStorage(fileNameForStorage);
 
-            Response.ContentType = _fileService.GetMimeType(fileNameForStorage);
+            Response.ContentType = _storageService.GetMimeType(fileNameForStorage);
             return File(buffResult, Response.ContentType, true);
         }
 
         [HttpGet("Video/GetByFileNameForStorage")]
         public IActionResult GetVideoByFileNameForStorage(string fileNameForStorage)
         {
-            string filePath = _fileService.GetFilePathByFileNameForStorage(fileNameForStorage);
+            string filePath = _storageService.GetFilePathByFileNameForStorage(fileNameForStorage);
 
-            Response.ContentType = _fileService.GetMimeType(fileNameForStorage);
+            Response.ContentType = _storageService.GetMimeType(fileNameForStorage);
             return PhysicalFile(filePath, Response.ContentType, enableRangeProcessing: true, fileDownloadName: fileNameForStorage);
         }
 
         [HttpGet("Document/GetByFileNameForStorage")]
         public IActionResult GetDocumentByFileNameForStorage(string fileNameForStorage)
         {
-            var buffResult = _fileService.GetBytesByFileNameForStorage(fileNameForStorage);
+            var buffResult = _storageService.GetBytesByFileNameForStorage(fileNameForStorage);
 
-            Response.ContentType = _fileService.GetMimeType(fileNameForStorage);
+            Response.ContentType = _storageService.GetMimeType(fileNameForStorage);
 
             return File(buffResult, Response.ContentType, true);
         }

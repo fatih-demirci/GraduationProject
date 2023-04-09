@@ -4,15 +4,23 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>0aa7986f-d0eb-4749-ac99-411f5f2a2f77</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..\..\..</DockerfileContext>
+    <DockerComposeProjectPath>..\..\..\..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Consul" Version="1.6.10.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\BuildingBlocks\EventBus\EventBus.Base\EventBus.Base.csproj" />
+    <ProjectReference Include="..\..\..\..\..\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj" />
     <ProjectReference Include="..\..\..\..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
   </ItemGroup>
 
