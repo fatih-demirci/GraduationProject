@@ -28,6 +28,13 @@ services:
       context: .
       dockerfile: src/projects/universityAssistant/Services/NotificationService/NotificationService.Api/Dockerfile
 
+  storageservice.api:
+    container_name: c_storageservice
+    image: ${DOCKER_REGISTRY-}storageserviceapi
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/Services/StorageService/StorageService.Api/Dockerfile
+
   s_consul:
     container_name: c_consul
     image: consul
