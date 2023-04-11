@@ -1,4 +1,5 @@
 using EventBus.Base.Abstraction;
+using Serilog;
 using StorageService.Api.Extensions.EventBus;
 using StorageService.Api.Extensions.HealthCheck;
 using StorageService.Api.Extensions.ServiceDiscovery;
@@ -16,6 +17,9 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 builder.Configuration.AddJsonFile($"Configurations/appsettings.json", optional: false);
 builder.Configuration.AddJsonFile($"Configurations/appsettings.{env}.json", optional: true);
 
+builder.Configuration.AddJsonFile($"Configurations/serilog.json", optional: false);
+builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional: true);
+
 builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
@@ -27,6 +31,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
 builder.Services.AddEventBus(builder.Configuration);
+
+builder.Host.UseSerilog();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 builder.Services.AddScoped<IStorage, StorageServerManager>();
 builder.Services.AddScoped<IStorageService, StorageManager>();
