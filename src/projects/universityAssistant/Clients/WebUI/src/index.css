@@ -26,3 +26,12 @@ button {
 .background-gray{
   background-color: rgba(0, 0, 0, 0.10);
 }
+a{
+  text-decoration: none;
+  color: black;
+}
+::-webkit-scrollbar {
+  display: none;
+  visibility: hidden;
+  opacity: 0
+}

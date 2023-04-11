@@ -1,0 +1,29 @@
+.carousel-bootstrap{
+    position: relative;
+    height:200px;
+    /* width: 400px; */
+    width: 100%;
+    background-color: gray;
+    
+    /* width:900px; */
+    /* margin:0 auto */
+}
+.carousel-bootstrap-main-div{
+    /* display: flex;
+    justify-content: center;
+    text-align: center; */
+}
+
+
+.carousel-bootstrap-img{
+    position: relative;
+    margin: auto;
+   
+    border: 1px solid grey;
+    max-height: 200px;
+    min-height: 200px;
+    max-width: 300px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}

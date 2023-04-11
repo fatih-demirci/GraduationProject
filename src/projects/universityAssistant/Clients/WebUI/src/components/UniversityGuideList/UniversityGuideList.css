@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&display=swap');
+
+.university-guide-list-main{
+    margin-top: 120px;
+   
+    
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.university-guide-info{
+    margin: 30px;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    padding: 15px;
+    transition: all .2s ease-in-out; 
+    -webkit-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+}
+.university-guide-text-district{
+    
+}
+
+.university-guide-info:hover{
+    transform: scale(1.06); 
+  }
+
+.university-guide-logo{
+    width: 60px;
+}
+
+.university-guide-text{
+    font-family: 'Kanit', sans-serif;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  
+
+}
