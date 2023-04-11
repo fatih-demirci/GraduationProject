@@ -3,7 +3,7 @@
     height:200px;
     /* width: 400px; */
     width: 100%;
-    background-color: gray;
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     
     /* width:900px; */
     /* margin:0 auto */
@@ -16,10 +16,11 @@
 
 
 .carousel-bootstrap-img{
+    padding: 7px;
+    border-radius: 20px;
     position: relative;
     margin: auto;
    
-    border: 1px solid grey;
     max-height: 200px;
     min-height: 200px;
     max-width: 300px;

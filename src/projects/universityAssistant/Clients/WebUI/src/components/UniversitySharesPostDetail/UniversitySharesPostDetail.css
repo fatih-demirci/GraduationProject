@@ -1,3 +1,52 @@
 .university-shares-post-detail-container{
     margin-top: 120px;
 }
+.uspd-title-text{
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+}
+.uspd-author{
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.uspd-author-info{
+    display: flex;
+    
+}
+.uspd-author-name{
+    display: table;
+    margin-left: 15px;
+    
+}
+.uspd-author-name-p{
+    font-weight: bold;
+    display: table-cell; 
+  vertical-align: middle;
+}
+.uspd-author-date-calendar-icon{
+    font-size: 20px;
+    display: table-cell; 
+  vertical-align: middle;
+}
+.uspd-author-img{
+    
+    width: 70px;
+    border-radius: 50%;
+}
+.uspd-author-date{
+
+    display: table;
+}
+.uspd-author-date-p{
+    font-size: 18px;
+    display: table-cell; 
+  vertical-align: middle;
+}
+.uspd-title
+{
+    font-weight: bold;
+}
