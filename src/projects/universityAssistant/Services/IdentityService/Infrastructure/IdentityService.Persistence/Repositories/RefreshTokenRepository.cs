@@ -1,4 +1,5 @@
-﻿using Core.Persistence.Repositories;
+﻿using AutoMapper;
+using Core.Persistence.Repositories;
 using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using IdentityService.Persistence.Contexts;
@@ -12,7 +13,7 @@ namespace IdentityService.Persistence.Repositories
 {
     public class RefreshTokenRepository : EfRepositoryBase<RefreshToken, IdentityServiceContext>, IRefreshTokenRepository
     {
-        public RefreshTokenRepository(IdentityServiceContext context) : base(context)
+        public RefreshTokenRepository(IdentityServiceContext context, IMapper mapper) : base(context, mapper)
         {
         }
     }

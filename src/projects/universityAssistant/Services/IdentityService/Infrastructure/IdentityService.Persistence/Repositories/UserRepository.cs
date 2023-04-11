@@ -1,4 +1,5 @@
-﻿using Core.Persistence.Repositories;
+﻿using AutoMapper;
+using Core.Persistence.Repositories;
 using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using IdentityService.Persistence.Contexts;
@@ -12,7 +13,7 @@ namespace IdentityService.Persistence.Repositories
 {
     public class UserRepository : EfRepositoryBase<User, IdentityServiceContext>, IUserRepository
     {
-        public UserRepository(IdentityServiceContext context) : base(context)
+        public UserRepository(IdentityServiceContext context, IMapper mapper) : base(context, mapper)
         {
         }
     }

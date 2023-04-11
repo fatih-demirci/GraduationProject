@@ -1,4 +1,6 @@
-﻿using Core.Persistence.Paging;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Core.Persistence.Paging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -17,10 +19,24 @@ namespace Core.Persistence.Repositories
         protected TContext Context { get; set; }
 
         public IUnitOfWork UnitOfWork => Context;
+        private readonly IMapper _mapper;
 
-        public EfRepositoryBase(TContext context)
+        public EfRepositoryBase(TContext context, IMapper mapper)
         {
             Context = context;
+            _mapper = mapper;
+        }
+
+        public async Task<ProjectTo?> GetAsync<ProjectTo>(Expression<Func<TEntity, bool>> predicate,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+        {
+            IQueryable<TEntity> queryable = Query();
+            queryable = queryable.AsNoTracking();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (include != null) queryable = include(queryable);
+            IQueryable<ProjectTo> ProjectToQueryable = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
+            ProjectTo? projectTo = await ProjectToQueryable.FirstOrDefaultAsync();
+            return projectTo;
         }
 
         public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate,
@@ -34,26 +50,55 @@ namespace Core.Persistence.Repositories
             return await queryable.FirstOrDefaultAsync();
         }
 
-        public async Task<IPaginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
+        public async Task<IPaginate<ProjectTo>> GetListAsync<ProjectTo>(Expression<Func<TEntity, bool>>? predicate = null,
                                                            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy =
                                                                null,
                                                            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>?
                                                                include = null,
-                                                           int index = 1, int size = 10, bool enableTracking = true,
-                                                           CancellationToken cancellationToken = default)
+                                                           int index = 1, int size = 10, CancellationToken cancellationToken = default)
+        {
+            IQueryable<TEntity> queryable = Query();
+            queryable = queryable.AsNoTracking();
+            if (include != null) queryable = include(queryable);
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (orderBy != null) queryable = orderBy(queryable);
+            IQueryable<ProjectTo> projectQueryble = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
+            IPaginate<ProjectTo>? projectTo = await projectQueryble.ToPaginateAsync(index, size, 1, cancellationToken);
+            return projectTo;
+
+        }
+
+        public async Task<IPaginate<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
+                                                   Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy =
+                                                       null,
+                                                   Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>?
+                                                       include = null,
+                                                   int index = 1, int size = 10, bool enableTracking = true,
+                                                   CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query();
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include != null) queryable = include(queryable);
             if (predicate != null) queryable = queryable.Where(predicate);
-            if (orderBy != null)
-                return await orderBy(queryable).ToPaginateAsync(index, size, 1, cancellationToken);
+            if (orderBy != null) queryable = orderBy(queryable);
             return await queryable.ToPaginateAsync(index, size, 1, cancellationToken);
         }
 
         public IQueryable<TEntity> Query()
         {
             return Context.Set<TEntity>();
+        }
+
+        public ProjectTo? Get<ProjectTo>(Expression<Func<TEntity, bool>> predicate,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null)
+        {
+            IQueryable<TEntity> queryable = Query();
+            queryable = queryable.AsNoTracking();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (include != null) queryable = include(queryable);
+            IQueryable<ProjectTo> projectQueryble = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
+            ProjectTo? projectTo = projectQueryble.FirstOrDefault();
+            return projectTo;
         }
 
         public TEntity? Get(Expression<Func<TEntity, bool>> predicate,
@@ -67,18 +112,31 @@ namespace Core.Persistence.Repositories
             return queryable.FirstOrDefault();
         }
 
-        public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null,
+        public IPaginate<ProjectTo> GetList<ProjectTo>(Expression<Func<TEntity, bool>>? predicate = null,
                                           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
                                           Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
-                                          int index = 1, int size = 10,
-                                          bool enableTracking = true)
+                                          int index = 1, int size = 10)
+        {
+            IQueryable<TEntity> queryable = Query();
+            queryable = queryable.AsNoTracking();
+            if (include != null) queryable = include(queryable);
+            if (predicate != null) queryable = queryable.Where(predicate);
+            if (orderBy != null) queryable = orderBy(queryable);
+            IQueryable<ProjectTo> projectQueryble = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
+            IPaginate<ProjectTo> projectTo = projectQueryble.ToPaginate(index, size);
+            return projectTo;
+        }
+
+        public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null,
+                                  Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+                                  Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+                                  int index = 1, int size = 10, bool enableTracking = true)
         {
             IQueryable<TEntity> queryable = Query();
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include != null) queryable = include(queryable);
             if (predicate != null) queryable = queryable.Where(predicate);
-            if (orderBy != null)
-                return orderBy(queryable).ToPaginate(index, size);
+            if (orderBy != null) queryable = orderBy(queryable);
             return queryable.ToPaginate(index, size);
         }
 
