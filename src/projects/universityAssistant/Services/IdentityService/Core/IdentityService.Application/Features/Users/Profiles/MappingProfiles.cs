@@ -16,6 +16,7 @@ namespace IdentityService.Application.Features.Users.Profiles
         {
             CreateMap<UserUpdateCommandRequest, User>();
             CreateMap<User, UserUpdateResponseDto>();
+            CreateMap<User, GetUserResponseDto>();
         }
     }
 }

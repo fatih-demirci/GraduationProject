@@ -4,6 +4,7 @@ using IdentityService.Application.Features.Users.Commands.Update;
 using IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto;
 using IdentityService.Application.Features.Users.Dtos;
 using IdentityService.Application.Features.Users.Queries.CheckResetToken;
+using IdentityService.Application.Features.Users.Queries.GetUser;
 using IdentityService.Application.Features.Users.Queries.SendEmailConfirmation;
 using IdentityService.Application.Features.Users.Queries.SendResetToken;
 using Microsoft.AspNetCore.Http;
@@ -61,6 +62,13 @@ namespace IdentityService.Api.Controllers
         public async Task<IActionResult> UpdateProfilePhoto(UpdateProfilePhotoCommandRequest request)
         {
             UpdateProfilePhotoResponseDto result = await Mediator.Send(request);
+            return Ok(result);
+        }
+
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser([FromQuery] GetUserQueryRequest request)
+        {
+            GetUserResponseDto result = await Mediator.Send(request);
             return Ok(result);
         }
     }
