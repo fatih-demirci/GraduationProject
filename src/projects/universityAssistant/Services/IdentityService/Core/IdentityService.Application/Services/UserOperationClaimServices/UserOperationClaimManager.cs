@@ -11,7 +11,7 @@ namespace IdentityService.Application.Services.UserOperationClaimServices
 {
     public class UserOperationClaimManager : IUserOperationClaimService
     {
-        IUserOperationClaimRepository _userOperationClaimRepository;
+        private readonly IUserOperationClaimRepository _userOperationClaimRepository;
 
         public UserOperationClaimManager(IUserOperationClaimRepository userOperationClaimRepository)
         {

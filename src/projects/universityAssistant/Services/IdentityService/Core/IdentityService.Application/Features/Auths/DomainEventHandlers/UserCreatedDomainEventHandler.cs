@@ -1,8 +1,5 @@
 ﻿using IdentityService.Application.Features.Auths.Rules;
 using IdentityService.Application.Features.Auths.Utils.Hashing;
-using IdentityService.Application.Features.Auths.Utils.Jwt;
-using IdentityService.Application.Services.AuthServices;
-using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using IdentityService.Domain.Events;
 using MediatR;
@@ -16,7 +13,7 @@ namespace IdentityService.Application.Features.Auths.DomainEventHandlers
 {
     public class UserCreatedDomainEventHandler : INotificationHandler<UserCreatedDomainEvent>
     {
-        AuthBusinessRules _authBusinessRules;
+        private readonly AuthBusinessRules _authBusinessRules;
 
         public UserCreatedDomainEventHandler(AuthBusinessRules authBusinessRules)
         {

@@ -1,5 +1,4 @@
-﻿using Core.Persistence.Repositories;
-using IdentityService.Application.Features.Auths.Utils.Jwt;
+﻿using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Application.Services.RefreshTokenServices;
 using IdentityService.Application.Services.UserOperationClaimServices;
 using IdentityService.Domain.Entities;

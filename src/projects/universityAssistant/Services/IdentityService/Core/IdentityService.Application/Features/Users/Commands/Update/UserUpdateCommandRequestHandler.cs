@@ -15,9 +15,9 @@ namespace IdentityService.Application.Features.Users.Commands.Update
 {
     public class UserUpdateCommandRequestHandler : IRequestHandler<UserUpdateCommandRequest, UserUpdateResponseDto>
     {
-        IUserRepository _userRepository;
-        IHttpContextAccessor _httpContextAccessor;
-        IMapper _mapper;
+        private readonly IUserRepository _userRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IMapper _mapper;
 
         public UserUpdateCommandRequestHandler(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {

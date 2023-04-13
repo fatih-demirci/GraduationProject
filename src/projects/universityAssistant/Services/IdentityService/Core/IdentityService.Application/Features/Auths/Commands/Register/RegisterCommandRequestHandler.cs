@@ -1,11 +1,9 @@
 ﻿using IdentityService.Application.Features.Auths.Dtos;
 using IdentityService.Application.Features.Auths.Queries.Login;
-using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Application.Services.AuthServices;
 using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +14,8 @@ namespace IdentityService.Application.Features.Auths.Commands.Register
 {
     public class RegisterCommandRequestHandler : IRequestHandler<RegisterCommandRequest, LoginResponseDto>
     {
-        IUserRepository _userRepository;
-        IMediator _mediator;
+        private readonly IUserRepository _userRepository;
+        private readonly IMediator _mediator;
 
         public RegisterCommandRequestHandler(IUserRepository userRepository, IAuthService authService, IMediator mediator)
         {

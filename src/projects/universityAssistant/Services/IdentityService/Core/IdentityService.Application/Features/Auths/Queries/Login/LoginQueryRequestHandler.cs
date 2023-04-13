@@ -2,7 +2,6 @@
 using IdentityService.Application.Features.Auths.Rules;
 using IdentityService.Application.Features.Auths.Utils.Jwt;
 using IdentityService.Application.Services.AuthServices;
-using IdentityService.Application.Services.RefreshTokenServices;
 using IdentityService.Domain.Entities;
 using MediatR;
 using System;
@@ -15,8 +14,8 @@ namespace IdentityService.Application.Features.Auths.Queries.Login
 {
     public class LoginQueryRequestHandler : IRequestHandler<LoginQueryRequest, LoginResponseDto>
     {
-        AuthBusinessRules _authBusinessRules;
-        IAuthService _authService;
+        private readonly AuthBusinessRules _authBusinessRules;
+        private readonly IAuthService _authService;
 
         public LoginQueryRequestHandler(AuthBusinessRules authBusinessRules, IAuthService authService)
         {

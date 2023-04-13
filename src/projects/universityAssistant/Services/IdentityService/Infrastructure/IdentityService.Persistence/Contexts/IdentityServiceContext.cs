@@ -4,7 +4,6 @@ using IdentityService.Persistence.EntityConfigurations;
 using IdentityService.Persistence.MediatrExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace IdentityService.Persistence.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
-        IMediator _mediator;
+        private readonly IMediator _mediator;
 
         public IdentityServiceContext(DbContextOptions options, IMediator mediator) : base(options)
         {

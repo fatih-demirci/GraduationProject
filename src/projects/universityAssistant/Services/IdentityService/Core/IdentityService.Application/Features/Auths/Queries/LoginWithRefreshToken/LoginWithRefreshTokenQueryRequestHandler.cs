@@ -16,8 +16,8 @@ namespace IdentityService.Application.Features.Auths.Queries.LoginWithRefreshTok
 {
     public class LoginWithRefreshTokenQueryRequestHandler : IRequestHandler<LoginWithRefreshTokenQueryRequest, LoginResponseDto>
     {
-        IRefreshTokenService _refreshTokenService;
-        IAuthService _authService;
+        private readonly IRefreshTokenService _refreshTokenService;
+        private readonly IAuthService _authService;
 
         public LoginWithRefreshTokenQueryRequestHandler(IRefreshTokenService refreshTokenService, IAuthService authService)
         {
@@ -33,9 +33,9 @@ namespace IdentityService.Application.Features.Auths.Queries.LoginWithRefreshTok
             AccessToken accessToken = await _authService.CreateAccessToken(refreshToken.User);
             RefreshToken refreshTokenNew = await _authService.CreateRefreshToken(refreshToken.User, request.IpAddress);
 
-            _refreshTokenService.Update(refreshToken);
             await _authService.AddRefreshToken(refreshTokenNew);
             refreshToken.IsCancelled = false;
+
             await _refreshTokenService.SaveEntitiesAsync(cancellationToken);
 
             return new LoginResponseDto()

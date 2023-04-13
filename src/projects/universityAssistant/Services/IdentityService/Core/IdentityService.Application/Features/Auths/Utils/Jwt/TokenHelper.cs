@@ -16,7 +16,7 @@ namespace IdentityService.Application.Features.Auths.Utils.Jwt
 {
     public class TokenHelper : ITokenHelper
     {
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
         private readonly TokenOptions _tokenOptions;
         private DateTime _accessTokenExpiration;
 

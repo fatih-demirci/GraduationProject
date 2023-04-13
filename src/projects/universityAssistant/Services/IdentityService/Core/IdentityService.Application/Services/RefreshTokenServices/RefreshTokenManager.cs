@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Core.Persistence.Repositories;
-using IdentityService.Application.Services.Repositories;
+﻿using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,7 +6,7 @@ namespace IdentityService.Application.Services.RefreshTokenServices
 {
     public class RefreshTokenManager : IRefreshTokenService
     {
-        IRefreshTokenRepository _refreshTokenRepository;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
 
         public RefreshTokenManager(IRefreshTokenRepository refreshTokenRepository)
         {
