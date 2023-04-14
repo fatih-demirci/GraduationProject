@@ -1,0 +1,3 @@
+﻿CountryId,Name,Culture
+1,TÜRKİYE,tr-TR
+1,TURKIYE,en-US
