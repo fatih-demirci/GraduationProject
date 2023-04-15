@@ -36,9 +36,11 @@ services:
     depends_on:
       - web.apigateway
       - s_consul 
+      - s_sqlserver
     external_links:
       - s_consul
       - s_rabbitmq
+      - s_sqlserver
  
   notificationservice.api:
     environment:
@@ -75,6 +77,26 @@ services:
     external_links:
       - s_rabbitmq
       - s_consul
+
+  universityservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7004
+    ports:
+      - "7004:7004"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_rabbitmq
+      - s_sqlserver
+    external_links:
+      - s_rabbitmq
+      - s_consul
+      - s_sqlserver
 
   s_consul:
      ports:

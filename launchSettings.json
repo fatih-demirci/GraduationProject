@@ -7,7 +7,8 @@
         "web.apigateway": "StartDebugging",
         "identityservice.api": "StartDebugging",
         "notificationservice.api": "StartDebugging",
-        "storageservice.api": "StartDebugging"
+        "storageservice.api": "StartDebugging",
+        "universityservice.api": "StartDebugging"
       }
     }
   }
