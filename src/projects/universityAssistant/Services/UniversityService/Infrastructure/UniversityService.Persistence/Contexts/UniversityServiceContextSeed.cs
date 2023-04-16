@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Polly;
 using System;
@@ -29,7 +30,7 @@ namespace UniversityService.Persistence.Contexts
 
         private async Task ProcessSeeding(UniversityServiceContext context, ILogger<UniversityServiceContextSeed> logger)
         {
-            string contentRootPath = "";
+            string contentRootPath;
 
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
@@ -41,17 +42,17 @@ namespace UniversityService.Persistence.Contexts
                 contentRootPath = "SeedFiles";
             }
 
+            await context.Database.OpenConnectionAsync();
+
             if (!context.Countries.Any())
             {
                 await context.Countries.AddRangeAsync(GetCountriesFromFile(contentRootPath));
-
                 context.SaveChanges();
             }
 
             if (!context.CountryCultures.Any())
             {
                 await context.CountryCultures.AddRangeAsync(GetCountryCulturesFromFile(contentRootPath));
-
                 context.SaveChanges();
             }
 
@@ -60,6 +61,36 @@ namespace UniversityService.Persistence.Contexts
                 await context.Proviences.AddRangeAsync(GetProviencesFromFile(contentRootPath));
                 context.SaveChanges();
             }
+
+            if (!context.Faculties.Any())
+            {
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Faculties ON");
+                await context.Faculties.AddRangeAsync(GetFacultiesFromFile(contentRootPath));
+                context.SaveChanges();
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Faculties OFF");
+            }
+
+            if (!context.FacultyCultures.Any())
+            {
+                await context.FacultyCultures.AddRangeAsync(GetFacultyCulturesFromFile(contentRootPath));
+                context.SaveChanges();
+            }
+
+            if (!context.Departments.Any())
+            {
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Departments ON");
+                await context.Departments.AddRangeAsync(GetDepartmentsFromFile(contentRootPath));
+                context.SaveChanges();
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Departments OFF");
+            }
+
+            if (!context.DepartmentCultures.Any())
+            {
+                await context.DepartmentCultures.AddRangeAsync(GetDepartmentCulturesFromFile(contentRootPath));
+                context.SaveChanges();
+            }
+
+            await context.Database.CloseConnectionAsync();
         }
 
         private IEnumerable<Country> GetCountriesFromFile(string contentRootPath)
@@ -120,5 +151,80 @@ namespace UniversityService.Persistence.Contexts
                 });
         }
 
+        private IEnumerable<Faculty> GetFacultiesFromFile(string contentRootPath)
+        {
+            string fileName = Path.Combine(contentRootPath, "FacultiesSeedFile.txt");
+
+            if (!File.Exists(fileName))
+            {
+                return new List<Faculty>();
+            }
+
+            return File.ReadAllLines(fileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ","))
+                .Select(row => new Faculty()
+                {
+                    Id = int.Parse(row[0]),
+                });
+        }
+
+        private IEnumerable<FacultyCulture> GetFacultyCulturesFromFile(string contentRootPath)
+        {
+            string fileName = Path.Combine(contentRootPath, "FacultyCulturesSeedFile.csv");
+
+            if (!File.Exists(fileName))
+            {
+                return new List<FacultyCulture>();
+            }
+
+            return File.ReadAllLines(fileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ","))
+                .Select(row => new FacultyCulture()
+                {
+                    Culture = row[1],
+                    Name = row[2],
+                    FacultyId = int.Parse(row[3]),
+                });
+        }
+
+        private IEnumerable<Department> GetDepartmentsFromFile(string contentRootPath)
+        {
+            string fileName = Path.Combine(contentRootPath, "DepartmentsSeedFile.txt");
+
+            if (!File.Exists(fileName))
+            {
+                return new List<Department>();
+            }
+
+            return File.ReadAllLines(fileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ","))
+                .Select(row => new Department()
+                {
+                    Id = int.Parse(row[0]),
+                });
+        }
+
+        private IEnumerable<DepartmentCulture> GetDepartmentCulturesFromFile(string contentRootPath)
+        {
+            string fileName = Path.Combine(contentRootPath, "DepartmentCulturesSeedFile.csv");
+
+            if (!File.Exists(fileName))
+            {
+                return new List<DepartmentCulture>();
+            }
+
+            return File.ReadAllLines(fileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ","))
+                .Select(row => new DepartmentCulture()
+                {
+                    Culture = row[1],
+                    Name = row[2],
+                    DepartmentId = int.Parse(row[3]),
+                });
+        }
     }
 }

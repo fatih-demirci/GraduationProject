@@ -1,0 +1,77 @@
+﻿Id,Culture,Name,DepartmentId
+1,tr-TR,Mimarlık Bölümü,1
+2,en-US,Department of Architecture,1
+3,tr-TR,Şehir ve Bölge Planlama Bölümü,2
+4,en-US,Department of City and Regional Planning,2
+5,tr-TR,Endüstriyel Tasarım Bölümü,3
+6,en-US,Department of Industrial Design,3
+7,tr-TR,Biyolojik Bilimler Bölümü,4
+8,en-US,Department of Biological Sciences,4
+9,tr-TR,Kimya Bölümü,5
+10,en-US,Department of Chemistry,5
+11,tr-TR,Tarih Bölümü,6
+12,en-US,Department of History,6
+13,tr-TR,Matematik Bölümü,7
+14,en-US,Department of Mathematics,7
+15,tr-TR,Felsefe Bölümü,8
+16,en-US,Department of Philosophy,8
+17,tr-TR,Fizik Bölümü,9
+18,en-US,Department of Physics,9
+19,tr-TR,Psikoloji Bölümü,10
+20,en-US,Department of Psychology,10
+21,tr-TR,Sosyoloji Bölümü,11
+22,en-US,Department of Sociology,11
+23,tr-TR,İstatistik Bölümü,12
+24,en-US,Department of Statistics,12
+25,tr-TR,İşletme Bölümü,13
+26,en-US,Department of Business Administration,13
+27,tr-TR,İktisat Bölümü,14
+28,en-US,Department of Economics,14
+29,tr-TR,Uluslararası İlişkiler Bölümü,15
+30,en-US,Department of International Relations,15
+31,tr-TR,Siyaset Bilimi ve Kamu Yönetimi Bölümü,16
+32,en-US,Department of Political Science and Public Administration,16
+33,tr-TR,Bilgisayar ve Öğretim Teknolojileri Eğitimi Bölümü,17
+34,en-US,Department of Computer Education and Instructional Technology,17
+35,tr-TR,Eğitim Bilimleri Bölümü,18
+36,en-US,Department of Educational Sciences,18
+37,tr-TR,Temel Eğitim Bölümü,19
+38,en-US,Department of Elementary and Early Childhood Education,19
+39,tr-TR,Yabancı Diller Eğitimi Bölümü,20
+40,en-US,Department of Foreign Language Education,20
+41,tr-TR,Beden Eğitimi ve Spor Bölümü,21
+42,en-US,Department of Physical Education and Sports,21
+43,tr-TR,Matematik ve Fen Bilimleri Eğitimi Bölümü,22
+44,en-US,Department of Mathematics and Science Education,22
+45,tr-TR,Havacılık ve Uzay Mühendisliği Bölümü,23
+46,en-US,Department of Aerospace Engineering,23
+47,tr-TR,Kimya Mühendisliği Bölümü,24
+48,en-US,Department of Chemical Engineering,24
+49,tr-TR,İnşaat Mühendisliği Bölümü,25
+50,en-US,Department of Civil Engineering,25
+51,tr-TR,Bilgisayar Mühendisliği Bölümü,26
+52,en-US,Department of Computer Engineering,26
+53,tr-TR,Elektrik ve Elektronik Mühendisliği Bölümü,27
+54,en-US,Department of Electrical and Electronics Engineering,27
+55,tr-TR,Mühendislik Bilimleri Bölümü,28
+56,en-US,Department of Engineering Sciences,28
+57,tr-TR,Çevre Mühendisliği Bölümü,29
+58,en-US,Department of Environmental Engineering,29
+59,tr-TR,Gıda Mühendisliği Bölümü,30
+60,en-US,Department of Food Engineering,30
+61,tr-TR,Jeoloji Mühendisliği Bölümü,31
+62,en-US,Department of Geological Engineering,31
+63,tr-TR,Endüstri Mühendisliği Bölümü,32
+64,en-US,Department of Industrial Engineering,32
+65,tr-TR,Makina Mühendisliği Bölümü,33
+66,en-US,Department of Mechanical Engineering,33
+67,tr-TR,Metalurji ve Malzeme Mühendisliği Bölümü,34
+68,en-US,Department of Metallurgical and Materials Engineering,34
+69,tr-TR,Maden Mühendisliği Bölümü,35
+70,en-US,Department of Mining Engineering,35
+71,tr-TR,Petrol ve Doğal Gaz Mühendisliği Bölümü,36
+72,en-US,Department of Petroleum and Natural Gas Engineering,36
+73,tr-TR,Bilişim Sistemleri Mühendisliği,37
+74,en-US,Information Systems Engineering,37
+75,tr-TR,Yazılım Mühendisliği Bölümü,38
+76,en-US,Software Engineering,38

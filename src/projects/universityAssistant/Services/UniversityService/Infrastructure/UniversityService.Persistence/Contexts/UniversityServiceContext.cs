@@ -20,12 +20,20 @@ namespace UniversityService.Persistence.Contexts
         public DbSet<Country> Countries { get; set; }
         public DbSet<CountryCulture> CountryCultures { get; set; }
         public DbSet<Provience> Proviences { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<FacultyCulture> FacultyCultures { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<DepartmentCulture> DepartmentCultures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CountryEntityConfiguration());
             modelBuilder.ApplyConfiguration(new CountryCultureEntityConfiguration());
             modelBuilder.ApplyConfiguration(new ProvienceEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new FacultyEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new FacultyCultureEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new DepartmentEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new DepartmentCultureEntityConfiguration());
         }
 
         public async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
