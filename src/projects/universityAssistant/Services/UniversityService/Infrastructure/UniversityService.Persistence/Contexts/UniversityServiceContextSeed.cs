@@ -58,11 +58,8 @@ namespace UniversityService.Persistence.Contexts
             if (!context.Proviences.Any())
             {
                 await context.Proviences.AddRangeAsync(GetProviencesFromFile(contentRootPath));
-
                 context.SaveChanges();
             }
-
-            await Task.CompletedTask;
         }
 
         private IEnumerable<Country> GetCountriesFromFile(string contentRootPath)
@@ -79,7 +76,7 @@ namespace UniversityService.Persistence.Contexts
                 .Select(row => Regex.Split(row, ","))
                 .Select(row => new Country()
                 {
-                    Id = long.Parse(row[0])
+                    Id = int.Parse(row[0])
                 });
         }
 
@@ -97,7 +94,7 @@ namespace UniversityService.Persistence.Contexts
                 .Select(row => Regex.Split(row, ","))
                 .Select(row => new CountryCulture()
                 {
-                    CountryId = long.Parse(row[0]),
+                    CountryId = int.Parse(row[0]),
                     Name = row[1],
                     Culture = row[2]
                 });
@@ -105,7 +102,7 @@ namespace UniversityService.Persistence.Contexts
 
         private IEnumerable<Provience> GetProviencesFromFile(string contentRootPath)
         {
-            string fileName = Path.Combine(contentRootPath, "ProviencesSeedFile.txt");
+            string fileName = Path.Combine(contentRootPath, "ProviencesSeedFile.csv");
 
             if (!File.Exists(fileName))
             {
@@ -117,8 +114,8 @@ namespace UniversityService.Persistence.Contexts
                 .Select(row => Regex.Split(row, ","))
                 .Select(row => new Provience()
                 {
-                    Id = long.Parse(row[0]),
-                    CountryId = long.Parse(row[1]),
+                    Id = int.Parse(row[0]),
+                    CountryId = int.Parse(row[1]),
                     Name = row[2]
                 });
         }
