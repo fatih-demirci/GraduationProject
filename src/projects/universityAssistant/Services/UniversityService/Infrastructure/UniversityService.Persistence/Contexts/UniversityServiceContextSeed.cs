@@ -90,6 +90,14 @@ namespace UniversityService.Persistence.Contexts
                 context.SaveChanges();
             }
 
+            if (!context.Universities.Any())
+            {
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Universities ON");
+                await context.Universities.AddRangeAsync(GetUniversitiesFromFile(contentRootPath));
+                context.SaveChanges();
+                context.Database.ExecuteSql($"SET IDENTITY_INSERT Universities OFF");
+            }
+
             await context.Database.CloseConnectionAsync();
         }
 
@@ -224,6 +232,33 @@ namespace UniversityService.Persistence.Contexts
                     Culture = row[1],
                     Name = row[2],
                     DepartmentId = int.Parse(row[3]),
+                });
+        }
+
+        private IEnumerable<University> GetUniversitiesFromFile(string contentRootPath)
+        {
+            string csvFileName = Path.Combine(contentRootPath, "UniversitiesSeedFile.csv");
+
+            if (!File.Exists(csvFileName))
+            {
+                return new List<University>();
+            }
+
+            return File.ReadAllLines(csvFileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)"))
+                .Select(row => new University()
+                {
+                    Id = int.Parse(row[0]),
+                    Name = row[1].Trim('"').Trim(),
+                    Website = row[2].Trim('"').Trim(),
+                    Email = row[3].Trim('"').Trim(),
+                    Phone = row[4].Trim('"').Trim(),
+                    Fax = row[5].Trim('"').Trim(),
+                    Address = row[6].Trim('"').Trim(),
+                    Type = byte.Parse(row[7].Trim('"').Trim()),
+                    ProvienceId = int.Parse(row[8]),
+                    Status = true
                 });
         }
     }

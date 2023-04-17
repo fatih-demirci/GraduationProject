@@ -8,4 +8,5 @@ public class Provience : Entity
     public int CountryId { get; set; }
     public string Name { get; set; }
     public virtual Country Country { get; set; }
+    public virtual List<University> Universities { get; set; }
 }

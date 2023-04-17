@@ -11,5 +11,6 @@ public class ProvienceEntityConfiguration : IEntityTypeConfiguration<Provience>
         builder.Property(x => x.Id).ValueGeneratedNever();
         builder.HasKey(x => x.Id);
         builder.HasOne(p => p.Country);
+        builder.HasMany(p => p.Universities);
     }
 }

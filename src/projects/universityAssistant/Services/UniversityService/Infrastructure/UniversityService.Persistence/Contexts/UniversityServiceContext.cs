@@ -24,6 +24,7 @@ namespace UniversityService.Persistence.Contexts
         public DbSet<FacultyCulture> FacultyCultures { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<DepartmentCulture> DepartmentCultures { get; set; }
+        public DbSet<University> Universities { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,7 @@ namespace UniversityService.Persistence.Contexts
             modelBuilder.ApplyConfiguration(new FacultyCultureEntityConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentEntityConfiguration());
             modelBuilder.ApplyConfiguration(new DepartmentCultureEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UniversityEntityConfiguration());
         }
 
         public async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
