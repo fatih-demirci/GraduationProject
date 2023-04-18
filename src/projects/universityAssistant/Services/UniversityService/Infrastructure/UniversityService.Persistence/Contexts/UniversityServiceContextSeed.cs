@@ -98,6 +98,12 @@ namespace UniversityService.Persistence.Contexts
                 context.Database.ExecuteSql($"SET IDENTITY_INSERT Universities OFF");
             }
 
+            if (!context.UniversityDepartments.Any())
+            {
+                await context.UniversityDepartments.AddRangeAsync(GetUniversityDepartments(contentRootPath));
+                context.SaveChanges();
+            }
+
             await context.Database.CloseConnectionAsync();
         }
 
@@ -259,6 +265,26 @@ namespace UniversityService.Persistence.Contexts
                     Type = byte.Parse(row[7].Trim('"').Trim()),
                     ProvienceId = int.Parse(row[8]),
                     Status = true
+                });
+        }
+
+        private IEnumerable<UniversityDepartment> GetUniversityDepartments(string contentRootPath)
+        {
+            string fileName = Path.Combine(contentRootPath, "UniversityDepartmentSeedFile.txt");
+
+            if (!File.Exists(fileName))
+            {
+                return new List<UniversityDepartment>();
+            }
+
+            return File.ReadAllLines(fileName)
+                .Skip(1)
+                .Select(row => Regex.Split(row, ","))
+                .Select(row => new UniversityDepartment()
+                {
+                    UniversityId = int.Parse(row[0]),
+                    FacultyId = int.Parse(row[1]),
+                    DepartmentId = int.Parse(row[2])
                 });
         }
     }
