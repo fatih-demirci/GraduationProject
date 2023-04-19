@@ -17,11 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
+    <ProjectReference Include="..\..\Core\UniversityService.Application\UniversityService.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\UniversityService.Persistence\UniversityService.Persistence.csproj" />
   </ItemGroup>
 

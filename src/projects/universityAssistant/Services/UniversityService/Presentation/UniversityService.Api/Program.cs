@@ -2,6 +2,7 @@ using Core.Persistence.Extensions;
 using UniversityService.Persistence;
 using UniversityService.Persistence.Contexts;
 using Core.CrossCuttingConcerns.Exceptions;
+using UniversityService.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistenceService(builder.Configuration);
+builder.Services.AddApplicationService();
 
 var app = builder.Build();
 
