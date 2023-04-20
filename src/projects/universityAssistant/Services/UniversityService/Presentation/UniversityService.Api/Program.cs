@@ -3,6 +3,8 @@ using UniversityService.Persistence;
 using UniversityService.Persistence.Contexts;
 using Core.CrossCuttingConcerns.Exceptions;
 using UniversityService.Application;
+using UniversityService.Api.Extensions.Localization;
+using UniversityService.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,11 +23,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddControllersWithViews().AddViewLocalization();
+builder.Services.ConfigureLocalization();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
 
+builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
+
 var app = builder.Build();
+
+app.UseRequestLocalization();
+
+app.UseRequestLocalizationCookies();
 
 app.ConfigureCustomExceptionMiddleware();
 
