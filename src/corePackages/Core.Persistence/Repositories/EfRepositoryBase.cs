@@ -84,6 +84,14 @@ namespace Core.Persistence.Repositories
             return await queryable.ToPaginateAsync(index, size, 1, cancellationToken);
         }
 
+        public IQueryable<ProjectTo> GetListAsyncIQueryable<ProjectTo>(Expression<Func<TEntity, bool>>? predicate = null)
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            IQueryable<ProjectTo> projectToQueryable = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
+            return projectToQueryable;
+        }
+
         public IQueryable<TEntity> Query()
         {
             return Context.Set<TEntity>();

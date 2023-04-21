@@ -35,5 +35,7 @@ namespace Core.Persistence.Repositories
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
             int index = 1, int size = 10, CancellationToken cancellationToken = default);
+
+        IQueryable<ProjectTo> GetListAsyncIQueryable<ProjectTo>(Expression<Func<T, bool>>? predicate = null);
     }
 }
