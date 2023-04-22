@@ -3,7 +3,7 @@ using UniversityService.Application.Services.Repositories;
 
 namespace UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversityDepartment;
 
-public class GetAllUniversityDepartmentRequestHandler : IRequestHandler<GetAllUniversityDepartmentRequest, IQueryable<GetAllUniversityDepartmentResponseDto>>
+public class GetAllUniversityDepartmentRequestHandler : IRequestHandler<GetAllUniversityDepartmentRequest, List<GetAllUniversityDepartmentResponseDto>>
 {
     private readonly IUniversityDepartmentRepository _universityDepartmentRepository;
 
@@ -12,9 +12,9 @@ public class GetAllUniversityDepartmentRequestHandler : IRequestHandler<GetAllUn
         _universityDepartmentRepository = universityDepartmentRepository;
     }
 
-    public async Task<IQueryable<GetAllUniversityDepartmentResponseDto>> Handle(GetAllUniversityDepartmentRequest request, CancellationToken cancellationToken)
+    public async Task<List<GetAllUniversityDepartmentResponseDto>> Handle(GetAllUniversityDepartmentRequest request, CancellationToken cancellationToken)
     {
-        IQueryable<GetAllUniversityDepartmentResponseDto> result = await Task.FromResult(_universityDepartmentRepository.GetListAsyncIQueryable<GetAllUniversityDepartmentResponseDto>());
+        List<GetAllUniversityDepartmentResponseDto> result = await _universityDepartmentRepository.GetListAsync(request.Options!);
         return result;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Core.Persistence.Paging;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
@@ -35,7 +36,7 @@ namespace Core.Persistence.Repositories
             Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
             int index = 1, int size = 10, CancellationToken cancellationToken = default);
-
-        IQueryable<ProjectTo> GetListAsyncIQueryable<ProjectTo>(Expression<Func<T, bool>>? predicate = null);
+        Task<List<ProjectTo>> GetListAsync<ProjectTo>(ODataQueryOptions<ProjectTo> options,
+            Expression<Func<T, bool>>? predicate = null) where ProjectTo : class, new();
     }
 }

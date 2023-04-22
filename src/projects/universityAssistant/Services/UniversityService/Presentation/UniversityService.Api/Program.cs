@@ -5,6 +5,7 @@ using Core.CrossCuttingConcerns.Exceptions;
 using UniversityService.Application;
 using UniversityService.Api.Extensions.Localization;
 using UniversityService.Api.Middlewares;
+using UniversityService.Api.Extensions.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,7 @@ builder.Configuration.AddEnvironmentVariables();
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.ConfigureControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
