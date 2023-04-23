@@ -5,14 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversityService.Domain.Entities
+namespace UniversityService.Domain.Entities;
+
+public class FacultyCulture : Entity
 {
-    public class FacultyCulture : Entity
-    {
-        public int Id { get; set; }
-        public string Culture { get; set; }
-        public string Name { get; set; }
-        public int FacultyId { get; set; }
-        public virtual Faculty Faculty { get; set; }
-    }
+    public int Id { get; set; }
+    public string Culture { get; set; }
+    public string Name { get; set; }
+    public int FacultyId { get; set; }
+    public virtual Faculty Faculty { get; set; }
 }

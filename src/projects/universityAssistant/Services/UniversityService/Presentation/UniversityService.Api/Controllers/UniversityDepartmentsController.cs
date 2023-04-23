@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversityDepartment;
 
-namespace UniversityService.Api.Controllers;;
+namespace UniversityService.Api.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
 public class UniversityDepartmentsController : ODataController
 {
     private readonly IMediator _mediator;

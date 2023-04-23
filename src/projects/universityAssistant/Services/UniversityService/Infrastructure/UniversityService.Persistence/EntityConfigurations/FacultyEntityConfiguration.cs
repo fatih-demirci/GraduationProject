@@ -7,14 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversityService.Domain.Entities;
 
-namespace UniversityService.Persistence.EntityConfigurations
+namespace UniversityService.Persistence.EntityConfigurations;
+
+public class FacultyEntityConfiguration : IEntityTypeConfiguration<Faculty>
 {
-    public class FacultyEntityConfiguration : IEntityTypeConfiguration<Faculty>
+    public void Configure(EntityTypeBuilder<Faculty> builder)
     {
-        public void Configure(EntityTypeBuilder<Faculty> builder)
-        {
-            builder.HasKey(f => f.Id);
-            builder.HasMany(f => f.FacultyCultures);
-        }
+        builder.HasKey(f => f.Id);
+        builder.HasMany(f => f.FacultyCultures);
     }
 }
