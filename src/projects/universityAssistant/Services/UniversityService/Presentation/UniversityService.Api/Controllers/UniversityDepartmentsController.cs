@@ -4,29 +4,27 @@ using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversityDepartment;
 
-namespace UniversityService.Api.Controllers
+namespace UniversityService.Api.Controllers;;
+
+[Route("api/[controller]")]
+[ApiController]
+public class UniversityDepartmentsController : ODataController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UniversityDepartmentsController : ODataController
+    private readonly IMediator _mediator;
+
+    public UniversityDepartmentsController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
+        _mediator = mediator;
+    }
 
-        public UniversityDepartmentsController(IMediator mediator)
+    public async Task<IActionResult> GetUniversityDepartments(ODataQueryOptions<GetAllUniversityDepartmentResponseDto> options)
+    {
+        GetAllUniversityDepartmentRequest request = new()
         {
-            _mediator = mediator;
-        }
+            Options = options
+        };
 
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetUniversityDepartments(ODataQueryOptions<GetAllUniversityDepartmentResponseDto> options)
-        {
-            GetAllUniversityDepartmentRequest request = new()
-            {
-                Options = options
-            };
-
-            var items = await _mediator.Send(request);
-            return Ok(items);
-        }
+        var items = await _mediator.Send(request);
+        return Ok(items);
     }
 }

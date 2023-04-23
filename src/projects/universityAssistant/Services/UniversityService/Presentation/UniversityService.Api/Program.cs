@@ -6,6 +6,8 @@ using UniversityService.Application;
 using UniversityService.Api.Extensions.Localization;
 using UniversityService.Api.Middlewares;
 using UniversityService.Api.Extensions.Controllers;
+using UniversityService.Api.Extensions.ServiceDiscovery;
+using UniversityService.Api.Extensions.HealthCheck;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,10 +30,14 @@ builder.Services.AddControllersWithViews().AddViewLocalization();
 builder.Services.ConfigureLocalization();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.ConfigureConsul(builder.Configuration);
+builder.Services.AddHealthChecks();
 
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 var app = builder.Build();
+
+app.UseCustomHealtCheck(app.Configuration);
 
 app.UseRequestLocalization();
 
@@ -59,5 +65,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.RegisterWithConsul(app.Configuration);
 
 app.Run();
