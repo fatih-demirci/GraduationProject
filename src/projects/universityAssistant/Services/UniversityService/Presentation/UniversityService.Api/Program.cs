@@ -8,6 +8,7 @@ using UniversityService.Api.Middlewares;
 using UniversityService.Api.Extensions.Controllers;
 using UniversityService.Api.Extensions.ServiceDiscovery;
 using UniversityService.Api.Extensions.HealthCheck;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,9 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 
 builder.Configuration.AddJsonFile($"Configurations/appsettings.json", optional: false);
 builder.Configuration.AddJsonFile($"Configurations/appsettings.{env}.json", optional: true);
+
+builder.Configuration.AddJsonFile($"Configurations/serilog.json", optional: false);
+builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional: true);
 
 builder.Configuration.AddEnvironmentVariables();
 
@@ -34,6 +38,12 @@ builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
 
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
+
+builder.Host.UseSerilog();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 var app = builder.Build();
 
