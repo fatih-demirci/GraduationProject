@@ -29,7 +29,7 @@ public class MappingProfiles : Profile
             .ForMember(x => x.ProvienceName, y => y.MapFrom(z => z.Provience.Name))
             .ForMember(x => x.ProvienceId, y => y.MapFrom(z => z.Provience.Id))
             .ForMember(x => x.CountryName, y => y.MapFrom(z => z.Provience.Country.CountryCultures.SingleOrDefault(z => z.Culture == CultureInfo.CurrentCulture.Name) != null ? z.Provience.Country.CountryCultures.SingleOrDefault(z => CultureInfo.CurrentCulture.Name == z.Culture)!.Name : z.Provience.Country.CountryCultures.SingleOrDefault(z => CultureInfo.CurrentCulture.Name == "tr-TR")!.Name))
-            .ForMember(x => x.CountryId, y => y.MapFrom(z => z.Provience.Country.CountryCultures.SingleOrDefault(z => z.Culture == CultureInfo.CurrentCulture.Name) != null ? z.Provience.Country.CountryCultures.SingleOrDefault(z => CultureInfo.CurrentCulture.Name == z.Culture)!.Id : z.Provience.Country.CountryCultures.SingleOrDefault(z => CultureInfo.CurrentCulture.Name == "tr-TR")!.Id))
+            .ForMember(x => x.CountryId, y => y.MapFrom(z => z.Provience.Country.Id))
             .ForMember(x => x.Email, y => y.MapFrom(z => z.Email))
             .ForMember(x => x.Address, y => y.MapFrom(z => z.Address))
             .ForMember(x => x.Fax, y => y.MapFrom(z => z.Fax))

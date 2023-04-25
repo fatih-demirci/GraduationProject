@@ -22,6 +22,7 @@ public static class PersistenceServiceRegistration
         }));
 
         services.AddScoped<IUniversityDepartmentRepository, UniversityDepartmentRepository>();
+        services.AddScoped<IUniversityRepository, UniversityRepository>();
 
         return services;
     }
