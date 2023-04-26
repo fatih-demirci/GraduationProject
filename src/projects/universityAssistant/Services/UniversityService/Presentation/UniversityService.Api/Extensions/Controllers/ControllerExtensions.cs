@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.OData;
 using Microsoft.OData.ModelBuilder;
-using UniversityService.Application.Features.UniversityDepartments.Dtos;
+using UniversityService.Application.Features.Universities.Queries.GetAllUniversity;
 using UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversityDepartment;
 
 namespace UniversityService.Api.Extensions.Controllers;
@@ -14,7 +14,7 @@ public static class ControllerExtensions
             var builder = new ODataConventionModelBuilder();
 
             builder.EntitySet<GetAllUniversityDepartmentResponseDto>("UniversityDepartments");
-            builder.EntitySet<UniversityDto>("Universities");
+            builder.EntitySet<GetAllUniversityResponseDto>("Universities");
 
             options.AddRouteComponents("odata", builder.GetEdmModel());
 
