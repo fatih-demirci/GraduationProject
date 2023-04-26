@@ -1,9 +1,20 @@
 import zIndex from "@mui/material/styles/zIndex";
-import React from "react";
+import JoditEditor from "jodit-react";
+import React, { useMemo, useRef, useState } from "react";
+import "./TextModal.css"
 
-const TextModal = () => {
+const TextModal = ({ initialValue, getValue }) => {
+  const editor = useRef(null);
+	const [content, setContent] = useState('');
+  // const config = useMemo(
+	// 	{
+	// 		readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+	// 		placeholder: placeholder || 'Start typings...'
+	// 	},
+	// 	[placeholder]
+	// );
   return (
-    <div>
+    <div className="text-modal-container">
       <div className="d-flex justify-content-center">
         <button
           type="button"
@@ -11,7 +22,7 @@ const TextModal = () => {
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
-          Bir tartışma başlat
+          Bir gönderi paylaş.
         </button>
       </div>
 
@@ -23,7 +34,7 @@ const TextModal = () => {
         aria-hidden="true"
         style={{ marginTop: "80px" }}
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
@@ -36,7 +47,16 @@ const TextModal = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">...</div>
+            <div class="modal-body">
+            <JoditEditor
+        ref={editor}
+        value={initialValue}
+        // config={config}
+        // tabIndex={10}
+        onBlur={(newContent) => getValue(newContent)}
+        // onChange={(newContent) => getValue(newContent)}
+      />
+            </div>
             <div class="modal-footer">
               <button
                 type="button"

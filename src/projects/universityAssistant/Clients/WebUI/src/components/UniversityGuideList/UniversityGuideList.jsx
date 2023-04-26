@@ -19,7 +19,7 @@ const UniversityGuideList = () => {
             </div>
             <div className="university-guide-text-div">
               <div className="university-guide-text ms-2 ">
-                Adana Alparslan Türkeş Bilim ve Teknoloji Üniversitesi
+                Fırat Üniversitesi
                 
               </div>
             </div>

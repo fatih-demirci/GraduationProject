@@ -1,6 +1,6 @@
 .carousel-bootstrap{
     position: relative;
-    height:200px;
+    height:250px;
     /* width: 400px; */
     width: 100%;
     background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
@@ -21,8 +21,8 @@
     position: relative;
     margin: auto;
    
-    max-height: 200px;
-    min-height: 200px;
+    max-height: 250px;
+    min-height: 250px;
     max-width: 300px;
     background-size: contain;
     background-position: center center;

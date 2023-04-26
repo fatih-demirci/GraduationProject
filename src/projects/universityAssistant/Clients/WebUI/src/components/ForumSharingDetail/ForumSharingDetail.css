@@ -1,0 +1,40 @@
+.border-bottomm{
+    border-bottom: 10px solid red;
+
+}
+.forum-sharing-detail-container {
+  background-color: white;
+  margin-top: 100px;
+  padding: 20px;
+  border-radius: 15px;
+}
+.fsdc-username-div {
+  display: table;
+}
+.fsdc-username {
+  display: table-cell;
+  vertical-align: middle;
+
+  font-weight: bold;
+}
+.fsdc-date-div {
+    display: table;
+  }
+.fsdc-date {
+  display: table-cell;
+  vertical-align: middle;
+}
+.fsdc-img {
+  width: 60px;
+  border-radius: 50%;
+}
+.fsdc-comments-icon-div{
+    display: flex;
+}
+.fsdc-comments-h3{
+    margin-top: 19px;
+}
+.fsdc-comments-icon{
+    font-size: 30px;
+    margin-top: 20px;
+}

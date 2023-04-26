@@ -12,6 +12,8 @@ import UniversityGuide from "./UniversityGuide/UniversityGuide";
 import UniversityGuideList from "./UniversityGuideList/UniversityGuideList";
 import UniversityDetailPage from "./UniversityDetailPage/UniversityDetailPage";
 import UniversitySharesPostDetail from "./UniversitySharesPostDetail/UniversitySharesPostDetail";
+import ForumSharingDetail from "./ForumSharingDetail/ForumSharingDetail";
+import EmailConfirmed from "./EmailConfirmed/EmailConfirmed";
 
 const Home = () => {
   return (
@@ -23,8 +25,11 @@ const Home = () => {
           <Route path="/" element={<HomePage/>}></Route>
           <Route path="/signin" element={<Signin/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
+          <Route path="/email-confirmed" element={<EmailConfirmed/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
           <Route path="/forum" element={<ForumPage/>}></Route>
+          <Route path="/forum/post-detail/:id" element={<ForumSharingDetail/>}></Route>
+
           <Route path="/university-guide" element={<UniversityGuide/>}></Route>
           <Route path="/university-guide/:id" element={<UniversityGuideList/>}></Route>
           <Route path="/university-guide/:id/:name" element={<UniversityDetailPage/>}></Route>

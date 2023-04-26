@@ -1,0 +1,37 @@
+﻿Id,Culture,Name,FacultyId
+1,tr-TR,Diş Hekimliği Fakültesi,1
+2,en-US,Faculty of Dentistry,1
+3,tr-TR,Eczacılık Fakültesi,2
+4,en-US,Faculity of Pharmacy,2
+5,tr-TR,Eğitim Fakültesi,3
+6,en-US,Faculty of Education,3
+7,tr-TR,Fen Fakültesi,4
+8,en-US,Faculty of Sciences,4
+9,tr-TR,İnsani ve Sosyal Bilimler Fakültesi,5
+10,en-US,Faculty of Humanities and Social Sciences,5
+11,tr-TR,İktisadi ve İdari Bilimleri Fakültesi,6
+12,en-US,Faculty of Economics and Administrative Sciences,6
+13,tr-TR,İlahiyat Fakültesi,7
+14,en-US,Faculty of Divinity,7
+15,tr-TR,İletişim Fakültesi,8
+16,en-US,Faculty of Communication,8
+17,tr-TR,Mimarlık Fakültesi,9
+18,en-US,Faculty of Architecture,9
+19,tr-TR,Mühendislik Fakültesi,10
+20,en-US,Faculty of Engineering,10
+21,tr-TR,Sağlık Bilimleri Fakültesi,11
+22,en-US,Faculty of Health Sciences,11
+23,tr-TR,Su Ürünleri Fakültesi,12
+24,en-US,Faculty of Aquaculture,12
+25,tr-TR,Spor Bilimleri Fakültesi,13
+26,en-US,Faculty of Sport Sciences,13
+27,tr-TR,Teknoloji Fakültesi,14
+28,en-US,Faculty of Technology,14
+29,tr-TR,Teknik Eğitim Fakültesi,15
+30,en-US,Faculty of Technical Education,15
+31,tr-TR,Tıp Fakültesi,16
+32,en-US,Faculty of Medicine,16
+33,tr-TR,Veteriner Fakültesi,17
+34,en-US,Faculty of Veterinary Science,17
+35,tr-TR,Bilgisayar ve Bilişim Bilimleri Fakültesi,18
+36,en-US,Faculty of Computer and Information Sciences,18

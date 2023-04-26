@@ -2,7 +2,29 @@ import React from "react";
 import "./UniversityDetailPage.css";
 import TextModal from "../common/TextModal/TextModal";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 const UniversityDetailPage = () => {
+  const [universities, setUniversities] = useState([]);
+
+  useEffect(() => {
+    const fetchUniversities = async () => {
+      const response = await axios.get('https://yokatlas.yok.gov.tr/');
+      console.log(response);
+      const universitiesData = response.data;
+
+      const universitiesList = universitiesData.map((university) => ({
+        name: university.universite_adi,
+        address: university.adres,
+        website: university.web,
+      }));
+
+      setUniversities(universitiesList);
+    };
+
+    fetchUniversities();
+  }, []);
   return (
     <div className="container">
       <div className="university-detail-page-info">
@@ -27,16 +49,15 @@ const UniversityDetailPage = () => {
           <p>
             <span>Web Sitesi</span>:{" "}
             <a
-              href="http://www.antalya.edu.tr/"
+              href="https://www.firat.edu.tr/tr"
               target="_blank"
               style={{ color: "blue" }}
             >
-              http://www.antalya.edu.tr/
+              https://www.firat.edu.tr/tr
             </a>
           </p>
           <p>
-            <span>Adres</span> : Çıplaklı Mah. Akdeniz Bulvarı No:290/A
-            Döşemealtı / ANTALYA
+            <span>Adres</span> : Üniversite, Fırat Ünv., 23119 Elâzığ Merkez/Elazığ
           </p>
         </div>
       </div>

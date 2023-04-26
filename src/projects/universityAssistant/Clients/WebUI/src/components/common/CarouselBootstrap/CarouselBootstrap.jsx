@@ -6,7 +6,7 @@ const CarouselBootstrap = () => {
     <div id="carouselExampleAutoplaying" className="carousel slide carousel-bootstrap" data-bs-ride="carousel">
   <div className="carousel-inner">
     <div className="carousel-item carousel-itemm active">
-      <img src="/img/firatunilogo.png" className="d-block w-100 carousel-bootstrap-img" alt="..."/>
+      <img src="/img/firatuni.jpg" className="d-block w-100 carousel-bootstrap-img" alt="..."/>
     </div>
     <div className="carousel-item carousel-itemm justify-content-center">
       <img src="/img/userface.jpg" className="d-block w-100 carousel-bootstrap-img" alt="..."/>

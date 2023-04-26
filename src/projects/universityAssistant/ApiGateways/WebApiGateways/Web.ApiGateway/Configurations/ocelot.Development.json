@@ -38,6 +38,24 @@
       "UpstreamPathTemplate": "/Storages/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "https"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/odata/UniversityDepartments{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/UniversityDepartments{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "https"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/odata/Universities{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/Universities{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "https"
     }
   ],
   "GlobalConfiguration": {

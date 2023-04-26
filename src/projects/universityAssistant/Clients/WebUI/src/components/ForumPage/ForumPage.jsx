@@ -3,6 +3,7 @@ import "./ForumPage.css";
 import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import { IoChatbubblesSharp } from "react-icons/io5";
 import ForumTextModal from "./ForumTextModal";
+import { Link } from "react-router-dom";
 const ForumPage = () => {
   return (
     <div className="container">
@@ -32,6 +33,7 @@ const ForumPage = () => {
             </div>
             <div className="col-xxl-10 col-xl-9 col-lg-9">
             <div className="forum-question-component-group">
+              <Link to="post-detail/id">
               <div className="forum-question-component">
                 <img className="forum-question-component-user-img" src="img/userface.jpg" alt="" />
                 <div className="forum-question-component-text ms-3 mt-1">
@@ -42,6 +44,7 @@ const ForumPage = () => {
                 <IoChatbubblesSharp style={{marginTop:"4px",marginRight:"2px"}}/> 102
               </div>
               </div>
+              </Link>
               <div className="forum-question-component">
                 <img className="forum-question-component-user-img" src="img/userface.jpg" alt="" />
                 <div className="forum-question-component-text ms-3 mt-1">

@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using AutoMapper.AspNet.OData;
 using AutoMapper.QueryableExtensions;
 using Core.Persistence.Paging;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -82,6 +84,16 @@ namespace Core.Persistence.Repositories
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
             return await queryable.ToPaginateAsync(index, size, 1, cancellationToken);
+        }
+
+        public async Task<List<ProjectTo>> GetListAsync<ProjectTo>(ODataQueryOptions<ProjectTo> options, Expression<Func<TEntity, bool>>? predicate = null)
+            where ProjectTo : class, new()
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            IQueryable<ProjectTo> projectToQueryable = await queryable.GetQueryAsync(_mapper, options);
+
+            return await projectToQueryable.ToListAsync();
         }
 
         public IQueryable<TEntity> Query()
