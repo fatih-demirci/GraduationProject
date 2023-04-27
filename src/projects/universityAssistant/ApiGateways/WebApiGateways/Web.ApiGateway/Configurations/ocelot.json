@@ -56,6 +56,15 @@
       "UpstreamPathTemplate": "/Universities{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/api/Proviences/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/Proviences/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
     }
   ],
   "GlobalConfiguration": {

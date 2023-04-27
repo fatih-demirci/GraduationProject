@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
-using UniversityService.Application.Features.UniversityDepartments.Dtos;
-using UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversity;
+using UniversityService.Application.Features.Universities.Queries.GetAllUniversity;
 
 namespace UniversityService.Api.Controllers;
 
@@ -16,14 +15,14 @@ public class UniversitiesController : ODataController
         _mediator = mediator;
     }
 
-    public async Task<IActionResult> GetUniversities(ODataQueryOptions<UniversityDto> options)
+    public async Task<IActionResult> GetUniversities(ODataQueryOptions<GetAllUniversityResponseDto> options)
     {
         GetAllUniversityRequest request = new()
         {
             Options = options
         };
 
-        List<UniversityDto> result = await _mediator.Send(request);
+        List<GetAllUniversityResponseDto> result = await _mediator.Send(request);
 
         return Ok(result);
     }
