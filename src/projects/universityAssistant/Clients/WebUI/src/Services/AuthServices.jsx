@@ -8,7 +8,9 @@ export default class AuthServices {
         password: password,
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data.accessToken.token);
+        
+        localStorage.setItem("token",res.data.accessToken.token)
 
         console.log(res.data.refreshToken);
       })

@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Signin.css";
 import { FaUser } from "react-icons/fa";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -7,12 +7,17 @@ import InputField from "../common/InputField/InputField";
 import axios from "axios";
 import AuthServices from "../../Services/AuthServices";
 import { Link } from "react-router-dom";
+import UserServices from "../../Services/UserServices";
 
 const Signin = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
-
   let authServices = new AuthServices();
+  let userServices = new UserServices();
+  
+  useEffect(() => {
+    userServices.UpdateProfilePhoto();
+  }, [])
   
   function login(e) {
     e.preventDefault()
