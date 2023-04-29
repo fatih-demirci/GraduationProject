@@ -23,5 +23,6 @@ RUN dotnet publish "StorageService.Api.csproj" -c Release -o /app/publish /p:Use
 
 FROM base AS final
 WORKDIR /app
+COPY src/projects/universityAssistant/Services/StorageService/StorageService.Api/Infrastructure/Setup .
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "StorageService.Api.dll"]

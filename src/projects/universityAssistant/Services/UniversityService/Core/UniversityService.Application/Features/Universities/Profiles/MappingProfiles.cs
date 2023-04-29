@@ -26,6 +26,7 @@ public class MappingProfiles : Profile
             .ForMember(x => x.Phone, y => y.MapFrom(z => z.Phone))
             .ForMember(x => x.Website, y => y.MapFrom(z => z.Website))
             .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.LogoUrl, y => y.MapFrom(z => z.LogoUrl))
             .ForMember(x => x.Name, y => y.MapFrom(z => z.Name)).ForAllMembers(o => o.ExplicitExpansion());
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Polly;
 using System;
@@ -14,7 +15,7 @@ namespace UniversityService.Persistence.Contexts;
 
 public class UniversityServiceContextSeed
 {
-    public async Task SeedAsync(UniversityServiceContext context, ILogger<UniversityServiceContextSeed> logger)
+    public async Task SeedAsync(UniversityServiceContext context, ILogger<UniversityServiceContextSeed> logger, IConfiguration configuration)
     {
         var policy = Policy.Handle<SqlException>().WaitAndRetryAsync(
             retryCount: 5,
@@ -25,10 +26,10 @@ public class UniversityServiceContextSeed
             }
             );
 
-        await policy.ExecuteAsync(() => ProcessSeeding(context, logger));
+        await policy.ExecuteAsync(() => ProcessSeeding(context, logger, configuration));
     }
 
-    private async Task ProcessSeeding(UniversityServiceContext context, ILogger<UniversityServiceContextSeed> logger)
+    private async Task ProcessSeeding(UniversityServiceContext context, ILogger<UniversityServiceContextSeed> logger, IConfiguration configuration)
     {
         string contentRootPath;
 
@@ -93,7 +94,7 @@ public class UniversityServiceContextSeed
         if (!context.Universities.Any())
         {
             context.Database.ExecuteSql($"SET IDENTITY_INSERT Universities ON");
-            await context.Universities.AddRangeAsync(GetUniversitiesFromFile(contentRootPath));
+            await context.Universities.AddRangeAsync(GetUniversitiesFromFile(contentRootPath, configuration));
             context.SaveChanges();
             context.Database.ExecuteSql($"SET IDENTITY_INSERT Universities OFF");
         }
@@ -241,7 +242,7 @@ public class UniversityServiceContextSeed
             });
     }
 
-    private IEnumerable<University> GetUniversitiesFromFile(string contentRootPath)
+    private IEnumerable<University> GetUniversitiesFromFile(string contentRootPath, IConfiguration configuration)
     {
         string csvFileName = Path.Combine(contentRootPath, "UniversitiesSeedFile.csv");
 
@@ -264,6 +265,7 @@ public class UniversityServiceContextSeed
                 Address = row[6].Trim('"').Trim(),
                 Type = byte.Parse(row[7].Trim('"').Trim()),
                 ProvienceId = int.Parse(row[8]),
+                LogoUrl = $"{configuration["StorageServiceImageUrlBase"]}{int.Parse(row[0])}.png",
                 Status = true
             });
     }

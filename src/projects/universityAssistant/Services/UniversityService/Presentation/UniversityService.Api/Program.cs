@@ -60,7 +60,7 @@ await app.MigrateDbContext<UniversityServiceContext>(async (context, services) =
     var logger = services.GetService<ILogger<UniversityServiceContextSeed>>();
     var dbContextSeeder = new UniversityServiceContextSeed();
 
-    await dbContextSeeder.SeedAsync(context, logger);
+    await dbContextSeeder.SeedAsync(context, logger, app.Configuration);
 });
 
 // Configure the HTTP request pipeline.

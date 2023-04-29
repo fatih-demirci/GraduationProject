@@ -19,5 +19,6 @@ public class GetAllUniversityResponseDto
     public string Phone { get; set; }
     public string Fax { get; set; }
     public string Address { get; set; }
+    public string? LogoUrl { get; set; }
     public byte Type { get; set; }
 }

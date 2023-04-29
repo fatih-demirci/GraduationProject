@@ -17,6 +17,7 @@ public class University : Entity
     public string Phone { get; set; }
     public string Fax { get; set; }
     public string Address { get; set; }
+    public string? LogoUrl { get; set; }
     public byte Type { get; set; }
     public bool Status { get; set; }
     public virtual Provience Provience { get; set; }

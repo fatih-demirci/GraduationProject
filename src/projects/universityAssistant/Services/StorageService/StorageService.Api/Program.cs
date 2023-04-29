@@ -3,6 +3,7 @@ using Serilog;
 using StorageService.Api.Extensions.EventBus;
 using StorageService.Api.Extensions.HealthCheck;
 using StorageService.Api.Extensions.ServiceDiscovery;
+using StorageService.Api.Infrastructure.Context;
 using StorageService.Api.IntegrationEvents.EventHandlers;
 using StorageService.Api.IntegrationEvents.Events;
 using StorageService.Api.Storage;
@@ -46,6 +47,10 @@ builder.Services.AddTransient<DeleteFileIntegrationEventHandler>();
 var app = builder.Build();
 
 app.UseCustomHealtCheck(app.Configuration);
+
+var logger = app.Services.GetService<ILogger<StorageContextSeed>>();
+StorageContextSeed dbContextSeeder = new();
+await dbContextSeeder.SeedAsync(logger);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
