@@ -26,6 +26,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IProvienceRepository, ProvienceRepository>();
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<IFacultyRepository, FacultyRepository>();
+        services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
         return services;
     }
