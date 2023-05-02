@@ -7,18 +7,18 @@ using System.Text;
 using System.Threading.Tasks;
 using UniversityService.Application.Services.Repositories;
 
-namespace UniversityService.Application.Features.Departments.Queries;
+namespace UniversityService.Application.Features.Departments.Queries.GetAllDepartment;
 
-public class GetAllDepartmentRequestHandler : IRequestHandler<GetAllDepartmentRequest, IPaginate<GetAllDepartmentResponseDto>>
+public class GetAllDepartmentQueryRequestHandler : IRequestHandler<GetAllDepartmentQueryRequest, IPaginate<GetAllDepartmentResponseDto>>
 {
     private readonly IDepartmentRepository _departmentRepository;
 
-    public GetAllDepartmentRequestHandler(IDepartmentRepository departmentRepository)
+    public GetAllDepartmentQueryRequestHandler(IDepartmentRepository departmentRepository)
     {
         _departmentRepository = departmentRepository;
     }
 
-    public async Task<IPaginate<GetAllDepartmentResponseDto>> Handle(GetAllDepartmentRequest request, CancellationToken cancellationToken)
+    public async Task<IPaginate<GetAllDepartmentResponseDto>> Handle(GetAllDepartmentQueryRequest request, CancellationToken cancellationToken)
     {
         IPaginate<GetAllDepartmentResponseDto> result = await _departmentRepository.GetListAsync<GetAllDepartmentResponseDto>(index: request.Index, size: request.Size, cancellationToken: cancellationToken);
         return result;

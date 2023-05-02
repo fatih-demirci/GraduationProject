@@ -9,16 +9,16 @@ using UniversityService.Application.Services.Repositories;
 
 namespace UniversityService.Application.Features.Countries.Queries.GetAllCountry;
 
-public class GetAllCountryRequestHandler : IRequestHandler<GetAllCountryRequest, IPaginate<GetAllCountryResponseDto>>
+public class GetAllCountryQueryRequestHandler : IRequestHandler<GetAllCountryQueryRequest, IPaginate<GetAllCountryResponseDto>>
 {
     private readonly ICountryRepository _countryRepository;
 
-    public GetAllCountryRequestHandler(ICountryRepository countryRepository)
+    public GetAllCountryQueryRequestHandler(ICountryRepository countryRepository)
     {
         _countryRepository = countryRepository;
     }
 
-    public async Task<IPaginate<GetAllCountryResponseDto>> Handle(GetAllCountryRequest request, CancellationToken cancellationToken)
+    public async Task<IPaginate<GetAllCountryResponseDto>> Handle(GetAllCountryQueryRequest request, CancellationToken cancellationToken)
     {
         IPaginate<GetAllCountryResponseDto> result = await _countryRepository.GetListAsync<GetAllCountryResponseDto>(index: request.Index, size: request.Size, cancellationToken: cancellationToken);
         return result;

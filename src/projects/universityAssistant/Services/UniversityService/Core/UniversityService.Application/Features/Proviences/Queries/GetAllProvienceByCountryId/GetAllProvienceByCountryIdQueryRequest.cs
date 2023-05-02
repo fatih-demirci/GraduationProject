@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace UniversityService.Application.Features.Proviences.Queries.GetAllProvienceByCountryId;
 
-public class GetAllProvienceByCountryIdRequest : IRequest<IPaginate<GetAllProvienceByCountryIdResponseDto>>
+public class GetAllProvienceByCountryIdQueryRequest : IRequest<IPaginate<GetAllProvienceByCountryIdResponseDto>>
 {
     public int Index { get; set; }
     public int Size { get; set; }

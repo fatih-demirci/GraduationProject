@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UniversityService.Application.Features.Departments.Queries;
+namespace UniversityService.Application.Features.Faculties.Queries.GetAllFaculty;
 
-public class GetAllDepartmentRequest : IRequest<IPaginate<GetAllDepartmentResponseDto>>
+public class GetAllFacultyQueryRequest : IRequest<IPaginate<GetAllFacultyResponseDto>>
 {
     public int Index { get; set; }
     public int Size { get; set; }

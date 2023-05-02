@@ -10,7 +10,7 @@ namespace UniversityService.Api.Controllers
     public class CountriesController : BaseController
     {
         [HttpGet("GetAllCountry")]
-        public async Task<IActionResult> GetAllCountry([FromQuery] GetAllCountryRequest request)
+        public async Task<IActionResult> GetAllCountry([FromQuery] GetAllCountryQueryRequest request)
         {
             IPaginate<GetAllCountryResponseDto> result = await Mediator.Send(request);
             return Ok(result);

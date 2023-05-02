@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UniversityService.Application.Features.Faculties.Queries;
+using UniversityService.Application.Features.Faculties.Queries.GetAllFaculty;
 using UniversityService.Domain.Entities;
 
 namespace UniversityService.Application.Features.Faculties.Profiles;

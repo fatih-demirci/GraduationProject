@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace UniversityService.Application.Features.Universities.Queries.GetAllUniversity;
 
-public class GetAllUniversityRequest : IRequest<List<GetAllUniversityResponseDto>>
+public class GetAllUniversityQueryRequest : IRequest<List<GetAllUniversityResponseDto>>
 {
     public ODataQueryOptions<GetAllUniversityResponseDto> Options { get; set; }
 }

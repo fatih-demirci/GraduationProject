@@ -17,7 +17,7 @@ public class UniversitiesController : ODataController
 
     public async Task<IActionResult> GetUniversities(ODataQueryOptions<GetAllUniversityResponseDto> options)
     {
-        GetAllUniversityRequest request = new()
+        GetAllUniversityQueryRequest request = new()
         {
             Options = options
         };
