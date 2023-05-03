@@ -12,5 +12,8 @@ namespace Core.Persistence.Repositories
         T Add(T entity);
         T Update(T entity);
         T Delete(T entity);
+        IList<T> AddRange(IList<T> entities);
+        IList<T> UpdateRange(IList<T> entities);
+        IList<T> DeleteRange(IList<T> entities);
     }
 }

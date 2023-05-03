@@ -154,20 +154,38 @@ namespace Core.Persistence.Repositories
 
         public TEntity Add(TEntity entity)
         {
-            Context.Entry(entity).State = EntityState.Added;
+            Context.Add(entity);
             return entity;
+        }
+
+        public IList<TEntity> AddRange(IList<TEntity> entities)
+        {
+            Context.AddRange(entities);
+            return entities;
         }
 
         public TEntity Update(TEntity entity)
         {
-            Context.Entry(entity).State = EntityState.Modified;
+            Context.Update(entity);
             return entity;
+        }
+
+        public IList<TEntity> UpdateRange(IList<TEntity> entities)
+        {
+            Context.UpdateRange(entities);
+            return entities;
         }
 
         public TEntity Delete(TEntity entity)
         {
-            Context.Entry(entity).State = EntityState.Deleted;
+            Context.Remove(entity);
             return entity;
+        }
+
+        public IList<TEntity> DeleteRange(IList<TEntity> entities)
+        {
+            Context.RemoveRange(entities);
+            return entities;
         }
     }
 }
