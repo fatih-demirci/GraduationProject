@@ -9,6 +9,8 @@ using UniversityService.Api.Extensions.Controllers;
 using UniversityService.Api.Extensions.ServiceDiscovery;
 using UniversityService.Api.Extensions.HealthCheck;
 using Serilog;
+using UniversityService.Api.Extensions.Swagger;
+using UniversityService.Api.Extensions.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,13 +31,15 @@ builder.Configuration.AddEnvironmentVariables();
 builder.Services.ConfigureControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwagger();
 builder.Services.AddControllersWithViews().AddViewLocalization();
 builder.Services.ConfigureLocalization();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
 builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
+builder.Services.AddHttpContextAccessor();
+builder.Services.ConfigureAuth(builder.Configuration);
 
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
