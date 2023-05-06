@@ -1,6 +1,7 @@
 ﻿using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UniversityService.Application.Features.Faculties.Commands.AddFaculty;
 using UniversityService.Application.Features.Faculties.Queries.GetAllFaculty;
 
 namespace UniversityService.Api.Controllers;
@@ -13,6 +14,13 @@ public class FacultiesController : BaseController
     public async Task<IActionResult> GetAllFaculty([FromQuery] GetAllFacultyQueryRequest request)
     {
         IPaginate<GetAllFacultyResponseDto> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpPost("AddFaculty")]
+    public async Task<IActionResult> GetFaculty(AddFacultyCommandRequest request)
+    {
+        AddFacultyResponse result = await Mediator.Send(request);
         return Ok(result);
     }
 }
