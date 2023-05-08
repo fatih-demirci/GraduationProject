@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversityService.Application.Features.Faculties.Commands.AddFaculty;
+using UniversityService.Application.Features.Faculties.Commands.UpdateFaculty;
 using UniversityService.Application.Features.Faculties.Queries.GetAllFaculty;
 using UniversityService.Domain.Entities;
 
@@ -38,6 +39,27 @@ public class MappingProfiles : Profile
             .ForMember(x => x.FacultyCultures, y => y.MapFrom(z => z.FacultyCultures));
 
         CreateMap<AddFacultyCommandRequestFacultyCulture, FacultyCulture>()
+            .ForMember(x => x.Culture, y => y.MapFrom(z => z.Culture))
+            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
+
+        CreateMap<UpdateFacultyCommandRequest, Faculty>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.FacultyCultures, y => y.MapFrom(z => new List<FacultyCulture>()
+            { new FacultyCulture()
+                {
+                    Id = z.FacultyCultureId,
+                    Name = z.Name,
+                    Culture = z.Culture,
+                    FacultyId = z.Id
+                }
+            }));
+
+        CreateMap<Faculty, UpdateFacultyResponse>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.FacultyCultures, y => y.MapFrom(z => z.FacultyCultures));
+
+        CreateMap<FacultyCulture, UpdateFacultyResponseFacultyCulture>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
             .ForMember(x => x.Culture, y => y.MapFrom(z => z.Culture))
             .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
     }
