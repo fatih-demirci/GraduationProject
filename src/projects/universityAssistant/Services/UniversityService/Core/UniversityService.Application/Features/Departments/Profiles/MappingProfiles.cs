@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniversityService.Application.Features.Departments.Commands.AddDepartment;
+using UniversityService.Application.Features.Departments.Commands.UpdateDepartment;
 using UniversityService.Application.Features.Departments.Queries.GetAllDepartment;
 using UniversityService.Domain.Entities;
 
@@ -39,5 +40,27 @@ public class MappingProfiles : Profile
                     DepartmentCultureId = dc.Id
                 }).ToList()
             })));
+
+        CreateMap<UpdateDepartmentCommandRequest, Department>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.DepartmentCultures, y => y.MapFrom(z => new List<DepartmentCulture>()
+            {
+                new DepartmentCulture()
+                {
+                    Id = z.DepartmentCultureId,
+                    Culture = z.Culture,
+                    Name = z.Name,
+                    DepartmentId = z.Id
+                }
+            }));
+
+        CreateMap<Department, UpdateDepartmentResponse>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.DepartmentCultures, y => y.MapFrom(z => z.DepartmentCultures));
+
+        CreateMap<DepartmentCulture, UpdateDepartmentResponseDepartmentCulture>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.Culture, y => y.MapFrom(z => z.Culture))
+            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
     }
 }
