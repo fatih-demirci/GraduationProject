@@ -96,6 +96,13 @@ namespace Core.Persistence.Repositories
             return await projectToQueryable.ToListAsync();
         }
 
+        public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>>? predicate = null)
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            return await queryable.AnyAsync();
+        }
+
         public IQueryable<TEntity> Query()
         {
             return Context.Set<TEntity>();
@@ -150,6 +157,13 @@ namespace Core.Persistence.Repositories
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
             return queryable.ToPaginate(index, size);
+        }
+
+        public bool Any(Expression<Func<TEntity, bool>>? predicate = null)
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            return queryable.Any();
         }
 
         public TEntity Add(TEntity entity)

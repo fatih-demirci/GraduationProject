@@ -7,6 +7,8 @@ namespace Core.Persistence.Repositories
 {
     public interface IReadRepository<T> : IQuery<T>, IRepository<T> where T : Entity, new()
     {
+        bool Any(Expression<Func<T, bool>>? predicate = null);
+        Task<bool> AnyAsync(Expression<Func<T, bool>>? predicate = null);
         T? Get(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T,
             object>>? include = null, bool enableTracking = true);
 
