@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System.Globalization;
+using UniversityService.Application.Features.UniversityDepartments.Commands.AddUniversityDepartment;
 using UniversityService.Application.Features.UniversityDepartments.Dtos;
 using UniversityService.Application.Features.UniversityDepartments.Queries.GetAllUniversityDepartment;
 using UniversityService.Domain.Entities;
@@ -38,5 +39,14 @@ public class MappingProfiles : Profile
             .ForMember(x => x.Website, y => y.MapFrom(z => z.Website))
             .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
             .ForMember(x => x.Name, y => y.MapFrom(z => z.Name)).ForAllMembers(o => o.ExplicitExpansion());
+
+        CreateMap<List<UniversityDepartment>, AddUniversityDepartmentResponse>()
+            .ForMember(x => x.UniversityDepartments, y => y.MapFrom(z => z.Select(i => new AddUniversityDepartmentResponseUniversityDepartment()
+            {
+                Id = i.Id,
+                UniversityId = i.UniversityId,
+                FacultyId = i.FacultyId,
+                DepartmentId = i.DepartmentId,
+            })));
     }
 }
