@@ -5,7 +5,7 @@ namespace UniversityService.Api.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class UniversityDepartmentsPostController : BaseController
+public class PostUniversityDepartmentsController : BaseController
 {
     [HttpPost("AddUniversityDepartment")]
     public async Task<IActionResult> AddUniversityDepartment(AddUniversityDepartmentCommandRequest request)

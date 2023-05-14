@@ -42,6 +42,15 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/api/PostUniversityDepartments/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/PostUniversityDepartments/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
       "DownstreamPathTemplate": "/odata/UniversityDepartments{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/UniversityDepartments{everything}",
@@ -72,15 +81,6 @@
       "DownstreamPathTemplate": "/api/Countries/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/Countries/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
-      "UpstreamScheme": "http"
-    },
-    {
-      "UseServiceDiscovery": true,
-      "ServiceName": "UniversityService",
-      "DownstreamPathTemplate": "/api/UniversityDepartmentsPost/{everything}",
-      "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/UniversityDepartmentsPost/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
     }
