@@ -1,8 +1,10 @@
-﻿using MediatR;
+﻿using Core.Application.Pipelines.Authorization;
+using MediatR;
+using UniversityService.Application.Constants;
 
 namespace UniversityService.Application.Features.Universities.Commands.AddUniversity;
 
-public class AddUniversityCommandRequest : IRequest<AddUniversityResponse>
+public class AddUniversityCommandRequest : IRequest<AddUniversityResponse>, ISecuredRequest
 {
     public int ProvienceId { get; set; }
     public string Name { get; set; }
@@ -12,4 +14,6 @@ public class AddUniversityCommandRequest : IRequest<AddUniversityResponse>
     public string Fax { get; set; }
     public string Address { get; set; }
     public byte Type { get; set; }
+
+    public string[] Roles => new string[] { DbRoles.SUPERADMIN };
 }
