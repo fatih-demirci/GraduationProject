@@ -12,6 +12,9 @@ using IdentityService.Api.Extensions.EventBus;
 using Core.CrossCuttingConcerns;
 using IdentityService.Api.Extensions.Localization;
 using IdentityService.Api.Middlewares;
+using EventBus.Base.Abstraction;
+using IdentityService.Api.IntegrationEvents.EventHandlers;
+using IdentityService.Api.IntegrationEvents.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -57,6 +60,7 @@ void ConfigureServices(IServiceCollection services, IConfiguration configuration
     services.ConfigureLocalization();
     services.AddHttpContextAccessor();
     services.AddScoped<RequestLocalizationCookiesMiddleware>();
+    services.AddTransient<GetAllUsersRequestIntegrationEventHandler>();
 }
 
 builder.Services.ConfigureAuth(builder.Configuration);
@@ -94,4 +98,12 @@ app.MapControllers();
 
 app.RegisterWithConsul(app.Configuration);
 
+await ConfigureEventBusForSubscription(app);
+
 app.Run();
+
+async Task ConfigureEventBusForSubscription(IApplicationBuilder app)
+{
+    IEventBus eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+    await eventBus.Subscribe<GetAllUsersRequestIntegrationEvent, GetAllUsersRequestIntegrationEventHandler>();
+}
