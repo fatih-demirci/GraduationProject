@@ -1,11 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UniversityService.Application.Services.Repositories;
 using UniversityService.Persistence.Contexts;
 using UniversityService.Persistence.Repositories;
@@ -27,6 +22,7 @@ public static class PersistenceServiceRegistration
         services.AddScoped<ICountryRepository, CountryRepository>();
         services.AddScoped<IFacultyRepository, FacultyRepository>();
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }

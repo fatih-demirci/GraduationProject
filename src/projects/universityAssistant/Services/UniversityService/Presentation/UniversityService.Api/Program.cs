@@ -11,6 +11,12 @@ using UniversityService.Api.Extensions.HealthCheck;
 using Serilog;
 using UniversityService.Api.Extensions.Swagger;
 using UniversityService.Api.Extensions.Auth;
+using EventBus.Base.Abstraction;
+using UniversityService.Api.IntegrationEvents.Events;
+using UniversityService.Api.IntegrationEvents.EventHandlers;
+using UniversityService.Api.Extensions.PublishExtensions;
+using UniversityService.Api.Extensions.EventBus;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,7 +46,10 @@ builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
 builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigureAuth(builder.Configuration);
+builder.Services.AddEventBus(builder.Configuration);
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+builder.Services.AddTransient<GetAllUsersIntegrationEventHandler>();
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 builder.Host.UseSerilog();
@@ -82,4 +91,13 @@ app.MapControllers();
 
 app.RegisterWithConsul(app.Configuration);
 
+await ConfigureEventBusForSubscription(app);
+
 app.Run();
+
+async Task ConfigureEventBusForSubscription(IApplicationBuilder app)
+{
+    IEventBus eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+    await eventBus.Subscribe<GetAllUsersIntegrationEvent, GetAllUsersIntegrationEventHandler>();
+    await app.PublishApplicationStartedEvents();
+}
