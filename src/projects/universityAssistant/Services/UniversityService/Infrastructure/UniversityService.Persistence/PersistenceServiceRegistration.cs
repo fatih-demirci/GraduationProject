@@ -23,6 +23,8 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IFacultyRepository, FacultyRepository>();
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUniversityCommentRepository, UniversityCommentRepository>();
+        services.AddScoped<IUniversityCommentFileRepository, UniversityCommentFileRepository>();
 
         return services;
     }

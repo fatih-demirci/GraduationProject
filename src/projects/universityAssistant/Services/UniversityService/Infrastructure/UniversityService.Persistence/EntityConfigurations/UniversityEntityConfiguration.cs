@@ -15,5 +15,6 @@ internal class UniversityEntityConfiguration : IEntityTypeConfiguration<Universi
     {
         builder.HasKey(u => u.Id);
         builder.HasOne(u => u.Provience);
+        builder.HasMany(u => u.UniversityComments);
     }
 }

@@ -21,4 +21,5 @@ public class University : Entity
     public byte Type { get; set; }
     public bool Status { get; set; }
     public virtual Provience Provience { get; set; }
+    public virtual List<UniversityComment> UniversityComments { get; set; }
 }

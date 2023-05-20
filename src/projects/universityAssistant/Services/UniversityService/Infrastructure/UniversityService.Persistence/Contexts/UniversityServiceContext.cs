@@ -22,6 +22,8 @@ public class UniversityServiceContext : DbContext, IUnitOfWork
     public DbSet<University> Universities { get; set; }
     public DbSet<UniversityDepartment> UniversityDepartments { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<UniversityComment> UniversityComments { get; set; }
+    public DbSet<UniversityCommentFile> UniversityCommentFiles { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -35,6 +37,8 @@ public class UniversityServiceContext : DbContext, IUnitOfWork
         modelBuilder.ApplyConfiguration(new UniversityEntityConfiguration());
         modelBuilder.ApplyConfiguration(new UniversityDepartmentEntityConfiguration());
         modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new UniversityCommentEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new UniversityCommentFileEntityConfiguration());
     }
 
     public async Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default)
