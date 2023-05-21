@@ -29,6 +29,7 @@
     <ProjectReference Include="..\..\..\..\..\..\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj" />
     <ProjectReference Include="..\..\..\..\..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\Core\UniversityService.Application\UniversityService.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\UniversityService.Infrastructure\UniversityService.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\UniversityService.Persistence\UniversityService.Persistence.csproj" />
   </ItemGroup>
 

@@ -17,6 +17,7 @@ using UniversityService.Api.IntegrationEvents.EventHandlers;
 using UniversityService.Api.Extensions.PublishExtensions;
 using UniversityService.Api.Extensions.EventBus;
 using System.Reflection;
+using UniversityService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,6 +43,7 @@ builder.Services.AddControllersWithViews().AddViewLocalization();
 builder.Services.ConfigureLocalization();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.AddInfrastructureService(builder.Configuration);
 builder.Services.ConfigureConsul(builder.Configuration);
 builder.Services.AddHealthChecks();
 builder.Services.AddHttpContextAccessor();

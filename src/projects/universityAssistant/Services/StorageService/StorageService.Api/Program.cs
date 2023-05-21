@@ -8,6 +8,7 @@ using StorageService.Api.IntegrationEvents.EventHandlers;
 using StorageService.Api.IntegrationEvents.Events;
 using StorageService.Api.Storage;
 using StorageService.Api.Storage.Server;
+using Core.CrossCuttingConcerns.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +52,8 @@ app.UseCustomHealtCheck(app.Configuration);
 var logger = app.Services.GetService<ILogger<StorageContextSeed>>();
 StorageContextSeed dbContextSeeder = new();
 await dbContextSeeder.SeedAsync(logger);
+
+app.ConfigureCustomExceptionMiddleware();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

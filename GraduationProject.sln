@@ -99,6 +99,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityService.Persisten
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniversityService.Api", "src\projects\universityAssistant\Services\UniversityService\Presentation\UniversityService.Api\UniversityService.Api.csproj", "{59383C71-441F-4467-8C76-6C4E6F8C496F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityService.Infrastructure", "src\projects\universityAssistant\Services\UniversityService\Infrastructure\UniversityService.Infrastructure\UniversityService.Infrastructure.csproj", "{18826607-D6A5-4B69-84B6-899E2F65626D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,6 +193,10 @@ Global
 		{59383C71-441F-4467-8C76-6C4E6F8C496F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59383C71-441F-4467-8C76-6C4E6F8C496F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59383C71-441F-4467-8C76-6C4E6F8C496F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18826607-D6A5-4B69-84B6-899E2F65626D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18826607-D6A5-4B69-84B6-899E2F65626D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18826607-D6A5-4B69-84B6-899E2F65626D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18826607-D6A5-4B69-84B6-899E2F65626D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,6 +242,7 @@ Global
 		{374ECB97-8400-4875-947B-548D8CF5E6B2} = {C8B09C48-A0A6-473F-9652-3D86E05B4321}
 		{A0A9C5F6-EC3B-4207-96B2-212FF62FDB43} = {09751F65-5F04-4261-B4B8-1DC4F5FCE034}
 		{59383C71-441F-4467-8C76-6C4E6F8C496F} = {832FAAC6-D3B4-489C-8EB2-62202A31EF16}
+		{18826607-D6A5-4B69-84B6-899E2F65626D} = {09751F65-5F04-4261-B4B8-1DC4F5FCE034}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}
