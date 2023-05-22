@@ -87,10 +87,19 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "UniversityService",
-      "DownstreamPathTemplate": "/api/PostUniversities/AddUniversity",
+      "DownstreamPathTemplate": "/api/PostUniversities/{everything}",
       "DownstreamScheme": "http",
-      "UpstreamPathTemplate": "/PostUniversities/AddUniversity",
-      "UpstreamHttpMethod": [ "Post" ],
+      "UpstreamPathTemplate": "/PostUniversities/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/api/PostUniversityComments/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/PostUniversityComments/{everything}",
+      "UpstreamHttpMethod": [ "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
     }
   ],

@@ -7,6 +7,7 @@ public class UniversityCommentFile : Entity
     public int Id { get; set; }
     public int UniversityCommentId { get; set; }
     public string Url { get; set; }
+    public string FileNameForStorage { get; set; }
     public string FileType { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? UpdatedDate { get; set; }
