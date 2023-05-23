@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityCommand;
 using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityComment;
 
 namespace UniversityService.Api.Controllers;

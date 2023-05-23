@@ -2,9 +2,8 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using UniversityService.Application.Constants;
-using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityComment;
 
-namespace UniversityService.Application.Features.UniversityComments.Commands.AddUniversityCommand;
+namespace UniversityService.Application.Features.UniversityComments.Commands.AddUniversityComment;
 
 public class AddUniversityCommentCommandRequest : IRequest<AddUniversityCommentResponse>, ISecuredRequest
 {

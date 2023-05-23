@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using UniversityService.Application.Features.Extensions;
-using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityCommand;
 using UniversityService.Application.Services.Repositories;
 using UniversityService.Domain.Entities;
 using UniversityService.Infrastructure.Storage;

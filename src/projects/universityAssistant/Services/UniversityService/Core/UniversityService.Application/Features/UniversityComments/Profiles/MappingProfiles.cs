@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityCommand;
 using UniversityService.Application.Features.UniversityComments.Commands.AddUniversityComment;
 using UniversityService.Application.Features.UniversityComments.Queries.GetAllUniversityComment;
 using UniversityService.Domain.Entities;
