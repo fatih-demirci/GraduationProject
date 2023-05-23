@@ -105,7 +105,7 @@
     {
       "UseServiceDiscovery": true,
       "ServiceName": "UniversityService",
-      "DownstreamPathTemplate": "/api/UniversityComments/{everything}",
+      "DownstreamPathTemplate": "/odata/UniversityComments/{everything}",
       "DownstreamScheme": "http",
       "UpstreamPathTemplate": "/UniversityComments/{everything}",
       "UpstreamHttpMethod": [ "Get" ],
