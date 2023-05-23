@@ -101,6 +101,15 @@
       "UpstreamPathTemplate": "/PostUniversityComments/{everything}",
       "UpstreamHttpMethod": [ "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "UniversityService",
+      "DownstreamPathTemplate": "/api/UniversityComments/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/UniversityComments/{everything}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamScheme": "http"
     }
   ],
   "GlobalConfiguration": {
