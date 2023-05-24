@@ -1,3 +1,17 @@
 ﻿CountryId,Name,Culture
 1,TÜRKİYE,tr-TR
 1,TURKIYE,en-US
+2,Kuzey Kıbrıs Türk Cumhuriyeti (KKTC),tr-TR
+2,Turkish Republic of Northern Cyprus (TRNC),en-US
+3,Bosna Hersek,tr-TR
+3,Bosnia and Herzegovina,en-US
+4,Azerbaycan,tr-TR
+4,Azerbaijan,en-US
+5,Kazakistan,tr-TR
+5,Kazakhistan,en-US
+6,Kırgızistan,tr-TR
+6,Kyrgyzstan,en-US
+7,Makedonya,tr-TR
+7,Macedonia,en-US
+8,Moldova,tr-TR
+8,Moldova,en-US

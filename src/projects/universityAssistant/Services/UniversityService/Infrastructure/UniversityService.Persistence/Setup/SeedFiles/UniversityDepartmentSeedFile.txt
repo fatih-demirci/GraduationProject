@@ -1,4 +1,0 @@
-﻿UniversityId,FacultyId,DepartmentId
-67,10,26
-67,10,27
-175,18,26

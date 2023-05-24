@@ -12,5 +12,6 @@ public class UniversityDepartmentEntityConfiguration : IEntityTypeConfiguration<
         builder.HasOne(ud => ud.University);
         builder.HasOne(ud => ud.Department);
         builder.HasOne(ud => ud.Faculty);
+        builder.HasMany(ud => ud.UniversityDepartmentInfos);
     }
 }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UniversityService.Application.Features.UniversityDepartments.Dtos;
+﻿namespace UniversityService.Application.Features.UniversityDepartments.Dtos;
 
 public class UniversityDto
 {
@@ -14,10 +8,10 @@ public class UniversityDto
     public int CountryId { get; set; }
     public string CountryName { get; set; }
     public string Name { get; set; }
-    public string Website { get; set; }
-    public string Email { get; set; }
-    public string Phone { get; set; }
-    public string Fax { get; set; }
-    public string Address { get; set; }
+    public string? Website { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public string? Fax { get; set; }
+    public string? Address { get; set; }
     public byte Type { get; set; }
 }
