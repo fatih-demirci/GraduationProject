@@ -27,6 +27,7 @@ public class UniversityServiceContext : DbContext, IUnitOfWork
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("Turkish_CI_AS");
         modelBuilder.ApplyConfiguration(new CountryEntityConfiguration());
         modelBuilder.ApplyConfiguration(new CountryCultureEntityConfiguration());
         modelBuilder.ApplyConfiguration(new ProvienceEntityConfiguration());
