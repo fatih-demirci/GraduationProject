@@ -52,6 +52,9 @@ builder.Services.AddEventBus(builder.Configuration);
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 builder.Services.AddTransient<GetAllUsersIntegrationEventHandler>();
+builder.Services.AddTransient<UserAddedIntegrationEventHandler>();
+builder.Services.AddTransient<UserUpdatedIntegrationEventHandler>();
+
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 builder.Host.UseSerilog();
@@ -101,5 +104,7 @@ async Task ConfigureEventBusForSubscription(IApplicationBuilder app)
 {
     IEventBus eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
     await eventBus.Subscribe<GetAllUsersIntegrationEvent, GetAllUsersIntegrationEventHandler>();
+    await eventBus.Subscribe<UserAddedIntegrationEvent, UserAddedIntegrationEventHandler>();
+    await eventBus.Subscribe<UserUpdatedIntegrationEvent, UserUpdatedIntegrationEventHandler>();
     await app.PublishApplicationStartedEvents();
 }

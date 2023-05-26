@@ -1,4 +1,5 @@
-﻿using EventBus.Base.Abstraction;
+﻿using AutoMapper;
+using EventBus.Base.Abstraction;
 using IdentityService.Application.Extensions;
 using IdentityService.Application.Features.Users.Dtos;
 using IdentityService.Application.Features.Users.Rules;
@@ -7,11 +8,6 @@ using IdentityService.Application.Services.Repositories;
 using IdentityService.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto
 {
@@ -21,13 +17,15 @@ namespace IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserBusinessRules _userBusinessRules;
         private readonly IEventBus _eventBus;
+        private readonly IMapper _mapper;
 
-        public UpdateProfilePhotoCommandRequestHandler(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, UserBusinessRules userBusinessRules, IEventBus eventBus)
+        public UpdateProfilePhotoCommandRequestHandler(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, UserBusinessRules userBusinessRules, IEventBus eventBus, IMapper mapper)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             _userBusinessRules = userBusinessRules;
             _eventBus = eventBus;
+            _mapper = mapper;
         }
 
         public async Task<UpdateProfilePhotoResponseDto> Handle(UpdateProfilePhotoCommandRequest request, CancellationToken cancellationToken)
@@ -37,13 +35,18 @@ namespace IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto
 
             if (user.ProfilePhotoUrl != null)
             {
-                var a = user.ProfilePhotoUrl.Split("=").Last();
-                DeleteFileIntegrationEvent @event = new(a);
+                var fileNameForStorage = user.ProfilePhotoUrl.Split("=").Last();
+                DeleteFileIntegrationEvent @event = new(fileNameForStorage);
                 await _eventBus.Publish(@event);
             }
 
             user.ProfilePhotoUrl = request.ProfilePhotoUrl;
             await _userRepository.UnitOfWork.SaveEntitiesAsync(cancellationToken);
+
+            UserUpdatedIntegrationEvent userUpdatedIntegrationEvent = _mapper.Map<UserUpdatedIntegrationEvent>(user);
+
+            await _eventBus.Publish(userUpdatedIntegrationEvent);
+
             return new UpdateProfilePhotoResponseDto(request.ProfilePhotoUrl);
         }
     }
