@@ -1,5 +1,6 @@
-Web.ApiGateway			=>	https://localhost:5000;http://localhost:7000;c_apigateway
-IdentityService.Api		=>	https://localhost:5001;http://localhost:7001;c_identityservice
-NotificationService.Api	=>	https://localhost:5002;http://localhost:7002;c_notificationservice
-StorageService.Api		=>	https://localhost:5003;http://localhost:7003;c_storageservice
-UniversityService.Api	=>	https://localhost:5004;http://localhost:7004;c_universityservice
+Web.ApiGateway					=>	https://localhost:5000;http://localhost:7000;c_apigateway
+IdentityService.Api				=>	https://localhost:5001;http://localhost:7001;c_identityservice
+NotificationService.Api			=>	https://localhost:5002;http://localhost:7002;c_notificationservice
+StorageService.Api				=>	https://localhost:5003;http://localhost:7003;c_storageservice
+UniversityService.Api			=>	https://localhost:5004;http://localhost:7004;c_universityservice
+MessagePersistenceService.Api	=>	https://localhost:5005;http://localhost:7005;c_messagepersistenceservice

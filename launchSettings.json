@@ -8,7 +8,8 @@
         "identityservice.api": "StartDebugging",
         "notificationservice.api": "StartDebugging",
         "storageservice.api": "StartDebugging",
-        "universityservice.api": "StartDebugging"
+        "universityservice.api": "StartDebugging",
+        "messagepersistenceservice.api": "StartDebugging"
       }
     }
   }

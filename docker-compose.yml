@@ -42,6 +42,13 @@ services:
       context: .
       dockerfile: src/projects/universityAssistant/Services/UniversityService/Presentation/UniversityService.Api/Dockerfile
 
+  messagepersistenceservice.api:
+    container_name: c_messagepersistenceservice
+    image: ${DOCKER_REGISTRY-}messagepersistenceserviceapi
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/Services/MessagePersistenceService/Presentation/MessagePersistenceService.Api/Dockerfile
+
   s_consul:
     container_name: c_consul
     image: consul

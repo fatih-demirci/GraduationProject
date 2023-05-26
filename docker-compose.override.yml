@@ -98,6 +98,26 @@ services:
       - s_consul
       - s_sqlserver
 
+  messagepersistenceservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7005
+    ports:
+      - "7005:7005"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_rabbitmq
+      - s_sqlserver
+    external_links:
+      - s_rabbitmq
+      - s_consul
+      - s_sqlserver
+
   s_consul:
      ports:
        - 8500:8500
@@ -145,5 +165,3 @@ volumes:
   sqlserver_data:
   sqlserver_log:
   rabbitmq:
-
-
