@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
+    <ProjectReference Include="..\MessagePersistenceService.Domain\MessagePersistenceService.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
