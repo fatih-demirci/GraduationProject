@@ -16,6 +16,11 @@ public static class PersistenceServiceRegistration
             //sqlOptions.EnableRetryOnFailure(maxRetryCount: 15, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
         }));
 
+        services.AddScoped<IChatCategoryRepository, ChatCategoryRepository>();
+        services.AddScoped<IChatGroupMessageRepository, ChatGroupMessageRepository>();
+        services.AddScoped<IChatGroupMessageUrlRepository, ChatGroupMessageUrlRepository>();
+        services.AddScoped<IChatGroupRepository, ChatGroupRepository>();
+        services.AddScoped<IOnlineInChatRepository, OnlineInChatRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
 
         return services;

@@ -6,9 +6,9 @@ using MessagePersistenceService.Persistence.Contexts;
 
 namespace MessagePersistenceService.Persistence.Repositories;
 
-public class UserRepository : EfRepositoryBase<User, MessagePersistenceServiceContext>, IUserRepository
+public class ChatGroupRepository : EfRepositoryBase<ChatGroup, MessagePersistenceServiceContext>, IChatGroupRepository
 {
-    public UserRepository(MessagePersistenceServiceContext context, IMapper mapper) : base(context, mapper)
+    public ChatGroupRepository(MessagePersistenceServiceContext context, IMapper mapper) : base(context, mapper)
     {
     }
 }
