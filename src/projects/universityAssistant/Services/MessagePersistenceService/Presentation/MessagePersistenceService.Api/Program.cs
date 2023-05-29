@@ -1,10 +1,12 @@
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Extensions;
 using EventBus.Base.Abstraction;
+using MessagePersistenceService.Api.Extensions.Auth;
 using MessagePersistenceService.Api.Extensions.EventBus;
 using MessagePersistenceService.Api.Extensions.HealthCheck;
 using MessagePersistenceService.Api.Extensions.PublishExtensions;
 using MessagePersistenceService.Api.Extensions.ServiceDiscovery;
+using MessagePersistenceService.Api.Extensions.Swagger;
 using MessagePersistenceService.Api.IntegrationEvents.EventHandlers;
 using MessagePersistenceService.Api.IntegrationEvents.Events;
 using MessagePersistenceService.Application;
@@ -38,14 +40,16 @@ Log.Logger = new LoggerConfiguration()
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.ConfigureSwagger();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddEventBus(builder.Configuration);
 builder.Services.ConfigureConsul(builder.Configuration);
+builder.Services.ConfigureAuth(builder.Configuration);
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddTransient<GetAllUsersIntegrationEventHandler>();
 builder.Services.AddTransient<UserAddedIntegrationEventHandler>();
