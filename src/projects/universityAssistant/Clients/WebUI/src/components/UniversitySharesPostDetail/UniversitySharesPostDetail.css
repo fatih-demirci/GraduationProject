@@ -13,9 +13,9 @@
     display: flex;
     justify-content: space-between;
 }
+
 .uspd-author-info{
     display: flex;
-    
 }
 .uspd-author-name{
     display: table;

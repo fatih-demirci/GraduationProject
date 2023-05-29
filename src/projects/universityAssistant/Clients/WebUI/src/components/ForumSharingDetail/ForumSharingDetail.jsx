@@ -6,22 +6,11 @@ import { FaComments } from "react-icons/fa";
 import { AiFillLike } from "react-icons/ai";
 import UserServices from "../../Services/UserServices";
 const ForumSharingDetail = () => {
-  const [file, setFile] = useState();
   const [text, setText] = useState("");
   let userServices = new UserServices();
 
-  const onFileDrop = (e) => {
-    setFile(e.target.files[0]);
-  };
-  console.log(file);
-
-  function submit(e) {
-    e.preventDefault();
-    userServices.UpdateProfilePhoto(file);
-    userServices.UpdateUserName(text);
-  }
   return (
-    <div className=" forum-sharing-detail-container">
+    <div className="forum-sharing-detail-container">
       <div className="container">
         <div className="fsdc-title">
           {" "}
@@ -132,11 +121,7 @@ const ForumSharingDetail = () => {
           <div className="border-bottom mt-4"></div>
         </div>
       </div>
-      <form onSubmit={submit}>
-        <input type="text" onChange={(e) => setText(e.target.value)} />
-        <input type="file" onChange={onFileDrop}></input>
-        <button type="submit">YOLLA</button>
-      </form>
+      
     </div>
   );
 };
