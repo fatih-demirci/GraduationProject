@@ -66,7 +66,10 @@ app.ConfigureCustomExceptionMiddleware();
 
 await app.MigrateDbContext<MessagePersistenceServiceContext>(async (context, services) =>
 {
-    await Task.CompletedTask;
+    var logger = services.GetService<ILogger<MessagePersistenceServiceContextSeed>>();
+    var dbContextSeeder = new MessagePersistenceServiceContextSeed();
+
+    await dbContextSeeder.SeedAsync(context, logger, app.Configuration);
 });
 
 app.UseHttpsRedirection();

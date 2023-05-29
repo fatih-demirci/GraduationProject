@@ -1,0 +1,9 @@
+﻿Id,Name
+1,Genel
+2,YKS Kaynak Tavsiyeleri
+3,Tanışma - Kaynaşma
+4,Üniversite Tercihleri
+5,Sayısal
+6,Eşit Ağırlık
+7,Sözel
+8,Dil
