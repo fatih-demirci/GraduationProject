@@ -2,10 +2,32 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./EmailConfirmed.css";
+import EmailServices from "../../Services/EmailServices";
+import { toast } from "react-toastify";
 
 const EmailConfirmed = () => {
-
   const [otp, setOtp] = useState(new Array(6).fill(""));
+  let emailServices = new EmailServices()
+  let navigate = useNavigate()
+
+  useEffect(() => {
+    emailServices.SendEmailConfirmation()
+  
+  }, [])
+  
+  function disabledButtonConfirm() {
+    document.getElementById("inputButtonConfirm").disabled = true;
+    setTimeout(() => {
+      document.getElementById("inputButtonConfirm").disabled = false;
+    }, 3000);
+  }
+  function disabledButtonSend() {
+    document.getElementById("inputButtonSend").disabled = true;
+    setTimeout(() => {
+      document.getElementById("inputButtonSend").disabled = false;
+    }, 15000);
+  }
+  console.log(otp.join(""));
 
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
@@ -17,16 +39,34 @@ const EmailConfirmed = () => {
       element.nextSibling.focus();
     }
   };
-  return (
+  function sendMail() {
+    emailServices.SendEmailConfirmation()
+    
+  }
 
-    <>
-      <div className="row mt-5">
-        <div className="col text-center">
-          <h2>numara doğrulama</h2>
-          <p>
-            Lütfen telefonunuza gelen doğrulama kodunu aşağıdaki alana
-            girin.
-          </p>
+  function confirmEmail() {
+    emailServices.ConfirmEmail(otp.join("")).then((res) => {
+      console.log(res);
+      toast.success(res.data.message + " yönlendiriliyorsunuz.",{
+        autoClose:1500
+      });
+      setTimeout(() => {
+        navigate("/")
+      }, 1500);
+      
+    })
+    .catch((err) => {
+      toast.error(err.response.data.Detail);
+      console.log(err);
+    });
+    
+  }
+  return (
+    <div className="container emailconfirmed-container">
+      <div className=" row mt-5">
+        <div className="col text-center mt-5">
+          <h2>E-Posta Doğrulama</h2>
+          <p>Lütfen e-posta gelen doğrulama kodunu aşağıdaki alana girin.</p>
           {otp.map((data, index) => {
             return (
               <input
@@ -52,27 +92,32 @@ const EmailConfirmed = () => {
             </button>
 
             <button
+              id="inputButtonConfirm"
               type="button"
               className="btn btn-outline-success me-2"
+              onClick={() => {disabledButtonConfirm();
+                confirmEmail()
+              }}
             >
               DOĞRULA
             </button>
 
-
             <button
-              id="inputButton"
+              id="inputButtonSend"
               type="button"
-              className={
-                `btn btn-outline-warning send-mail-button `
-              }
-             
+              className={`btn btn-outline-warning send-mail-button `}
+              onClick={() => {
+                disabledButtonSend();
+                sendMail()
+              
+              }}
             >
               TEKRAR YOLLA
             </button>
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

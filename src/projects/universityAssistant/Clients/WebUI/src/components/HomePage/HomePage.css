@@ -1,28 +1,121 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500;600;700&display=swap');
-.home-page-bg-img{
-     /* position: absolute; */
-    /* top: 0;
-    left: 0;
-    right: 0; */
-    /* background: url(/public/img/bg.jpg) top right no-repeat; */
-    /* background-size: cover; */
-     /* width: 100%; */
-    
-    /* z-index: 1; */
-    /*max-inline-size: 100%;
-  block-size: auto;
-  aspect-ratio: 2/1;
-  object-fit: cover; */
-  /* width: 100%; */
-  /* height: 100vh;
-  max-height: 900px; */
-  /* background: url(../imgs/main.jpg) no-repeat center center fixed; */
-  /* background-size: cover;
-  min-height: 750px; */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500;600;700&display=swap'); */
+
+.filter-overlay {
+  background-color: rgb(255 255 255 / 0.3);
+  backdrop-filter: blur(10px);
+  width: fit-content;
+  height: fit-content;
 }
-.home-page{
+.about-detail{
+  display: flex;
+  width: fit-content;
+}
+
+.about_card-container{
+
+}
+
+.about_card_left{
+  margin-top: 60px;
+  background-image: url(/public/img/college-student-4369850_1920.jpg);
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 310px;
+  border-radius: 20px;
+  transition: 0.2s ease-in-out;
+  
+  }
+  .about_card_left:hover{
+    transform: scale(1.03);
+  }
+
+.about_card_right{
+  /* display: flex;
+  justify-content: end; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/public/img/pexels-suzy-hazelwood-1122865.jpg);
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 310px;
+  border-radius: 20px;
+  transition: 0.2s ease-in-out;
+}
+.about_card_right:hover{
+  transform: scale(1.03);
+}
+.about_card a {
+
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 25px;
+  border: 2px solid #c4d70f;
+  color: #c4d70f;
+  border-radius: 35px;
+}
+
+.about_card a:hover {
+
+  background-color: #c4d70f;
+  color: #fefeff;
+
+}
+.about_img_left{
+  display: flex;
+  justify-content: start;
+  width: 190px;
+  
+}
+.about_img_box{
+  display: flex;
+  justify-content: end;
+
+}
+.about_img_right{
+
+  width: 190px;
+}
+
+.card_detail-ox{
+  display: table;
+  
+  
+}
+.card_detail-oxx{
+  background-color: rgb(255 255 255 / 0.3);
+  backdrop-filter: blur(10px);
+  display: table-cell; 
+  vertical-align: middle;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.card_detail-oxx > h4{
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.card_detail-oxx > p {
+  font-family: "Roboto", sans-serif;
+}
+@media screen and (max-width: 992px) {
+  .about_card_left{
+    margin-top: 70px;
+  }
+  .about_img{
+    width: 90px;
+  }
+}
+/* .home-page{
 
     margin-top: 110px;
     overflow: hidden;
@@ -63,8 +156,7 @@
     position: relative;
     z-index: 9999;
     margin: 0 20px;
-    /* width: 30%; */
-    /* min-width: 300px; */
+   
     height: 540px;
   }
 
@@ -108,7 +200,6 @@
     border: 2px solid #c4d70f;
     color: #c4d70f;
     border-radius: 35px;
-    /* margin-top: 10px; */
   }
   
   .about_card a:hover {
@@ -122,34 +213,4 @@
    .home-page{
     overflow: hidden;
    }
-}
-/* .home-page-img{
-      background: url(../../bg.jpg) no-repeat center center fixed;
-      height: 100vh;
-      max-height: 900px;
-      background-size: cover;
-      min-height: 700px;
-
-} */
-/* .overlay{
-    height: 100%;
-  background: rgba(33, 37, 41, 0.35);
-  display: -webkit-flex;
-  display: -ms-flex;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
 } */

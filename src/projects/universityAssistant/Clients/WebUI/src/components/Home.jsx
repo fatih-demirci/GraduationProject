@@ -14,10 +14,13 @@ import UniversityDetailPage from "./UniversityDetailPage/UniversityDetailPage";
 import UniversitySharesPostDetail from "./UniversitySharesPostDetail/UniversitySharesPostDetail";
 import ForumSharingDetail from "./ForumSharingDetail/ForumSharingDetail";
 import EmailConfirmed from "./EmailConfirmed/EmailConfirmed";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
   return (
     <>
+    <ToastContainer/>
         <Navbar />
       <Decor/>
 
@@ -32,8 +35,8 @@ const Home = () => {
 
           <Route path="/university-guide" element={<UniversityGuide/>}></Route>
           <Route path="/university-guide/:id" element={<UniversityGuideList/>}></Route>
-          <Route path="/university-guide/:id/:name" element={<UniversityDetailPage/>}></Route>
-          <Route path="/university-guide/:id/:name/sharing/:id" element={<UniversitySharesPostDetail/>}></Route>
+          <Route path="/university-guide/:id/:name/:id" element={<UniversityDetailPage/>}></Route>
+          <Route path="/university-guide/:id/:name/:id/sharing/:id" element={<UniversitySharesPostDetail/>}></Route>
         </Routes>
         
 
