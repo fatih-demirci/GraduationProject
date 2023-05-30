@@ -110,6 +110,15 @@
       "UpstreamPathTemplate": "/UniversityComments{everything}",
       "UpstreamHttpMethod": [ "Get" ],
       "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "MessagePersistenceService",
+      "DownstreamPathTemplate": "/api/ChatCategories/{everything}",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/ChatCategories/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "http"
     }
   ],
   "GlobalConfiguration": {
