@@ -4,11 +4,13 @@ using EventBus.Base.Abstraction;
 using MessagePersistenceService.Api.Extensions.Auth;
 using MessagePersistenceService.Api.Extensions.EventBus;
 using MessagePersistenceService.Api.Extensions.HealthCheck;
+using MessagePersistenceService.Api.Extensions.Localization;
 using MessagePersistenceService.Api.Extensions.PublishExtensions;
 using MessagePersistenceService.Api.Extensions.ServiceDiscovery;
 using MessagePersistenceService.Api.Extensions.Swagger;
 using MessagePersistenceService.Api.IntegrationEvents.EventHandlers;
 using MessagePersistenceService.Api.IntegrationEvents.Events;
+using MessagePersistenceService.Api.Middlewares;
 using MessagePersistenceService.Application;
 using MessagePersistenceService.Persistence;
 using MessagePersistenceService.Persistence.Contexts;
@@ -50,6 +52,10 @@ builder.Services.AddHealthChecks();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllersWithViews().AddViewLocalization();
+builder.Services.ConfigureLocalization();
+
+builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
 builder.Services.AddTransient<GetAllUsersIntegrationEventHandler>();
 builder.Services.AddTransient<UserAddedIntegrationEventHandler>();
@@ -58,6 +64,10 @@ builder.Services.AddTransient<UserUpdatedIntegrationEventHandler>();
 var app = builder.Build();
 
 app.UseCustomHealtCheck(app.Configuration);
+
+app.UseRequestLocalization();
+
+app.UseRequestLocalizationCookies();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
