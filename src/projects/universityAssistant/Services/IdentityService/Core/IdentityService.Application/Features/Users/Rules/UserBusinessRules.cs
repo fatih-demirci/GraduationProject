@@ -22,7 +22,7 @@ namespace IdentityService.Application.Features.Users.Rules
             _localizer = localizer;
         }
 
-        public async Task<User> UserShouldBeExist(string email)
+        public async Task<User> UserShouldExist(string email)
         {
             User? user = await _userRepository.GetAsync(i => i.Email == email) ?? throw new BusinessException(_localizer["UserShouldBeExist"]);
             return user;

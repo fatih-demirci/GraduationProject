@@ -1,10 +1,9 @@
 ﻿using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
 using MediatR;
-using MessagePersistenceService.Application.Constants;
 using MessagePersistenceService.Application.Languages;
+using MessagePersistenceService.Application.Services.HttpContextAccessorServices;
 using MessagePersistenceService.Application.Services.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Localization;
 
 namespace MessagePersistenceService.Application.Features.ChatCategories.Queries.GetAllChatCategory;
@@ -12,19 +11,19 @@ namespace MessagePersistenceService.Application.Features.ChatCategories.Queries.
 internal class GetAllChatCategoryQueryRequestHandler : IRequestHandler<GetAllChatCategoryQueryRequest, IPaginate<GetAllChatCategoryResponseDto>>
 {
     private readonly IChatCategoryRepository _chatCategoryRepository;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IHttpContextAccessorService _httpContextAccessorService;
     private readonly IStringLocalizer<Lang> _stringLocalizer;
 
-    public GetAllChatCategoryQueryRequestHandler(IChatCategoryRepository chatCategoryRepository, IHttpContextAccessor httpContextAccessor, IStringLocalizer<Lang> stringLocalizer)
+    public GetAllChatCategoryQueryRequestHandler(IChatCategoryRepository chatCategoryRepository, IHttpContextAccessorService httpContextAccessorService, IStringLocalizer<Lang> stringLocalizer)
     {
         _chatCategoryRepository = chatCategoryRepository;
-        _httpContextAccessor = httpContextAccessor;
+        _httpContextAccessorService = httpContextAccessorService;
         _stringLocalizer = stringLocalizer;
     }
 
     public async Task<IPaginate<GetAllChatCategoryResponseDto>> Handle(GetAllChatCategoryQueryRequest request, CancellationToken cancellationToken)
     {
-        if (!request.Status && (_httpContextAccessor.HttpContext == null || !_httpContextAccessor.HttpContext.User.Claims.Any(i => i.Value == DbRoles.SUPERADMIN)))
+        if (!request.Status && !_httpContextAccessorService.CheckIfSuperAdmin())
         {
             throw new AuthorizationException(_stringLocalizer["AuthorizationException"]);
         }

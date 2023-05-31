@@ -7,6 +7,7 @@ public class ChatGroup : Entity
     public ChatGroup()
     {
         CreatedDate = DateTime.UtcNow;
+        LastMessageDate = DateTime.MaxValue;
     }
 
     public int Id { get; set; }

@@ -30,8 +30,8 @@ namespace IdentityService.Application.Features.Users.Commands.UpdateProfilePhoto
 
         public async Task<UpdateProfilePhotoResponseDto> Handle(UpdateProfilePhotoCommandRequest request, CancellationToken cancellationToken)
         {
-            string userId = _httpContextAccessor.HttpContext.User.GetEmail()!;
-            User user = await _userBusinessRules.UserShouldBeExist(userId);
+            string userEmail = _httpContextAccessor.HttpContext!.User.GetEmail()!;
+            User user = await _userBusinessRules.UserShouldExist(userEmail);
 
             if (user.ProfilePhotoUrl != null)
             {

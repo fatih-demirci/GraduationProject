@@ -1,6 +1,7 @@
 ﻿using Core.Application.Pipelines.Authorization;
 using MediatR;
 using MessagePersistenceService.Application.Features.ChatGroups.Rules;
+using MessagePersistenceService.Application.Services.HttpContextAccessorServices;
 using MessagePersistenceService.Application.Services.UserServices;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -17,6 +18,7 @@ public static class ApplicationServiceRegistration
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
 
         services.AddScoped<IUserService, UserManager>();
+        services.AddScoped<IHttpContextAccessorService, HttpContextAccessorManager>();
 
         services.AddScoped<ChatGroupBusinessRules>();
 

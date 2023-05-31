@@ -10,11 +10,6 @@ using IdentityService.Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Localization;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IdentityService.Application.Features.Users.Queries.SendResetToken
 {
@@ -37,7 +32,7 @@ namespace IdentityService.Application.Features.Users.Queries.SendResetToken
 
         public async Task<SendResetTokenResponseDto> Handle(SendResetTokenQueryRequest request, CancellationToken cancellationToken)
         {
-            User user = await _userBusinessRules.UserShouldBeExist(request.Email);
+            User user = await _userBusinessRules.UserShouldExist(request.Email);
 
             string token = ResetTokenAuthenticatorHelper.CreateResetToken();
             ResetToken resetToken = new(user.Id, token);

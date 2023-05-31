@@ -8,6 +8,7 @@ public class AddChatGroupResponse
     public string UserName { get; set; }
     public string? ProfilePhotoUrl { get; set; }
     public string Name { get; set; }
+    public string ChatCategoryName { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime? LastMessageDate { get; set; }
 }

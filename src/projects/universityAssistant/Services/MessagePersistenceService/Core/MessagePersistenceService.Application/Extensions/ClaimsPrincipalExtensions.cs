@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace MessagePersistenceService.Application.Features.Extensions;
+namespace MessagePersistenceService.Application.Extensions;
 
 public static class ClaimsPrincipalExtensions
 {

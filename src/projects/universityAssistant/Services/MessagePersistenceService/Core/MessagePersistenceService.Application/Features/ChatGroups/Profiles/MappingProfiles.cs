@@ -10,11 +10,13 @@ public class MappingProfiles : Profile
     {
         CreateMap<AddChatGroupCommandRequest, ChatGroup>()
             .ForMember(x => x.ChatCategoryId, y => y.MapFrom(z => z.ChatCategoryId))
-            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name));
+            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+            .ForMember(x => x.Status, y => y.MapFrom(z => true));
 
         CreateMap<ChatGroup, AddChatGroupResponse>()
             .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
             .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+            .ForMember(x => x.ChatCategoryName, y => y.MapFrom(z => z.ChatCategory.Name))
             .ForMember(x => x.ChatCategoryId, y => y.MapFrom(z => z.ChatCategoryId))
             .ForMember(x => x.LastMessageDate, y => y.MapFrom(z => z.LastMessageDate))
             .ForMember(x => x.CreatedDate, y => y.MapFrom(z => z.CreatedDate))
