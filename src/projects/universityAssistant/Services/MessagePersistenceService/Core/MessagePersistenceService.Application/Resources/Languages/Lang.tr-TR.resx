@@ -120,4 +120,7 @@
   <data name="AuthorizationException" xml:space="preserve">
     <value>Yetkili değilsiniz</value>
   </data>
+  <data name="ChatCategoryDoesNotExist" xml:space="preserve">
+    <value>Sohbet kategorisi mevcut değil</value>
+  </data>
 </root>

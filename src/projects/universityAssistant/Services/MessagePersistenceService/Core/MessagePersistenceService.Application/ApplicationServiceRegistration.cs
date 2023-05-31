@@ -1,4 +1,7 @@
-﻿using MessagePersistenceService.Application.Services.UserServices;
+﻿using Core.Application.Pipelines.Authorization;
+using MediatR;
+using MessagePersistenceService.Application.Features.ChatGroups.Rules;
+using MessagePersistenceService.Application.Services.UserServices;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -11,7 +14,11 @@ public static class ApplicationServiceRegistration
         services.AddMediatR(i => i.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
+
         services.AddScoped<IUserService, UserManager>();
+
+        services.AddScoped<ChatGroupBusinessRules>();
 
         return services;
     }

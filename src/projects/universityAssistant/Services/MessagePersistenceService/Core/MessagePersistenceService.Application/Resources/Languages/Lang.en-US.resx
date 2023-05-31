@@ -120,4 +120,7 @@
   <data name="AuthorizationException" xml:space="preserve">
     <value>You are not authorized</value>
   </data>
+  <data name="ChatCategoryDoesNotExist" xml:space="preserve">
+    <value>Chat category does not exist.</value>
+  </data>
 </root>
