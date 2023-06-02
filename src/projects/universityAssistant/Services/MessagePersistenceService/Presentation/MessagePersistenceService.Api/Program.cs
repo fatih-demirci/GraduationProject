@@ -14,6 +14,7 @@ using MessagePersistenceService.Api.Middlewares;
 using MessagePersistenceService.Application;
 using MessagePersistenceService.Persistence;
 using MessagePersistenceService.Persistence.Contexts;
+using MessagePersistenceService.Infrastructure;
 using Serilog;
 using System.Reflection;
 
@@ -51,6 +52,7 @@ builder.Services.ConfigureAuth(builder.Configuration);
 builder.Services.AddHealthChecks();
 builder.Services.AddPersistenceService(builder.Configuration);
 builder.Services.AddApplicationService();
+builder.Services.AddInfrastructureService(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews().AddViewLocalization();
 builder.Services.ConfigureLocalization();

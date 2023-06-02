@@ -29,6 +29,7 @@
     <ProjectReference Include="..\..\..\..\..\..\BuildingBlocks\EventBus\EventBus.Factory\EventBus.Factory.csproj" />
     <ProjectReference Include="..\..\..\..\..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\Core\MessagePersistenceService.Application\MessagePersistenceService.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\MessagePersistenceService.Infrastructure\MessagePersistenceService.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\MessagePersistenceService.Persistence\MessagePersistenceService.Persistence.csproj" />
   </ItemGroup>
 
