@@ -128,6 +128,15 @@
       "UpstreamPathTemplate": "/ChatGroups/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "https"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "MessagePersistenceService",
+      "DownstreamPathTemplate": "/api/ChatGroupMessages/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/ChatGroupMessages/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "https"
     }
   ],
   "GlobalConfiguration": {

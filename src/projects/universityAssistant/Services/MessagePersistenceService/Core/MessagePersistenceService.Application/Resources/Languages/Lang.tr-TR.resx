@@ -123,4 +123,7 @@
   <data name="ChatCategoryDoesNotExist" xml:space="preserve">
     <value>Sohbet kategorisi mevcut değil</value>
   </data>
+  <data name="ChatGroupDoesNotExist" xml:space="preserve">
+    <value>Sohbet grubu bulunamadı</value>
+  </data>
 </root>

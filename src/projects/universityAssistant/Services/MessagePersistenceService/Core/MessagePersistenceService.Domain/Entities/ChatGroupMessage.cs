@@ -4,6 +4,11 @@ namespace MessagePersistenceService.Domain.Entities;
 
 public class ChatGroupMessage : Entity
 {
+    public ChatGroupMessage()
+    {
+        Status = true;
+    }
+
     public Guid Id { get; set; }
     public int ChatGroupId { get; set; }
     public long? UserId { get; set; }

@@ -1,6 +1,8 @@
 ﻿using Core.Application.Pipelines.Authorization;
 using MediatR;
+using MessagePersistenceService.Application.Features.ChatGroupMessages.Rules;
 using MessagePersistenceService.Application.Features.ChatGroups.Rules;
+using MessagePersistenceService.Application.Services.ChatGroupServices;
 using MessagePersistenceService.Application.Services.HttpContextAccessorServices;
 using MessagePersistenceService.Application.Services.UserServices;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,8 +21,10 @@ public static class ApplicationServiceRegistration
 
         services.AddScoped<IUserService, UserManager>();
         services.AddScoped<IHttpContextAccessorService, HttpContextAccessorManager>();
+        services.AddScoped<IChatGroupService, ChatGroupManager>();
 
         services.AddScoped<ChatGroupBusinessRules>();
+        services.AddScoped<ChatGroupMessageBusinessRules>();
 
         return services;
     }

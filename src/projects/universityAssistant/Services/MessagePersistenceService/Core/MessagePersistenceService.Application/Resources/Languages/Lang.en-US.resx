@@ -123,4 +123,7 @@
   <data name="ChatCategoryDoesNotExist" xml:space="preserve">
     <value>Chat category does not exist.</value>
   </data>
+  <data name="ChatGroupDoesNotExist" xml:space="preserve">
+    <value>Chat group does not exist</value>
+  </data>
 </root>
