@@ -21,6 +21,8 @@
   background-color: white;
   padding: 2px;
   width: 70px;
+  max-width: 70px;
+  height: 70px;
   border-radius: 50% ;
 }
 .profile-username-div {
@@ -59,6 +61,7 @@
   width: 25px;
   top: 12%;
   left: 40%;
+
 }
 
 .file-upload-input-button{

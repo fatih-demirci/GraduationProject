@@ -26,7 +26,7 @@ export default class AuthServices {
     return axios.post(
       process.env.REACT_APP_API_URL + "/Auth/LoginWithRefreshToken",
       {
-        token: localStorage.getItem("refreshToken"),
+        token: token,
       },
       {
         headers: {

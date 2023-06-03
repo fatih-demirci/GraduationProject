@@ -16,6 +16,12 @@ const TextModal = ({ initialValue, getValue, file, setFile, uploaded,submit,setS
   // 	},
   // 	[placeholder]
   // );
+  function buttonDisabled() {
+    document.getElementById("shareButton").disabled = true;
+    setTimeout(() => {
+      document.getElementById("shareButton").disabled = false;
+    }, 5000);
+  }
   return (
     <div className="text-modal-container">
       <div className="d-flex justify-content-center">
@@ -42,7 +48,7 @@ const TextModal = ({ initialValue, getValue, file, setFile, uploaded,submit,setS
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Modal title
+                Paylaşım Yap
               </h1>
               <button
                 type="button"
@@ -82,10 +88,10 @@ const TextModal = ({ initialValue, getValue, file, setFile, uploaded,submit,setS
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
-                Close
+                Kapat
               </button>
-              <button type="submit" class="btn btn-primary">
-                Save changes
+              <button type="submit"  id="shareButton"  class="btn btn-success">
+               Paylaş
               </button>
             </div>
             <FileUploadComponent

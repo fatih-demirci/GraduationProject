@@ -40,7 +40,12 @@ console.log(file);
     console.log("qweqwe");
     universityServices.AddUniversityComment(params.id,stateTitle,message,file).then((res) => {
       console.log(res);
-      toast.success("Gönderi paylaşıldı.")
+      toast.success("Gönderi paylaşıldı.",{
+        autoClose:1500
+      })
+      setTimeout(() => {
+        window.location.reload()
+      }, 1500);
     })
     .catch((err) => {console.log(err)
     toast.error("Gönderi paylaşılamadı.")
