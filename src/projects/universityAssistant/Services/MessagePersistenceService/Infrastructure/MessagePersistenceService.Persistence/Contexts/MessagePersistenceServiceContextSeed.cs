@@ -67,6 +67,7 @@ public class MessagePersistenceServiceContextSeed
             {
                 Id = int.Parse(row[0]),
                 Name = row[1],
+                ColorCode = row[2],
                 Status = true
             });
     }

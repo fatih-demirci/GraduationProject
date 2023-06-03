@@ -1,9 +1,9 @@
-﻿Id,Name
-1,Genel
-2,YKS Kaynak Tavsiyeleri
-3,Tanışma - Kaynaşma
-4,Üniversite Tercihleri
-5,Sayısal
-6,Eşit Ağırlık
-7,Sözel
-8,Dil
+﻿Id,Name,ColorCode
+1,Genel,#000000
+2,YKS Kaynak Tavsiyeleri,#ff930f
+3,Tanışma - Kaynaşma,#ff3d3d
+4,Üniversite Tercihleri,#42047e
+5,Sayısal,#0fbbff
+6,Eşit Ağırlık,#89a7fa
+7,Sözel,#ffc720
+8,Dil,#ee8bdc
