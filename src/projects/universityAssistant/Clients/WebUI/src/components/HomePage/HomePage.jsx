@@ -20,7 +20,7 @@ const HomePage = () => {
             </div> */}
             <div class="card_detail-ox ">
               <div className="card_detail-oxx">
-                <h4>Forum'a Geç</h4>
+                <h4>Sohbet odaların'a Geç</h4>
                 <p>Aklındaki soruları cevapsız bırakma.</p>
                 {/* <div>
                   <a href="" class="about_btn">

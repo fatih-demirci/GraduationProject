@@ -4,14 +4,19 @@ import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import { IoChatbubblesSharp } from "react-icons/io5";
 import ForumTextModal from "./ForumTextModal";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const ForumPage = () => {
+  const [title, setTitle] = useState("")
+  const [selectedValue, setSelectedValue] = useState("")
+  console.log(selectedValue);
+  console.log(title);
   return (
     <div className="container">
       <div className="forum-page-main-div">
         <div class="row">
           <div class="col-xxl-2 col-xl-3 col-lg-3 ">
             <div className="forum-tag-button-group">
-              <ForumTextModal />
+              <ForumTextModal title={title} setTitle={setTitle} selectedValue={selectedValue} setSelectedValue={setSelectedValue}/>
 
               <button className="mt-3 mb-3 forum-tag-button">
                 <HiOutlineChatBubbleLeftRight /> Tüm tartışmalar
@@ -34,7 +39,7 @@ const ForumPage = () => {
           </div>
           <div className="col-xxl-10 col-xl-9 col-lg-9">
             <div className="forum-question-component-group">
-              <Link to="post-detail/id">
+              <Link to="chat-detail/id">
                 <div className="forum-question-component">
                   <img
                     className="forum-question-component-user-img"

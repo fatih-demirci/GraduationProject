@@ -43,7 +43,6 @@ export default class UserServices {
           },
         }
       )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      
   }
 }

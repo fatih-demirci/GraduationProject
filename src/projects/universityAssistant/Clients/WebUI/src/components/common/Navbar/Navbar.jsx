@@ -43,8 +43,8 @@ const Navbar = () => {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/forum">
-                  Forum
+                <a class="nav-link" href="/chat">
+                  Sohbet Odaları
                 </a>
               </li>
               <li class="nav-item">
