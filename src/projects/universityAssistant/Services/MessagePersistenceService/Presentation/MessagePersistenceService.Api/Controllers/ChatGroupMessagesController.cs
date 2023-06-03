@@ -1,4 +1,6 @@
-﻿using MessagePersistenceService.Application.Features.ChatGroupMessages.Commands.AddChatGroupMessage;
+﻿using Core.Persistence.Paging;
+using MessagePersistenceService.Application.Features.ChatGroupMessages.Commands.AddChatGroupMessage;
+using MessagePersistenceService.Application.Features.ChatGroupMessages.Queries.GetAllChatGroupMessage;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessagePersistenceService.Api.Controllers;
@@ -16,6 +18,13 @@ public class ChatGroupMessagesController : BaseController
         }
 
         AddChatGroupMessageResponse result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetAllChatGroupMessage")]
+    public async Task<IActionResult> GetAllChatGroupMessage([FromQuery] GetAllChatGroupMessageQueryRequest request)
+    {
+        IPaginate<GetAllChatGroupMessageResponseDto> result = await Mediator.Send(request);
         return Ok(result);
     }
 }
