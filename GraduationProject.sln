@@ -109,15 +109,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{765F9D98-F64F-4900-A4E7-C1BE91823756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePersistenceService.Api", "src\projects\universityAssistant\Services\MessagePersistenceService\Presentation\MessagePersistenceService.Api\MessagePersistenceService.Api.csproj", "{617313F4-CE2F-4BDF-AB51-62A96136B46A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.Api", "src\projects\universityAssistant\Services\MessagePersistenceService\Presentation\MessagePersistenceService.Api\MessagePersistenceService.Api.csproj", "{617313F4-CE2F-4BDF-AB51-62A96136B46A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePersistenceService.Persistence", "src\projects\universityAssistant\Services\MessagePersistenceService\Infrastructure\MessagePersistenceService.Persistence\MessagePersistenceService.Persistence.csproj", "{70096E87-FE59-467A-8CB4-31847080729F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.Persistence", "src\projects\universityAssistant\Services\MessagePersistenceService\Infrastructure\MessagePersistenceService.Persistence\MessagePersistenceService.Persistence.csproj", "{70096E87-FE59-467A-8CB4-31847080729F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePersistenceService.Infrastructure", "src\projects\universityAssistant\Services\MessagePersistenceService\Infrastructure\MessagePersistenceService.Infrastructure\MessagePersistenceService.Infrastructure.csproj", "{A2486FA4-1FFA-48B9-8100-39AB84F51539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.Infrastructure", "src\projects\universityAssistant\Services\MessagePersistenceService\Infrastructure\MessagePersistenceService.Infrastructure\MessagePersistenceService.Infrastructure.csproj", "{A2486FA4-1FFA-48B9-8100-39AB84F51539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePersistenceService.Application", "src\projects\universityAssistant\Services\MessagePersistenceService\Core\MessagePersistenceService.Application\MessagePersistenceService.Application.csproj", "{9B8366A2-D235-4285-A7DD-98FD8AFC60D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.Application", "src\projects\universityAssistant\Services\MessagePersistenceService\Core\MessagePersistenceService.Application\MessagePersistenceService.Application.csproj", "{9B8366A2-D235-4285-A7DD-98FD8AFC60D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessagePersistenceService.Domain", "src\projects\universityAssistant\Services\MessagePersistenceService\Core\MessagePersistenceService.Domain\MessagePersistenceService.Domain.csproj", "{3DF7142F-CDC1-4941-AC35-7ECB78F9C707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.Domain", "src\projects\universityAssistant\Services\MessagePersistenceService\Core\MessagePersistenceService.Domain\MessagePersistenceService.Domain.csproj", "{3DF7142F-CDC1-4941-AC35-7ECB78F9C707}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageOnlineService", "MessageOnlineService", "{2DD32B8D-D4DD-4461-97D6-D765E4D4D83F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageOnlineService.Api", "src\projects\universityAssistant\Services\MessageOnlineService\MessageOnlineService.Api\MessageOnlineService.Api.csproj", "{9D1DB776-20FD-4741-8FFF-7AC47EF39829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -235,6 +239,10 @@ Global
 		{3DF7142F-CDC1-4941-AC35-7ECB78F9C707}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DF7142F-CDC1-4941-AC35-7ECB78F9C707}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DF7142F-CDC1-4941-AC35-7ECB78F9C707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D1DB776-20FD-4741-8FFF-7AC47EF39829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D1DB776-20FD-4741-8FFF-7AC47EF39829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D1DB776-20FD-4741-8FFF-7AC47EF39829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D1DB776-20FD-4741-8FFF-7AC47EF39829}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,6 +298,8 @@ Global
 		{A2486FA4-1FFA-48B9-8100-39AB84F51539} = {1A8FDD96-3A9D-430C-B904-AC3C81D65FCF}
 		{9B8366A2-D235-4285-A7DD-98FD8AFC60D4} = {5E20EB4F-CFAE-48D7-BD73-528F210CAE75}
 		{3DF7142F-CDC1-4941-AC35-7ECB78F9C707} = {5E20EB4F-CFAE-48D7-BD73-528F210CAE75}
+		{2DD32B8D-D4DD-4461-97D6-D765E4D4D83F} = {09844188-DCE2-45B8-9351-38918782A34B}
+		{9D1DB776-20FD-4741-8FFF-7AC47EF39829} = {2DD32B8D-D4DD-4461-97D6-D765E4D4D83F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05EA7814-1CAB-4868-B86F-3D455B36EC3C}

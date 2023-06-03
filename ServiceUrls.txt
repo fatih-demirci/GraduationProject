@@ -4,3 +4,4 @@ NotificationService.Api			=>	https://localhost:5002;http://localhost:7002;c_noti
 StorageService.Api				=>	https://localhost:5003;http://localhost:7003;c_storageservice
 UniversityService.Api			=>	https://localhost:5004;http://localhost:7004;c_universityservice
 MessagePersistenceService.Api	=>	https://localhost:5005;http://localhost:7005;c_messagepersistenceservice
+MessageOnlineService.Api		=>	https://localhost:5006;http://localhost:7006;c_messageonlineservice
