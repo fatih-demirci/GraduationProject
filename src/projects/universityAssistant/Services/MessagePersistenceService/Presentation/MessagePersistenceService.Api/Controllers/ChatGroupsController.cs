@@ -1,6 +1,7 @@
 ﻿using Core.Persistence.Paging;
 using MessagePersistenceService.Application.Features.ChatGroups.Commands.AddChatGroup;
 using MessagePersistenceService.Application.Features.ChatGroups.Queries.GetAllChatGroup;
+using MessagePersistenceService.Application.Features.ChatGroups.Queries.GetByIdChatGroup;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MessagePersistenceService.Api.Controllers;
@@ -20,6 +21,13 @@ public class ChatGroupsController : BaseController
     public async Task<IActionResult> GetAllChatGroup([FromQuery] GetAllChatGroupQueryRequest request)
     {
         IPaginate<GetAllChatGroupResponseDto> result = await Mediator.Send(request);
+        return Ok(result);
+    }
+
+    [HttpGet("GetByIdChatGroup")]
+    public async Task<IActionResult> GetByIdChatGroup([FromQuery] GetByIdChatGroupQueryRequest request)
+    {
+        GetByIdChatGroupResponseDto result = await Mediator.Send(request);
         return Ok(result);
     }
 }

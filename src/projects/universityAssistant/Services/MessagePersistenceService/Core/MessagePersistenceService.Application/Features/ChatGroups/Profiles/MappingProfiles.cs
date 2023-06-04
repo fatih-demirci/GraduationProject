@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MessagePersistenceService.Application.Features.ChatGroups.Commands.AddChatGroup;
 using MessagePersistenceService.Application.Features.ChatGroups.Queries.GetAllChatGroup;
+using MessagePersistenceService.Application.Features.ChatGroups.Queries.GetByIdChatGroup;
 using MessagePersistenceService.Domain.Entities;
 
 namespace MessagePersistenceService.Application.Features.ChatGroups.Profiles;
@@ -38,5 +39,19 @@ public class MappingProfiles : Profile
             .ForMember(x => x.ChatCategoryName, y => y.MapFrom(z => z.ChatCategory.Name))
             .ForMember(x => x.CreatedDate, y => y.MapFrom(z => z.CreatedDate))
             .ForMember(x => x.LastMessageDate, y => y.MapFrom(z => z.LastMessageDate));
+
+        CreateMap<ChatGroup, GetByIdChatGroupResponseDto>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.ChatCategoryId, y => y.MapFrom(z => z.ChatCategoryId))
+            .ForMember(x => x.ChatCategoryName, y => y.MapFrom(z => z.ChatCategory.Name))
+            .ForMember(x => x.ColorCode, y => y.MapFrom(z => z.ChatCategory.ColorCode))
+            .ForMember(x => x.UserId, y => y.MapFrom(z => z.UserId))
+            .ForMember(x => x.UserName, y => y.MapFrom(z => z.User.UserName))
+            .ForMember(x => x.ProfilePhotoUrl, y => y.MapFrom(z => z.User.ProfilePhotoUrl))
+            .ForMember(x => x.Name, y => y.MapFrom(z => z.Name))
+            .ForMember(x => x.ChatCategoryName, y => y.MapFrom(z => z.ChatCategory.Name))
+            .ForMember(x => x.CreatedDate, y => y.MapFrom(z => z.CreatedDate))
+            .ForMember(x => x.LastMessageDate, y => y.MapFrom(z => z.LastMessageDate))
+            .ForMember(x => x.Status, y => y.MapFrom(z => z.Status));
     }
 }
