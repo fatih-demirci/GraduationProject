@@ -5,12 +5,7 @@ using Core.Persistence.Paging;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Persistence.Repositories
 {
@@ -57,7 +52,8 @@ namespace Core.Persistence.Repositories
                                                                null,
                                                            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>?
                                                                include = null,
-                                                           int index = 1, int size = 10, CancellationToken cancellationToken = default)
+                                                           int index = 1, int size = 10, Func<ProjectTo, object>? distinctBy = null,
+                                                           CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query();
             queryable = queryable.AsNoTracking();
@@ -65,7 +61,7 @@ namespace Core.Persistence.Repositories
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
             IQueryable<ProjectTo> projectQueryble = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
-            IPaginate<ProjectTo>? projectTo = await projectQueryble.ToPaginateAsync(index, size, 1, cancellationToken);
+            IPaginate<ProjectTo>? projectTo = await projectQueryble.ToPaginateAsync(index, size, 1, distinctBy, cancellationToken);
             return projectTo;
 
         }
@@ -76,6 +72,7 @@ namespace Core.Persistence.Repositories
                                                    Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>?
                                                        include = null,
                                                    int index = 1, int size = 10, bool enableTracking = true,
+                                                   Func<TEntity, object>? distinctBy = null,
                                                    CancellationToken cancellationToken = default)
         {
             IQueryable<TEntity> queryable = Query();
@@ -83,7 +80,8 @@ namespace Core.Persistence.Repositories
             if (include != null) queryable = include(queryable);
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
-            return await queryable.ToPaginateAsync(index, size, 1, cancellationToken);
+
+            return await queryable.ToPaginateAsync(index, size, 1, distinctBy, cancellationToken);
         }
 
         public async Task<List<ProjectTo>> GetListAsync<ProjectTo>(ODataQueryOptions<ProjectTo> options, Expression<Func<TEntity, bool>>? predicate = null)
@@ -101,6 +99,13 @@ namespace Core.Persistence.Repositories
             IQueryable<TEntity> queryable = Query();
             if (predicate != null) queryable = queryable.Where(predicate);
             return await queryable.AnyAsync();
+        }
+
+        public async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            return await queryable.CountAsync();
         }
 
         public IQueryable<TEntity> Query()
@@ -134,6 +139,7 @@ namespace Core.Persistence.Repositories
         public IPaginate<ProjectTo> GetList<ProjectTo>(Expression<Func<TEntity, bool>>? predicate = null,
                                           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
                                           Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+                                          Func<ProjectTo, object>? distinctBy = null,
                                           int index = 1, int size = 10)
         {
             IQueryable<TEntity> queryable = Query();
@@ -142,13 +148,14 @@ namespace Core.Persistence.Repositories
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
             IQueryable<ProjectTo> projectQueryble = queryable.ProjectTo<ProjectTo>(_mapper.ConfigurationProvider);
-            IPaginate<ProjectTo> projectTo = projectQueryble.ToPaginate(index, size);
+            IPaginate<ProjectTo> projectTo = projectQueryble.ToPaginate(index, size, 1, distinctBy);
             return projectTo;
         }
 
         public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate = null,
                                   Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
                                   Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+                                  Func<TEntity, object>? distinctBy = null,
                                   int index = 1, int size = 10, bool enableTracking = true)
         {
             IQueryable<TEntity> queryable = Query();
@@ -156,7 +163,7 @@ namespace Core.Persistence.Repositories
             if (include != null) queryable = include(queryable);
             if (predicate != null) queryable = queryable.Where(predicate);
             if (orderBy != null) queryable = orderBy(queryable);
-            return queryable.ToPaginate(index, size);
+            return queryable.ToPaginate(index, size, 1, distinctBy);
         }
 
         public bool Any(Expression<Func<TEntity, bool>>? predicate = null)
@@ -164,6 +171,13 @@ namespace Core.Persistence.Repositories
             IQueryable<TEntity> queryable = Query();
             if (predicate != null) queryable = queryable.Where(predicate);
             return queryable.Any();
+        }
+
+        public int Count(Expression<Func<TEntity, bool>> predicate)
+        {
+            IQueryable<TEntity> queryable = Query();
+            if (predicate != null) queryable = queryable.Where(predicate);
+            return queryable.Count();
         }
 
         public TEntity Add(TEntity entity)
