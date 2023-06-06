@@ -137,6 +137,15 @@
       "UpstreamPathTemplate": "/ChatGroupMessages/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
       "UpstreamScheme": "http"
+    },
+    {
+      "UseServiceDiscovery": true,
+      "ServiceName": "MessageOnlineService",
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "wss",
+      "UpstreamPathTemplate": "/hub/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put", "OPTIONS", "CONNECT" ],
+      "UpstreamScheme": "http"
     }
   ],
   "GlobalConfiguration": {
