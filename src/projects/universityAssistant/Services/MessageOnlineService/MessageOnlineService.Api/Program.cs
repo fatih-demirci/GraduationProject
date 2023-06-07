@@ -7,6 +7,7 @@ using MessageOnlineService.Api.Extensions.ServiceDiscovery;
 using MessageOnlineService.Api.Hubs;
 using MessageOnlineService.Api.IntegrationEvents.EventHandlers;
 using MessageOnlineService.Api.IntegrationEvents.Events;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
 
 builder.Configuration.AddJsonFile($"Configurations/appsettings.json", optional: false);
 builder.Configuration.AddJsonFile($"Configurations/appsettings.{env}.json", optional: true);
+
+builder.Configuration.AddJsonFile($"Configurations/serilog.json", optional: false);
+builder.Configuration.AddJsonFile($"Configurations/serilog.{env}.json", optional: true);
 
 builder.Configuration.AddEnvironmentVariables();
 
@@ -36,6 +40,12 @@ builder.Services.AddTransient<RemoveFromGroupIntegrationEventHandler>();
 builder.Services.AddTransient<SendMessageIntegrationEventHandler>();
 builder.Services.AddTransient<UserJoinedIntegrationEventHandler>();
 builder.Services.AddTransient<UserLeavedIntegrationEventHandler>();
+
+builder.Host.UseSerilog();
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
 
 var app = builder.Build();
 

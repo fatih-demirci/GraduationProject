@@ -118,6 +118,24 @@ services:
       - s_consul
       - s_sqlserver
 
+  messageonlineservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:7006
+    ports:
+      - "7006:7006"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - net_backendservices
+    depends_on:
+      - web.apigateway
+      - s_rabbitmq
+    external_links:
+      - s_rabbitmq
+      - s_consul
+
   s_consul:
      ports:
        - 8500:8500
