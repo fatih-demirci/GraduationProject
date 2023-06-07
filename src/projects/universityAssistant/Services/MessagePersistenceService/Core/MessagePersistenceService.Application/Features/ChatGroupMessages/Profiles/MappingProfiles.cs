@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MessagePersistenceService.Application.Features.ChatGroupMessages.Commands.AddChatGroupMessage;
 using MessagePersistenceService.Application.Features.ChatGroupMessages.Queries.GetAllChatGroupMessage;
+using MessagePersistenceService.Application.IntegrationEvents;
 using MessagePersistenceService.Domain.Entities;
 using MessagePersistenceService.Infrastructure.Storage;
 
@@ -49,6 +50,22 @@ public class MappingProfiles : Profile
             .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
             .ForMember(x => x.FileNameForStorage, y => y.MapFrom(z => z.FileNameForStorage))
             .ForMember(x => x.Url, y => y.MapFrom(z => z.Url))
+            .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
+
+        CreateMap<AddChatGroupMessageResponse, SendMessageIntegrationEvent>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.ChatGroupId, y => y.MapFrom(z => z.ChatGroupId))
+            .ForMember(x => x.UserId, y => y.MapFrom(z => z.UserId))
+            .ForMember(x => x.UserName, y => y.MapFrom(z => z.UserName))
+            .ForMember(x => x.ProfilePhotoUrl, y => y.MapFrom(z => z.ProfilePhotoUrl))
+            .ForMember(x => x.Message, y => y.MapFrom(z => z.Message))
+            .ForMember(x => x.SendingDate, y => y.MapFrom(z => z.SendingDate))
+            .ForMember(x => x.MessageUrls, y => y.MapFrom(z => z.ChatGroupMessageUrls));
+
+        CreateMap<AddChatGroupMessageResponseChatGroupMessageUrl, SendMessageIntegrationEventMessageUrl>()
+            .ForMember(x => x.Id, y => y.MapFrom(z => z.Id))
+            .ForMember(x => x.Url, y => y.MapFrom(z => z.Url))
+            .ForMember(x => x.FileNameForStorage, y => y.MapFrom(z => z.FileNameForStorage))
             .ForMember(x => x.Type, y => y.MapFrom(z => z.Type));
     }
 }

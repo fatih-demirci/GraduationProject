@@ -59,8 +59,10 @@ builder.Services.ConfigureLocalization();
 
 builder.Services.AddScoped<RequestLocalizationCookiesMiddleware>();
 
+builder.Services.AddTransient<AddToGroupIntegrationEventHandler>();
 builder.Services.AddTransient<GetAllUsersIntegrationEventHandler>();
 builder.Services.AddTransient<UserAddedIntegrationEventHandler>();
+builder.Services.AddTransient<UserDisconnectedIntegrationEventHandler>();
 builder.Services.AddTransient<UserUpdatedIntegrationEventHandler>();
 
 var app = builder.Build();
@@ -103,8 +105,10 @@ app.Run();
 async Task ConfigureEventBusForSubscription(IApplicationBuilder app)
 {
     IEventBus eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+    await eventBus.Subscribe<AddToGroupIntegrationEvent, AddToGroupIntegrationEventHandler>();
     await eventBus.Subscribe<GetAllUsersIntegrationEvent, GetAllUsersIntegrationEventHandler>();
     await eventBus.Subscribe<UserAddedIntegrationEvent, UserAddedIntegrationEventHandler>();
+    await eventBus.Subscribe<UserDisconnectedIntegrationEvent, UserDisconnectedIntegrationEventHandler>();
     await eventBus.Subscribe<UserUpdatedIntegrationEvent, UserUpdatedIntegrationEventHandler>();
     await app.PublishApplicationStartedEvents();
 }

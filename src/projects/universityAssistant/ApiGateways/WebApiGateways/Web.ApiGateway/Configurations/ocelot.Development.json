@@ -140,6 +140,15 @@
     },
     {
       "UseServiceDiscovery": true,
+      "ServiceName": "MessagePersistenceService",
+      "DownstreamPathTemplate": "/api/OnlineInChats/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/OnlineInChats/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Put" ],
+      "UpstreamScheme": "https"
+    },
+    {
+      "UseServiceDiscovery": true,
       "ServiceName": "MessageOnlineService",
       "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "wss",

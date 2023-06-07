@@ -126,4 +126,7 @@
   <data name="ChatGroupDoesNotExist" xml:space="preserve">
     <value>Chat group does not exist</value>
   </data>
+  <data name="YouShouldBeRegisteredToTheChatGroup" xml:space="preserve">
+    <value>You should be registered to the chat group</value>
+  </data>
 </root>

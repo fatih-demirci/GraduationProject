@@ -126,4 +126,7 @@
   <data name="ChatGroupDoesNotExist" xml:space="preserve">
     <value>Sohbet grubu bulunamadı</value>
   </data>
+  <data name="YouShouldBeRegisteredToTheChatGroup" xml:space="preserve">
+    <value>Sohbet grubuna kayıt olmalısınız</value>
+  </data>
 </root>

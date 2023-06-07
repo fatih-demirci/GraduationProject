@@ -48,6 +48,11 @@ public class MessagePersistenceServiceContextSeed
             context.Database.ExecuteSql($"SET IDENTITY_INSERT ChatCategories OFF");
         }
 
+        if (context.OnlineInChats.Any())
+        {
+            await context.OnlineInChats.ExecuteDeleteAsync();
+        }
+
         await context.Database.CloseConnectionAsync();
     }
 
