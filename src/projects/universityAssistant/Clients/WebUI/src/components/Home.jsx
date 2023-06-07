@@ -31,9 +31,9 @@ const Home = () => {
           <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/email-confirmed" element={<EmailConfirmed/>}></Route>
           <Route path="/profile" element={<Profile/>}></Route>
-          <Route path="/chat" element={<ForumPage/>}></Route>
+          <Route path="/chat/:id" element={<ForumPage/>}></Route>
           {/* <Route path="/chat" element={<Chat/>}></Route> */}
-          <Route path="/chat/chat-detail/:id" element={<Chat/>}></Route>
+          <Route path="/chat/:id/chat-detail/:id" element={<Chat/>}></Route>
 
           <Route path="/university-guide" element={<UniversityGuide/>}></Route>
           <Route path="/university-guide/:id" element={<UniversityGuideList/>}></Route>

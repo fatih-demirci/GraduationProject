@@ -121,7 +121,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessagePersistenceService.D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MessageOnlineService", "MessageOnlineService", "{2DD32B8D-D4DD-4461-97D6-D765E4D4D83F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageOnlineService.Api", "src\projects\universityAssistant\Services\MessageOnlineService\MessageOnlineService.Api\MessageOnlineService.Api.csproj", "{9D1DB776-20FD-4741-8FFF-7AC47EF39829}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageOnlineService.Api", "src\projects\universityAssistant\Services\MessageOnlineService\MessageOnlineService.Api\MessageOnlineService.Api.csproj", "{9D1DB776-20FD-4741-8FFF-7AC47EF39829}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

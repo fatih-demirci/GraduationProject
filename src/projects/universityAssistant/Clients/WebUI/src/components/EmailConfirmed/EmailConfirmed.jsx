@@ -27,8 +27,6 @@ const EmailConfirmed = () => {
       document.getElementById("inputButtonSend").disabled = false;
     }, 15000);
   }
-  console.log(otp.join(""));
-
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
 
@@ -47,11 +45,14 @@ const EmailConfirmed = () => {
   function confirmEmail() {
     emailServices.ConfirmEmail(otp.join("")).then((res) => {
       console.log(res);
+     
       toast.success(res.data.message + " yönlendiriliyorsunuz.",{
         autoClose:1500
       });
+      localStorage.removeItem("token")
+      localStorage.removeItem("refreshToken")
       setTimeout(() => {
-        navigate("/")
+        navigate("/signin")
       }, 1500);
       
     })

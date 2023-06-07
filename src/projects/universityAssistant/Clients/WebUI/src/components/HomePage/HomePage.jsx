@@ -12,7 +12,7 @@ const HomePage = () => {
     <div className="container">
       {/* <h2>Üniversite Asistanına hoşgeldin.</h2> */}
       <div class="about_card-container">
-        <Link to={"/forum"}>
+        <Link to={"/chat/1"}>
         <div class="about_card about_card_left">
           <div class="about-detail">
             {/* <div class="about_img-box">
