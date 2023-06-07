@@ -49,6 +49,13 @@ services:
       context: .
       dockerfile: src/projects/universityAssistant/Services/MessagePersistenceService/Presentation/MessagePersistenceService.Api/Dockerfile
 
+  messageonlineservice.api:
+    container_name: c_messageonlineservice
+    image: ${DOCKER_REGISTRY-}messageonlineserviceapi
+    build:
+      context: .
+      dockerfile: src/projects/universityAssistant/Services/MessageOnlineService/MessageOnlineService.Api/Dockerfile
+      
   s_consul:
     container_name: c_consul
     image: consul
