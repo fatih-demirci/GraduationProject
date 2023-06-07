@@ -56,15 +56,15 @@ const Profile = () => {
       .catch((err) => console.log(err));
     authServices.LoginRefreshToken(localStorage.getItem("refreshToken")).then(res => console.log(res)).catch(err => console.log(err))
     }, []);
-
+// console.log(userInfo.profilePhotoUrl.length);
   return (
     <div className="">
       <div className="profile-user-info d-flex background-gray">
         <div>
           <img
             src={
-              userInfo.profilePhotoUrl === null
-                ? `img/userpng.png`
+              userInfo.profilePhotoUrl == null
+                ? `/img/userpng.png`
                 : userInfo.profilePhotoUrl
             }
             alt=""

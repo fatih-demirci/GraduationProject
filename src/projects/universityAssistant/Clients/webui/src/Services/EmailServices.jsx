@@ -27,7 +27,6 @@ export default class EmailServices {
             Authorization: `bearer ${localStorage.getItem("token")}`,
           },
         }
-      )
-     
+      ) 
   }
 }

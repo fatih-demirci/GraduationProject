@@ -21,17 +21,17 @@ const Signup = () => {
       .Register(username, email, password)
       .then((res) => {
         console.log(res);
+        localStorage.setItem("token", res.data.accessToken.token);
         toast.success("Üyelik başarılı,yönlendiriliyorsunuz...",{
           autoClose:1500
         });
         setTimeout(() => {
-          navigate("/emailconfirmed")
+          navigate("/email-confirmed")
         }, 1000);
       })
       .catch((err) => {
         toast.error(err.response.data.Detail);
         err.response.data.Errors.map((res) => toast.error(res.ErrorMessage));
-        console.log(err.response.data.Errors.map((res) => console.log(res)));
       });
   }
   return (

@@ -152,9 +152,10 @@
   font-size: 15px;
   font-style: italic;
   font-weight: bold;
-  display: table-cell;
-  vertical-align: middle;
-  margin-left: 15px;
+  /* display: table-cell; */
+  /* vertical-align: middle; */
+  display: flex;
+  /* margin-left: 15px; */
 
 }
 .chat-author-date-icon{
@@ -171,6 +172,12 @@
   position: absolute;
   right:-5%;
   width: 17px;
+}
+.chat-img{
+  width: 200px;
+}
+.chat-file-upload-button{
+  display: none;
 }
 
 @media screen and (max-width: 992px) {
