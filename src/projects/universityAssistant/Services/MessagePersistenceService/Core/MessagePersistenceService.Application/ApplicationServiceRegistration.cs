@@ -1,4 +1,6 @@
 ﻿using Core.Application.Pipelines.Authorization;
+using Core.Application.Pipelines.Validation;
+using FluentValidation;
 using MediatR;
 using MessagePersistenceService.Application.Features.ChatGroupMessages.Rules;
 using MessagePersistenceService.Application.Features.ChatGroups.Rules;
@@ -16,8 +18,10 @@ public static class ApplicationServiceRegistration
     {
         services.AddMediatR(i => i.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestAuthorizationBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
         services.AddScoped<IUserService, UserManager>();
         services.AddScoped<IHttpContextAccessorService, HttpContextAccessorManager>();
