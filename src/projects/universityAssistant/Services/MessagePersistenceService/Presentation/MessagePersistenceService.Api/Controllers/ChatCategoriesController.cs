@@ -8,8 +8,8 @@ namespace MessagePersistenceService.Api.Controllers;
 [ApiController]
 public class ChatCategoriesController : BaseController
 {
-    [HttpGet("GetAllCountryCategories")]
-    public async Task<IActionResult> GetAllCountryCategories([FromQuery] GetAllChatCategoryQueryRequest request)
+    [HttpGet("GetAllChatCategory")]
+    public async Task<IActionResult> GetAllChatCategory([FromQuery] GetAllChatCategoryQueryRequest request)
     {
         IPaginate<GetAllChatCategoryResponseDto> result = await Mediator.Send(request);
         return Ok(result);
