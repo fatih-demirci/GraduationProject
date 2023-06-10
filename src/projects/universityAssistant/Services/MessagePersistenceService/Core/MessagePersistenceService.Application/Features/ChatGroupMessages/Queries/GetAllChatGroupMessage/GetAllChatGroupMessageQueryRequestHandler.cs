@@ -32,7 +32,7 @@ public class GetAllChatGroupMessageQueryRequestHandler : IRequestHandler<GetAllC
             await _chatGroupMessageRepository.GetListAsync<GetAllChatGroupMessageResponseDto>
             (index: request.Index, size: request.Size,
             predicate: i => i.ChatGroupId == request.ChatGroupId && i.Status == request.Status,
-            orderBy: i => i.OrderByDescending(i => i.SendingDate),
+            orderBy: i => i.OrderBy(i => i.SendingDate),
             cancellationToken: cancellationToken);
 
         return response;
