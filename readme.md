@@ -1,1 +1,1 @@
-![GraduationProjectDiagram](https://github.com/fatih-demirci/GraduationProject/blob/GraduationProjectDiagram.png?raw=true)
+![GraduationProjectDiagram](https://github.com/fatih-demirci/GraduationProject/blob/master/GraduationProjectDiagram.png?raw=true)
