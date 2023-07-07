@@ -47,7 +47,7 @@ public class StorageContextSeed
 
         ZipFile.ExtractToDirectory(zipFileUniversityLogos, picturePath);
 
-        FileInfo zipInfo = new(zipFileUniversityLogos);
-        zipInfo.Delete();
+        //FileInfo zipInfo = new(zipFileUniversityLogos);
+        //zipInfo.Delete();
     }
 }

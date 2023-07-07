@@ -28,4 +28,8 @@
     <ProjectReference Include="..\..\..\..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Infrastructure\Setup\SeedFiles\" />
+  </ItemGroup>
+
 </Project>

@@ -25,6 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.ApiGateway", "src\proje
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Çözüm Öğeleri", "Çözüm Öğeleri", "{2C4C33C2-DA02-4288-9BB5-8B0235131CD9}"
 	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
 		ServiceUrls.txt = ServiceUrls.txt
 	EndProjectSection
 EndProject
